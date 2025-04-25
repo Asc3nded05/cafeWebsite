@@ -11,6 +11,8 @@ import Orders from './pages/Orders'
 import Stats from './pages/Stats'
 
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 function App() {
   const [count, setCount] = useState(0)
