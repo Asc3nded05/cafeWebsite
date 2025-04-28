@@ -1,23 +1,111 @@
 import { Accordion, Row, Col } from 'react-bootstrap';
 import MenuItem from '../components/MenuItem';
+import OptionMenuItem from '../components/OptionMenuItem';
 
 {/* When placing orders we need to include functionality to select which types of bagels the customer wants and a way to note if they want the bagel toasted or not */}
 {/* Menu Items, descriptions, and prices from http://bagelsetc.biz/Bagelsetc_menu.pdf */}
 
 export default function Menu() {
+    const bagelData = [
+        { label: 'Plain', value: 'plain' },
+        { label: 'Sesame', value: 'sesame' },
+        { label: 'Everything', value: 'everything' },
+        { label: 'Poppy', value: 'poppy' },
+        { label: 'Onion', value: 'onion' },
+        { label: 'Salt', value: 'salt' },
+        { label: 'Garlic', value: 'garlic' },
+        { label: 'Jalapeno', value: 'jalapeno' },
+        { label: 'Spinach', value: 'spinach' },
+        { label: 'Blueberry', value: 'blueberry' },
+        { label: 'Cinnamon Raisin', value: 'cinnamon_raisin' },
+        { label: 'Cinnamon Sugar', value: 'Cinnamon_sugar' },
+        { label: 'Wheat with Bran', value: 'wheat_w_bran' },
+        { label: 'Oat with Bran', value: 'oat_w_bran' },
+      ];
     const menuData = [
         {
             category: 'Fresh Baked Bagels',
-            description: 'NY Style Bagels Made Fresh Daily.',
+            description: 'NY Style Bagels Made Fresh Daily. Select your bagel type and toasting preference.',
             items: [
-                { title: 'Bagel', price: '$1.25' },
-                { title: '1/2 Dozen Bagels', price: '$7.25' },
-                { title: 'Dozen Bagels', price: '$17.99' },
-                { title: 'Bagel with Cream Cheese', price: '$2.95' },
-                { title: 'Bagel with Butter or Jelly', price: '$2.00' },
-                { title: 'Bagel with Peanut Butter', price: '$2.85' },
+              {
+                title: 'Bagel',
+                price: '$1.25',
+                options: [
+                  {
+                    name: 'Type',
+                    type: 'radio',
+                    choices: bagelData, 
+                  },
+                  {
+                    name: 'Toasted',
+                    type: 'checkbox',
+                    choices: [{ label: 'Toasted', value: 'toasted' }],
+                  },
+                ],
+              },
+              { title: '1/2 Dozen Bagels', price: '$7.25', options: [
+                {
+                  name: 'Type',
+                  type: 'radio',
+                  choices: bagelData, 
+                },
+                {
+                  name: 'Toasted',
+                  type: 'checkbox',
+                  choices: [{ label: 'Toasted', value: 'toasted' }],
+                },
+              ],},
+              { title: 'Dozen Bagels', price: '$17.99', options: [
+                {
+                  name: 'Type',
+                  type: 'radio',
+                  choices: bagelData,
+                },
+                {
+                  name: 'Toasted',
+                  type: 'checkbox',
+                  choices: [{ label: 'Toasted', value: 'toasted' }],
+                },
+              ],},
+              { title: 'Bagel with Cream Cheese', price: '$2.95',options: [
+                {
+                  name: 'Type',
+                  type: 'radio',
+                  choices: bagelData, 
+                },
+                {
+                  name: 'Toasted',
+                  type: 'checkbox',
+                  choices: [{ label: 'Toasted', value: 'toasted' }],
+                },
+              ], },
+              { title: 'Bagel with Butter or Jelly', price: '$2.00', options: [
+                {
+                  name: 'Type',
+                  type: 'radio',
+                  choices: bagelData, 
+                },
+                {
+                  name: 'Toasted',
+                  type: 'checkbox',
+                  choices: [{ label: 'Toasted', value: 'toasted' }],
+                },
+              ], },
+              { title: 'Bagel with Peanut Butter', price: '$2.85', options: [
+                {
+                  name: 'Type',
+                  type: 'radio',
+                  choices: bagelData, 
+                },
+                {
+                  name: 'Toasted',
+                  type: 'checkbox',
+                  choices: [{ label: 'Toasted', value: 'toasted' }],
+                },
+              ], },
             ],
-        },
+          },
+
         {
             category: 'Home Made Cream Cheese',
             description: '8oz fresh made Cream Cheese tubs.',
@@ -109,10 +197,18 @@ export default function Menu() {
         },
     ];
 
+    const renderMenuItem = (item) => {
+        if (item.options) {
+          return <OptionMenuItem item={item} />;
+        } else {
+          return <MenuItem title={item.title} price={item.price} note={item.note} />;
+        }
+      };
+
     return (
         <>
             <h1>Menu</h1>
-            <Accordion defaultActiveKey="0">
+            <Accordion >
                 {menuData.map((category, idx) => (
                     <Accordion.Item eventKey={idx.toString()} key={idx}>
                         <Accordion.Header>{category.category}</Accordion.Header>
@@ -121,7 +217,7 @@ export default function Menu() {
                             <Row xs={1} md={4} className="g-4">
                                 {category.items.map((item, itemIdx) => (
                                     <Col key={itemIdx}>
-                                        <MenuItem title={item.title} price={item.price} />
+                                        {renderMenuItem(item)}
                                     </Col>
                                 ))}
                             </Row>
