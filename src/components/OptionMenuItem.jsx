@@ -1,20 +1,11 @@
 import React from 'react';
 import { Card, Form, Button } from 'react-bootstrap';
-
-// Separate data for bagel types
-const bagelData = [
-  { label: 'Plain', value: 'plain' },
-  { label: 'Everything', value: 'everything' },
-  { label: 'Sesame', value: 'sesame' },
-  { label: 'Poppy Seed', value: 'poppy_seed' },
-  { label: 'Cinnamon Raisin', value: 'cinnamon_raisin' },
-  { label: 'Onion', value: 'onion' },
-];
+import bagelData from '../jsonFiles/bagelData.json';
 
 export default function OptionMenuItem({ item }) {
   // Find the 'Type' option to use bagelData for choices
   const typeOption = item.options && item.options.find(opt => opt.name === 'Type');
-  const bagelChoices = typeOption ? typeOption.choices : [];
+  const bagelChoices = typeOption ? bagelData : [];
 
   return (
     <Card style={{ width: '18rem', height: 'auto' }}>

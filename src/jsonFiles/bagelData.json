@@ -1,0 +1,16 @@
+[
+      { "label": "Plain", "value": "plain" },
+      { "label": "Sesame", "value": "sesame" },
+      { "label": "Everything", "value": "everything" },
+      { "label": "Poppy", "value": "poppy" },
+      { "label": "Onion", "value": "onion" },
+      { "label": "Salt", "value": "salt" },
+      { "label": "Garlic", "value": "garlic" },
+      { "label": "Jalapeno", "value": "jalapeno" },
+      { "label": "Spinach", "value": "spinach" },
+      { "label": "Blueberry", "value": "blueberry" },
+      { "label": "Cinnamon Raisin", "value": "cinnamon_raisin" },
+      { "label": "Cinnamon Sugar", "value": "Cinnamon_sugar" },
+      { "label": "Wheat with Bran", "value": "wheat_w_bran" },
+      { "label": "Oat with Bran", "value": "oat_w_bran" }
+    ]

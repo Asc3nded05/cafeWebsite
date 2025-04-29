@@ -1,20 +1,4 @@
 {
-  "bagelData": [
-    { "label": "Plain", "value": "plain" },
-    { "label": "Sesame", "value": "sesame" },
-    { "label": "Everything", "value": "everything" },
-    { "label": "Poppy", "value": "poppy" },
-    { "label": "Onion", "value": "onion" },
-    { "label": "Salt", "value": "salt" },
-    { "label": "Garlic", "value": "garlic" },
-    { "label": "Jalapeno", "value": "jalapeno" },
-    { "label": "Spinach", "value": "spinach" },
-    { "label": "Blueberry", "value": "blueberry" },
-    { "label": "Cinnamon Raisin", "value": "cinnamon_raisin" },
-    { "label": "Cinnamon Sugar", "value": "Cinnamon_sugar" },
-    { "label": "Wheat with Bran", "value": "wheat_w_bran" },
-    { "label": "Oat with Bran", "value": "oat_w_bran" }
-  ],
   "menuData": [
     {
       "category": "Fresh Baked Bagels",
@@ -26,23 +10,7 @@
           "options": [
             {
               "name": "Type",
-              "type": "radio",
-              "choices": [
-                { "label": "Plain", "value": "plain" },
-                { "label": "Sesame", "value": "sesame" },
-                { "label": "Everything", "value": "everything" },
-                { "label": "Poppy", "value": "poppy" },
-                { "label": "Onion", "value": "onion" },
-                { "label": "Salt", "value": "salt" },
-                { "label": "Garlic", "value": "garlic" },
-                { "label": "Jalapeno", "value": "jalapeno" },
-                { "label": "Spinach", "value": "spinach" },
-                { "label": "Blueberry", "value": "blueberry" },
-                { "label": "Cinnamon Raisin", "value": "cinnamon_raisin" },
-                { "label": "Cinnamon Sugar", "value": "Cinnamon_sugar" },
-                { "label": "Wheat with Bran", "value": "wheat_w_bran" },
-                { "label": "Oat with Bran", "value": "oat_w_bran" }
-              ]
+              "type": "radio"
             },
             {
               "name": "Toasted",
@@ -59,23 +27,7 @@
           "options": [
             {
               "name": "Type",
-              "type": "radio",
-              "choices": [
-                { "label": "Plain", "value": "plain" },
-                { "label": "Sesame", "value": "sesame" },
-                { "label": "Everything", "value": "everything" },
-                { "label": "Poppy", "value": "poppy" },
-                { "label": "Onion", "value": "onion" },
-                { "label": "Salt", "value": "salt" },
-                { "label": "Garlic", "value": "garlic" },
-                { "label": "Jalapeno", "value": "jalapeno" },
-                { "label": "Spinach", "value": "spinach" },
-                { "label": "Blueberry", "value": "blueberry" },
-                { "label": "Cinnamon Raisin", "value": "cinnamon_raisin" },
-                { "label": "Cinnamon Sugar", "value": "Cinnamon_sugar" },
-                { "label": "Wheat with Bran", "value": "wheat_w_bran" },
-                { "label": "Oat with Bran", "value": "oat_w_bran" }
-              ]
+              "type": "radio"
             },
             {
               "name": "Toasted",
@@ -92,23 +44,7 @@
           "options": [
             {
               "name": "Type",
-              "type": "radio",
-              "choices": [
-                { "label": "Plain", "value": "plain" },
-                { "label": "Sesame", "value": "sesame" },
-                { "label": "Everything", "value": "everything" },
-                { "label": "Poppy", "value": "poppy" },
-                { "label": "Onion", "value": "onion" },
-                { "label": "Salt", "value": "salt" },
-                { "label": "Garlic", "value": "garlic" },
-                { "label": "Jalapeno", "value": "jalapeno" },
-                { "label": "Spinach", "value": "spinach" },
-                { "label": "Blueberry", "value": "blueberry" },
-                { "label": "Cinnamon Raisin", "value": "cinnamon_raisin" },
-                { "label": "Cinnamon Sugar", "value": "Cinnamon_sugar" },
-                { "label": "Wheat with Bran", "value": "wheat_w_bran" },
-                { "label": "Oat with Bran", "value": "oat_w_bran" }
-              ]
+              "type": "radio"
             },
             {
               "name": "Toasted",
@@ -125,23 +61,7 @@
           "options": [
             {
               "name": "Type",
-              "type": "radio",
-              "choices": [
-                { "label": "Plain", "value": "plain" },
-                { "label": "Sesame", "value": "sesame" },
-                { "label": "Everything", "value": "everything" },
-                { "label": "Poppy", "value": "poppy" },
-                { "label": "Onion", "value": "onion" },
-                { "label": "Salt", "value": "salt" },
-                { "label": "Garlic", "value": "garlic" },
-                { "label": "Jalapeno", "value": "jalapeno" },
-                { "label": "Spinach", "value": "spinach" },
-                { "label": "Blueberry", "value": "blueberry" },
-                { "label": "Cinnamon Raisin", "value": "cinnamon_raisin" },
-                { "label": "Cinnamon Sugar", "value": "Cinnamon_sugar" },
-                { "label": "Wheat with Bran", "value": "wheat_w_bran" },
-                { "label": "Oat with Bran", "value": "oat_w_bran" }
-              ]
+              "type": "radio"
             },
             {
               "name": "Toasted",
@@ -158,23 +78,7 @@
           "options": [
             {
               "name": "Type",
-              "type": "radio",
-              "choices": [
-                { "label": "Plain", "value": "plain" },
-                { "label": "Sesame", "value": "sesame" },
-                { "label": "Everything", "value": "everything" },
-                { "label": "Poppy", "value": "poppy" },
-                { "label": "Onion", "value": "onion" },
-                { "label": "Salt", "value": "salt" },
-                { "label": "Garlic", "value": "garlic" },
-                { "label": "Jalapeno", "value": "jalapeno" },
-                { "label": "Spinach", "value": "spinach" },
-                { "label": "Blueberry", "value": "blueberry" },
-                { "label": "Cinnamon Raisin", "value": "cinnamon_raisin" },
-                { "label": "Cinnamon Sugar", "value": "Cinnamon_sugar" },
-                { "label": "Wheat with Bran", "value": "wheat_w_bran" },
-                { "label": "Oat with Bran", "value": "oat_w_bran" }
-              ]
+              "type": "radio"
             },
             {
               "name": "Toasted",
@@ -191,23 +95,7 @@
           "options": [
             {
               "name": "Type",
-              "type": "radio",
-              "choices": [
-                { "label": "Plain", "value": "plain" },
-                { "label": "Sesame", "value": "sesame" },
-                { "label": "Everything", "value": "everything" },
-                { "label": "Poppy", "value": "poppy" },
-                { "label": "Onion", "value": "onion" },
-                { "label": "Salt", "value": "salt" },
-                { "label": "Garlic", "value": "garlic" },
-                { "label": "Jalapeno", "value": "jalapeno" },
-                { "label": "Spinach", "value": "spinach" },
-                { "label": "Blueberry", "value": "blueberry" },
-                { "label": "Cinnamon Raisin", "value": "cinnamon_raisin" },
-                { "label": "Cinnamon Sugar", "value": "Cinnamon_sugar" },
-                { "label": "Wheat with Bran", "value": "wheat_w_bran" },
-                { "label": "Oat with Bran", "value": "oat_w_bran" }
-              ]
+              "type": "radio"
             },
             {
               "name": "Toasted",
