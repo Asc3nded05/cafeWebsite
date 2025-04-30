@@ -1,4 +1,5 @@
 import { useState } from 'react';
+var id = 0;
 
 export default function CreateAccountForm() {
     const [firstName, setFirstName] = useState('');
@@ -27,7 +28,7 @@ export default function CreateAccountForm() {
         } else if (newPassword.length >= 24) {
             inputElement.setCustomValidity('Password is too long!');
         } else if (!/[^\w]/.test(newPassword)) { // Check for at least one non-letter character
-            inputElement.setCustomValidity('Password must contain at least one non-letter character!');
+            inputElement.setCustomValidity('Password must contain at least one non-alphanumeric character!');
         } else {
             inputElement.setCustomValidity(''); // Clear custom validity if password is valid
         }
@@ -35,16 +36,40 @@ export default function CreateAccountForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
+    
         if (firstName === '' || lastName === '' || email === '' || password === '') {
             alert('Please fill in all fields!');
             return;
         }
 
-        var newContact=  {firstName: firstName, lastName: lastName, email: email, password:password};
-        
+        const createdAt = new Date().toLocaleString() + "";
+        const updatedAt = new Date().toLocaleString() + "";
+        const role = "User";
 
-        alert(`Registration successful for ${firstName} ${lastName}`);
+        const newUser = { id, firstName, lastName, email, password, role, createdAt, updatedAt };
+    
+        id++;
+
+        // Send the newUser to the backend
+        fetch('http://localhost:5000/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newUser),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert(`Registration successful for ${firstName} ${lastName}`);
+                } else {
+                    console.log(response); 
+                    alert('Failed to register. Please try again.');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
     }
 
     return (
