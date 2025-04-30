@@ -1,15 +1,65 @@
+import { useState } from 'react';
+
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        // Send login data to the backend
+        fetch('http://localhost:5000/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Invalid email or password');
+                }
+            })
+            .then((data) => {
+                alert(`Welcome, ${data.user.firstName} ${data.user.lastName}!`);
+                // Save user data to localStorage or state for session management
+                localStorage.setItem('user', JSON.stringify(data.user));
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
+    }
+
     return (
         <div className="container mt-5">
             <h1 className="text-center">Login</h1>
-            <form className="mt-4">
+            <form className="mt-4" onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
-                    <input type="email" className="form-control" id="email" placeholder="Enter your email" required />
+                    <input
+                        type="email"
+                        className="form-control"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
-                    <input type="password" className="form-control" id="password" placeholder="Enter your password" required />
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
             </form>

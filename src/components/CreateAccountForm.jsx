@@ -35,6 +35,8 @@ export default function CreateAccountForm() {
     }
 
     function handleSubmit(e) {
+        // Need to check to make sure email hasn't already been used
+
         e.preventDefault();
     
         if (firstName === '' || lastName === '' || email === '' || password === '') {
