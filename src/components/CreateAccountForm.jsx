@@ -41,6 +41,9 @@ export default function CreateAccountForm() {
             return;
         }
 
+        var newContact=  {firstName: firstName, lastName: lastName, email: email, password:password};
+        
+
         alert(`Registration successful for ${firstName} ${lastName}`);
     }
 
