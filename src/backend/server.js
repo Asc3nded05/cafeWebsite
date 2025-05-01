@@ -139,7 +139,33 @@ app.get('/api/blog', (req, res) => {
 });
 
 app.post('/api/blog/create', (req, res) => {
+    const newPost = req.body;
+    console.log(newPost);
+    // Read the blog posts from the JSON file
+    fs.readFile(blogFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading blog file:', err);
+            return res.status(500).json({ message: 'Error reading blog file' });
+        }
 
+        let blogPosts = JSON.parse(data);
+
+        // Determine the next available ID
+        const nextId = blogPosts.reduce((maxId, post) => Math.max(maxId, post.id || 0), 0) + 1;
+        newPost.id = nextId; // Assign the new ID to the post
+
+        blogPosts.push(newPost); // Add the new post to the array
+
+        // Write the updated blog posts back to the file
+        fs.writeFile(blogFilePath, JSON.stringify(blogPosts, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing blog file:', err);
+                return res.status(500).json({ message: 'Error writing blog file' });
+            }
+
+            res.status(201).json({ message: 'Post created successfully' });
+        });
+    });
 });
 
 app.post('/api/blog/update', (req, res) => {
