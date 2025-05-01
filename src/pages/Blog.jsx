@@ -117,11 +117,11 @@ export default function Blog() {
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label htmlFor="Name" className="form-label">Title</label>
-                            <input type="text" className="form-control" id="title" onChange={(e) => updateTitle(e.target.value)} required />
+                            <input type="text" className="form-control" id="title" onChange={(e) => updateTitle(e.target.value)} placeholder="Enter a title" required />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="content" className="form-label">Post Content</label>
-                            <input type="text" className="form-control" id="content" onChange={(e) => updateContent(e.target.value)} required />
+                            <input type="text" className="form-control" id="content" onChange={(e) => updateContent(e.target.value)} placeholder="Enter the post content" required />
                         </div>
                         <button type="submit" className="btn btn-primary">Post</button>
                     </form>
