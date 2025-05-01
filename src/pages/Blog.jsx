@@ -58,10 +58,10 @@ export default function Blog() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
+    
         const newPost = { title, content, likes, dislikes, createdAt, updatedAt };
-
-        // Send the newUser to the backend
+    
+        // Send the new post to the backend
         fetch('http://localhost:5000/api/blog/create', {
             method: 'POST',
             headers: {
@@ -70,22 +70,24 @@ export default function Blog() {
             body: JSON.stringify(newPost),
         })
             .then((response) => {
-                console.log(response)
                 if (response.ok) {
-                    
-                } else if (response.status == 409) {
-                     alert('Error creating post. Please try again.')
-                } else {
-                    console.log(response); 
+                    alert('Post created successfully!');
+                    location.reload(); // Reload the page to see the new post
+                } else if (response.status === 409) {
                     alert('Error creating post. Please try again.');
+                    throw new Error('Conflict: Duplicate post');
+                } else {
+                    console.log(response);
+                    alert('Error creating post. Please try again.');
+                    throw new Error('Error creating post');
                 }
             })
             .catch((error) => {
                 console.error('Error:', error);
-                alert('An error occurred. Please try again.');
+                if (error.message.includes('NetworkError')) {
+                    alert('Network error. Please check your connection.');
+                }
             });
-    
-        location.reload(); // Reload the page to see the new post
     }
 
     if (role === "user") {
@@ -99,8 +101,8 @@ export default function Blog() {
                             key={post.id}
                             id={post.id}
                             title={post.title}
-                            date={post.createdAt}
-                            text={post.Content}
+                            date={post.updatedAt}
+                            text={post.content}
                         />
                     ))}
                 </div>
@@ -135,8 +137,8 @@ export default function Blog() {
                             key={post.id}
                             id={post.id}
                             title={post.title}
-                            date={post.createdAt}
-                            text={post.Content}
+                            date={post.updatedAt}
+                            text={post.content}
                         />
                     ))}
                 </div>
@@ -153,8 +155,8 @@ export default function Blog() {
                             key={post.id}
                             id={post.id}
                             title={post.title}
-                            date={post.createdAt}
-                            text={post.Content}
+                            date={post.updatedAt}
+                            text={post.content}
                         />
                     ))}
                 </div>

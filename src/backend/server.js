@@ -168,8 +168,45 @@ app.post('/api/blog/create', (req, res) => {
     });
 });
 
-app.post('/api/blog/update', (req, res) => {
+// Endpoint to update a blog post
+app.put('/api/blog/update/:id', (req, res) => {
+    const postId = parseInt(req.params.id); // Get the ID from the URL
+    const updatedPost = req.body; // Get the updated post data from the request body
 
+    // Read the existing blog posts from the file
+    fs.readFile(blogFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading blog file:', err);
+            return res.status(500).json({ message: 'Error reading blog file' });
+        }
+
+        let blogPosts = [];
+        try {
+            blogPosts = JSON.parse(data); // Parse the JSON data
+        } catch (parseError) {
+            console.error('Error parsing blog file:', parseError);
+            return res.status(500).json({ message: 'Error parsing blog file' });
+        }
+
+        // Find the index of the blog post to update
+        const postIndex = blogPosts.findIndex((post) => post.id === postId);
+        if (postIndex === -1) {
+            return res.status(404).json({ message: 'Blog post not found' });
+        }
+
+        // Update the blog post
+        blogPosts[postIndex] = { ...blogPosts[postIndex], ...updatedPost };
+
+        // Write the updated blog posts back to the file
+        fs.writeFile(blogFilePath, JSON.stringify(blogPosts, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing to blog file:', err);
+                return res.status(500).json({ message: 'Error writing to blog file' });
+            }
+
+            res.status(200).json({ message: 'Blog post updated successfully' });
+        });
+    });
 });
 
 app.delete('/api/blog/delete/:id', (req, res) => {
