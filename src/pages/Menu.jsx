@@ -1,19 +1,53 @@
-import { Accordion, Row, Col } from 'react-bootstrap';
-import MenuItem from '../components/MenuItem';
-import OptionMenuItem from '../components/OptionMenuItem';
-import menuData from '../jsonFiles/menuData.json';
+
 import Navigation from '../components/Navigation';
 import NavigationUse from '../components/NavigationUser';
 import NavigationAdmin from '../components/NavigationAdmin';
+import NavigationUser from '../components/NavigationUser';
+import { useEffect, useState } from 'react';
+import { Accordion, Row, Col } from 'react-bootstrap';
+import OptionMenuItem from '../components/OptionMenuItem';
+import MenuItem from '../components/MenuItem';
 
 
 {/* When placing orders we need to include functionality to select which types of bagels the customer wants and a way to note if they want the bagel toasted or not */}
 {/* Menu Items, descriptions, and prices from http://bagelsetc.biz/Bagelsetc_menu.pdf */}
 
 export default function Menu() {
+    const [menuItems, setMenuItems] = useState([]);
     const user = localStorage.getItem('user');
     const role = user ? JSON.parse(user).role : null;
     console.log("Menu page loaded");
+
+    function getMenu() {
+        fetch('http://localhost:5000/api/menu', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+           
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.json(); // Parse the JSON data
+                } else {
+                    throw new Error('Error retrieving menu');
+                }
+            })
+            .then((data) => {
+                console.log(data)
+                setMenuItems(data); // Store the menu in state
+                console.log(menuItems)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
+    }
+      // Fetch menu when the component mounts
+        useEffect(() => {
+            getMenu();
+    
+        }, []);
 
     const renderMenuItem = (item) => {
         if (item.options) {
@@ -30,7 +64,7 @@ export default function Menu() {
     
                 <h1>Menu</h1>
                 <Accordion >
-                    {menuData.menuData.map((category, idx) => (
+                    {menuItems.map((category, idx) => (
                         <Accordion.Item eventKey={idx.toString()} key={idx}>
                             <Accordion.Header>{category.category}</Accordion.Header>
                             <Accordion.Body>
@@ -55,7 +89,7 @@ export default function Menu() {
     
                 <h1>Menu</h1>
                 <Accordion >
-                    {menuData.menuData.map((category, idx) => (
+                    {menuItems.map((category, idx) => (
                         <Accordion.Item eventKey={idx.toString()} key={idx}>
                             <Accordion.Header>{category.category}</Accordion.Header>
                             <Accordion.Body>
@@ -80,7 +114,7 @@ export default function Menu() {
     
                 <h1>Menu</h1>
                 <Accordion >
-                    {menuData.menuData.map((category, idx) => (
+                    {menuItems.map((category, idx) => (
                         <Accordion.Item eventKey={idx.toString()} key={idx}>
                             <Accordion.Header>{category.category}</Accordion.Header>
                             <Accordion.Body>

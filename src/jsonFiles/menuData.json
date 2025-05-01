@@ -1,5 +1,5 @@
-{
-  "menuData": [
+
+  [
     {
       "category": "Fresh Baked Bagels",
       "description": "NY Style Bagels Made Fresh Daily. Select your bagel type and toasting preference.",
@@ -197,4 +197,3 @@
       ]
     }
   ]
-}

@@ -26,6 +26,8 @@ const usersFilePath = path.join(__dirname, '..', 'jsonFiles', 'users.json');
 
 const blogFilePath = path.join(__dirname, '..', 'jsonFiles', 'blog.json');
 
+const menuFilePath = path.join(__dirname, '..', 'jsonFiles', 'menuData.json')
+
 // Function to read users from the file
 const readUsers = () => {
     try {
@@ -366,6 +368,19 @@ app.delete('/api/blog/delete/:id', (req, res) => {
 
             res.status(200).json({ message: 'Post deleted successfully' });
         });
+    });
+});
+
+app.get('/api/menu', (req, res) => {
+    // Read the menu items from the JSON file
+    fs.readFile(menuFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading menu file:', err); 
+            return res.status(500).json({ message: 'Error reading menu file' }); 
+        }
+
+        const menuItems = JSON.parse(data);
+        res.status(200).json(menuItems);
     });
 });
 
