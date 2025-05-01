@@ -51,7 +51,7 @@ function App() {
         <Navigation/>
         <main className="flex-grow-1">
           <Routes>
-            {/* <Route path="/" element={<Home />} /> */}
+            <Route path="/" element={<Home />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/createAccount" element={<CreateAccount />} />
@@ -61,16 +61,8 @@ function App() {
             <Route
             path="/orders"
             element={
-              <ProtectedRoute role={"admin"} children={<Orders />}>
-                
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <ProtectedRoute role={"admin"} children={<Home />} defaultPage={<Home />}>
-                
+              <ProtectedRoute role={"admin"}>
+                <Orders/>
               </ProtectedRoute>
             }
           />
