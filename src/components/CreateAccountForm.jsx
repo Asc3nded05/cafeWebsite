@@ -64,9 +64,12 @@ export default function CreateAccountForm() {
             body: JSON.stringify(newUser),
         })
             .then((response) => {
+                console.log(response)
                 if (response.ok) {
                     alert(`Registration successful for ${firstName} ${lastName}`);
                     setLoggedin(true);
+                } else if (response.status == 409) {
+                     alert('Email already exists. Go Login')
                 } else {
                     console.log(response); 
                     alert('Failed to register. Please try again.');
