@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import BlogPost from "../components/BlogPost.jsx";
 import BlogPostAdmin from "../components/BlogPostAdmin.jsx";
+import BlogPostUser from "../components/BlogPostUser.jsx";
 import Navigation from "../components/Navigation.jsx";
 import NavigationAdmin from "../components/NavigationAdmin.jsx";
 import NavigationUser from "../components/NavigationUser.jsx";
@@ -96,15 +97,17 @@ export default function Blog() {
                 <NavigationUser />
                 <h1>Blog</h1>
                 <div className="mt-4">
-                    {blogPosts.map((post) => (
-                        <BlogPost
-                            key={post.id}
-                            id={post.id}
-                            title={post.title}
-                            date={post.updatedAt}
-                            text={post.content}
-                        />
-                    ))}
+                {blogPosts.map((post) => (
+                    <BlogPostUser
+                        key={post.id}
+                        id={post.id}
+                        title={post.title}
+                        date={post.updatedAt}
+                        text={post.content}
+                        initialLikes={post.likes}
+                        initialDislikes={post.dislikes}
+                    />
+                ))}
                 </div>
             </>
         );
@@ -139,6 +142,8 @@ export default function Blog() {
                             title={post.title}
                             date={post.updatedAt}
                             text={post.content}
+                            likes={post.likes}
+                            dislikes={post.dislikes}
                         />
                     ))}
                 </div>
@@ -157,6 +162,8 @@ export default function Blog() {
                             title={post.title}
                             date={post.updatedAt}
                             text={post.content}
+                            initialLikes={post.likes}
+                            initialDislikes={post.dislikes}
                         />
                     ))}
                 </div>

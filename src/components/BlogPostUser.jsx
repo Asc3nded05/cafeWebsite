@@ -119,8 +119,21 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
                     <Card.Title>{title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
                     <Card.Text>{text}</Card.Text>
-                    <label>Likes: {likes} &nbsp;</label>
-                    <label>Dislikes: {dislikes} </label>
+                    <Button
+                        variant={userAction === 'liked' ? 'success' : 'primary'}
+                        onClick={handleLike}
+                    >
+                        {userAction === 'liked' ? 'Liked' : 'Like'}
+                    </Button>{' '}
+                    <label>{likes}</label>
+                    <Button
+                        variant={userAction === 'disliked' ? 'danger' : 'primary'}
+                        className="ms-2"
+                        onClick={handleDislike}
+                    >
+                        {userAction === 'disliked' ? 'Disliked' : 'Dislike'}
+                    </Button>{' '}
+                    <label>{dislikes}</label>
                 </Card.Body>
             </Card>
         </>

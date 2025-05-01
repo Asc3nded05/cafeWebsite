@@ -209,6 +209,132 @@ app.put('/api/blog/update/:id', (req, res) => {
     });
 });
 
+// Endpoint to like a blog post
+app.put('/api/blog/like/:id', (req, res) => {
+    const postId = parseInt(req.params.id);
+
+    // Read the blog posts from the JSON file
+    fs.readFile(blogFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading blog file:', err);
+            return res.status(500).json({ message: 'Error reading blog file' });
+        }
+
+        let blogPosts = JSON.parse(data);
+
+        // Find the blog post by ID
+        const postIndex = blogPosts.findIndex(post => post.id === postId);
+        if (postIndex === -1) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+
+        // Increment the likes count
+        blogPosts[postIndex].likes += 1;
+
+        // Write the updated blog posts back to the file
+        fs.writeFile(blogFilePath, JSON.stringify(blogPosts, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing blog file:', err);
+                return res.status(500).json({ message: 'Error writing blog file' });
+            }
+
+            res.status(200).json({ message: 'Post liked successfully', post: blogPosts[postIndex] });
+        });
+    });
+});
+
+// Endpoint to dislike a blog post
+app.put('/api/blog/dislike/:id', (req, res) => {
+    const postId = parseInt(req.params.id);
+
+    // Read the blog posts from the JSON file
+    fs.readFile(blogFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading blog file:', err);
+            return res.status(500).json({ message: 'Error reading blog file' });
+        }
+
+        let blogPosts = JSON.parse(data);
+
+        // Find the blog post by ID
+        const postIndex = blogPosts.findIndex(post => post.id === postId);
+        if (postIndex === -1) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+
+        // Increment the dislikes count
+        blogPosts[postIndex].dislikes += 1;
+
+        // Write the updated blog posts back to the file
+        fs.writeFile(blogFilePath, JSON.stringify(blogPosts, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing blog file:', err);
+                return res.status(500).json({ message: 'Error writing blog file' });
+            }
+
+            res.status(200).json({ message: 'Post disliked successfully', post: blogPosts[postIndex] });
+        });
+    });
+});
+
+// Endpoint to remove a like
+app.put('/api/blog/unlike/:id', (req, res) => {
+    const postId = parseInt(req.params.id);
+
+    fs.readFile(blogFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading blog file:', err);
+            return res.status(500).json({ message: 'Error reading blog file' });
+        }
+
+        let blogPosts = JSON.parse(data);
+        const postIndex = blogPosts.findIndex(post => post.id === postId);
+        if (postIndex === -1) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+
+        blogPosts[postIndex].likes = Math.max(0, blogPosts[postIndex].likes - 1);
+
+        fs.writeFile(blogFilePath, JSON.stringify(blogPosts, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing blog file:', err);
+                return res.status(500).json({ message: 'Error writing blog file' });
+            }
+
+            res.status(200).json({ message: 'Like removed successfully', post: blogPosts[postIndex] });
+        });
+    });
+});
+
+// Endpoint to remove a dislike
+app.put('/api/blog/undislike/:id', (req, res) => {
+    const postId = parseInt(req.params.id);
+
+    fs.readFile(blogFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading blog file:', err);
+            return res.status(500).json({ message: 'Error reading blog file' });
+        }
+
+        let blogPosts = JSON.parse(data);
+        const postIndex = blogPosts.findIndex(post => post.id === postId);
+        if (postIndex === -1) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+
+        blogPosts[postIndex].dislikes = Math.max(0, blogPosts[postIndex].dislikes - 1);
+
+        fs.writeFile(blogFilePath, JSON.stringify(blogPosts, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing blog file:', err);
+                return res.status(500).json({ message: 'Error writing blog file' });
+            }
+
+            res.status(200).json({ message: 'Dislike removed successfully', post: blogPosts[postIndex] });
+        });
+    });
+});
+
 app.delete('/api/blog/delete/:id', (req, res) => {
     const postId = req.params.id;
 

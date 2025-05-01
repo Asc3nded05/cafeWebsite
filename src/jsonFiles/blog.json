@@ -2,7 +2,7 @@
   {
     "title": "Blog Post 1",
     "content": "content",
-    "likes": 0,
+    "likes": 1,
     "dislikes": 0,
     "createdAt": "5/1/2025, 2:59:29 PM",
     "updatedAt": "5/1/2025, 2:59:29 PM",
@@ -11,7 +11,7 @@
   {
     "title": "Blog Post 2",
     "content": "update content",
-    "likes": 0,
+    "likes": 2,
     "dislikes": 0,
     "createdAt": "5/1/2025, 2:59:44 PM",
     "updatedAt": "5/1/2025, 3:09:36 PM",
@@ -20,8 +20,8 @@
   {
     "title": "Blog Post 3",
     "content": "content",
-    "likes": 0,
-    "dislikes": 0,
+    "likes": 1,
+    "dislikes": 2,
     "createdAt": "5/1/2025, 3:11:09 PM",
     "updatedAt": "5/1/2025, 3:11:09 PM",
     "id": 3
@@ -29,8 +29,8 @@
   {
     "title": "Blog Post 4",
     "content": "content",
-    "likes": 0,
-    "dislikes": 0,
+    "likes": 3,
+    "dislikes": 5,
     "createdAt": "5/1/2025, 3:12:46 PM",
     "updatedAt": "5/1/2025, 3:12:46 PM",
     "id": 4
@@ -38,8 +38,8 @@
   {
     "title": "Blog Post 5",
     "content": "content",
-    "likes": 0,
-    "dislikes": 0,
+    "likes": 20,
+    "dislikes": 21,
     "createdAt": "5/1/2025, 3:16:47 PM",
     "updatedAt": "5/1/2025, 3:16:47 PM",
     "id": 5

@@ -1,7 +1,7 @@
 import { Card, Button, Modal, Form } from 'react-bootstrap';
 import { useState } from 'react';
 
-export default function BlogPostAdmin({ id, title, date, text }) {
+export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }) {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
     const [editedTitle, setEditedTitle] = useState(title); // State for the edited title
     const [editedContent, setEditedContent] = useState(text); // State for the edited content
@@ -19,7 +19,7 @@ export default function BlogPostAdmin({ id, title, date, text }) {
             id: id,
             title: editedTitle,
             content: editedContent,
-            updatedAt: new Date().toLocaleString() + ""
+            updatedAt: new Date().toLocaleString() + "",
         };
 
         fetch(`http://localhost:5000/api/blog/update/${id}`, {
@@ -70,6 +70,8 @@ export default function BlogPostAdmin({ id, title, date, text }) {
                     <Card.Title>{title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
                     <Card.Text>{text}</Card.Text>
+                    <p>Likes: {likes}</p>
+                    <p>Dislikes: {dislikes}</p>
                     <Button variant="primary" className="ms-2" onClick={handleShowModal}>
                         Update
                     </Button>
