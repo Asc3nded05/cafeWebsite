@@ -24,6 +24,8 @@ app.use(express.json());
 // Path to the users.json file
 const usersFilePath = path.join(__dirname, '..', 'jsonFiles', 'users.json');
 
+const blogFilePath = path.join(__dirname, '..', 'jsonFiles', 'blog.json');
+
 // Function to read users from the file
 const readUsers = () => {
     try {
@@ -111,16 +113,71 @@ app.post('/api/login', async (req, res) => {
                 // Generate the JWT
                 const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' }); // Token expires in 1 hour
 
-                res.status(200).json({ message: 'Login successful', token, user: { id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email } });
+                res.status(200).json({ message: 'Login successful', token, user: { id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, role: user.role} });
             }
-         else {
-            res.status(401).json({ message: 'Invalid email or password' });
+            else {
+                res.status(401).json({ message: 'Invalid email or password' });
+            }
+        } catch (error) {
+            console.error('Error comparing passwords:', error);
+            res.status(500).json({ message: 'Error during login.' });
         }
-    } catch (error) {
-        console.error('Error comparing passwords:', error);
-        res.status(500).json({ message: 'Error during login.' });
-    }
+    });
 });
+
+app.get('/api/blog', (req, res) => {
+    // Read the blog posts from the JSON file
+    fs.readFile(blogFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading blog file:', err);
+            return res.status(500).json({ message: 'Error reading blog file' });
+        }
+
+        const blogPosts = JSON.parse(data);
+        res.status(200).json(blogPosts);
+    });
+});
+
+app.post('/api/blog/create', (req, res) => {
+
+});
+
+app.post('/api/blog/update', (req, res) => {
+
+});
+
+app.delete('/api/blog/delete/:id', (req, res) => {
+    const postId = req.params.id;
+
+    // Read the blog posts from the JSON file
+    fs.readFile(blogFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading blog file:', err);
+            return res.status(500).json({ message: 'Error reading blog file' });
+        }
+
+        let blogPosts = JSON.parse(data);
+
+        // Find the index of the post to delete
+        const postIndex = blogPosts.findIndex(post => post.id === parseInt(postId));
+
+        if (postIndex === -1) {
+            return res.status(404).json({ message: 'Post not found' });
+        }
+
+        // Remove the post from the array
+        blogPosts.splice(postIndex, 1);
+
+        // Write the updated blog posts back to the file
+        fs.writeFile(blogFilePath, JSON.stringify(blogPosts, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing blog file:', err);
+                return res.status(500).json({ message: 'Error writing blog file' });
+            }
+
+            res.status(200).json({ message: 'Post deleted successfully' });
+        });
+    });
 });
 
 

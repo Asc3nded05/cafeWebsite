@@ -50,7 +50,7 @@ export default function CreateAccountForm() {
 
         const createdAt = new Date().toLocaleString() + "";
         const updatedAt = new Date().toLocaleString() + "";
-        const role = "User";
+        const role = "user";
 
         const newUser = { id, firstName, lastName, email, password, role, createdAt, updatedAt };
     

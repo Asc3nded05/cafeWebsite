@@ -4,7 +4,7 @@ export default function ContactForm() {
             <h1 className="text-center">Contact Us</h1>
             <form>
                 <div className="mb-3">
-                    <label htmlFor="title" className="form-label">Title</label>
+                    <label htmlFor="Name" className="form-label">Title</label>
                     <input type="text" className="form-control" id="title" required />
                 </div>
                 <div className="mb-3">

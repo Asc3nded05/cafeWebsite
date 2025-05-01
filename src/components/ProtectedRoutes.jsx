@@ -7,14 +7,14 @@ function ProtectedRoute({ role, children }) {
   const location = useLocation();
 
   if (!token) {
-    return <><Login/></>;
+    return <Login/>;
   }
 
   try {
     const decodedToken = jwtDecode(token);
     const userRoleFromToken = decodedToken?.role;
 
-    if (role != "admin") return <NoPage />;
+    if (userRoleFromToken != "admin") return <NoPage />;
 
   return <>{children}</>;
   } catch (error) {

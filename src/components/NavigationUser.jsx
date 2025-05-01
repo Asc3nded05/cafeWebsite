@@ -5,7 +5,7 @@ function logout() {
   location.reload();
 }
 
-export default function NavigationAdmin() {
+export default function NavigationUse() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="container-fluid">
@@ -57,20 +57,10 @@ export default function NavigationAdmin() {
                 Blog
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/orders">
-                Orders
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/stats">
-                Stats
-              </Link>
-            </li>
             {/* Login Button */}
             <li className="nav-item">
               <Link className="btn btn-outline-primary me-2">
-                Admin
+                User
               </Link>
             </li>
             {/* Logout Button */}

@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom' 
 import Home from './pages/Home'
 import Contact from './pages/Contact'
 import Blog from './pages/Blog'
@@ -48,7 +48,7 @@ function App() {
     <div id="root" className="d-flex flex-column min-vh-100">
       
       <BrowserRouter>
-        <Navigation/>
+        {/* <Navigation/> */}
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -58,10 +58,11 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/stats" element={<Stats />} />
             <Route
             path="/orders"
             element={
-              <ProtectedRoute role={"admin"}>
+              <ProtectedRoute role={"admin"}> 
                 <Orders/>
               </ProtectedRoute>
             }

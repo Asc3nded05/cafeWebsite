@@ -5,7 +5,7 @@
     "lastName": "Van Heukelum",
     "email": "rileyvanheukelum@gmail.com",
     "password": "password!",
-    "role": "User",
+    "role": "user",
     "createdAt": "4/30/2025, 2:07:58 PM",
     "updatedAt": "4/30/2025, 2:07:58 PM"
   },
@@ -15,7 +15,7 @@
     "lastName": "smith",
     "email": "jeosmith@gmail.com",
     "password": "password!",
-    "role": "User",
+    "role": "user",
     "createdAt": "4/30/2025, 8:02:54 PM",
     "updatedAt": "4/30/2025, 8:02:54 PM"
   },
@@ -35,8 +35,18 @@
     "lastName": "Jones",
     "email": "bj@gmail.com",
     "password": "$2b$10$mkwmfW3Xn6FvJ7WAVcwoXOu4ZaLVRAM1SpRYp8SM6UNLnpXNGRAyu",
-    "role": "User",
+    "role": "user",
     "createdAt": "4/30/2025, 10:52:02 PM",
     "updatedAt": "4/30/2025, 10:52:02 PM"
+  },
+  {
+    "id": 5,
+    "firstName": "Riley",
+    "lastName": "Van Heukelum",
+    "email": "riley.vanheukelum27@houghton.edu",
+    "password": "$2b$10$.y.U/nzoQN5lhGxr5A6.7.oB23pmW5l0Hw204d8gKvV3GyMyVNLoW",
+    "role": "admin",
+    "createdAt": "5/1/2025, 8:49:47 AM",
+    "updatedAt": "5/1/2025, 8:49:47 AM"
   }
 ]
