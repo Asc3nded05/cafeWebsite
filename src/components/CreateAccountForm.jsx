@@ -94,6 +94,7 @@ export default function CreateAccountForm() {
                         type="text"
                         className="form-control"
                         id="firstName"
+                        placeholder="Enter your first name"
                         required
                         onChange={(e) => updateFirstName(e.target.value)}
                     />
@@ -104,6 +105,7 @@ export default function CreateAccountForm() {
                         type="text"
                         className="form-control"
                         id="lastName"
+                        placeholder="Enter your last name"
                         required
                         onChange={(e) => updateLastName(e.target.value)}
                     />
@@ -114,6 +116,7 @@ export default function CreateAccountForm() {
                         type="email"
                         className="form-control"
                         id="email"
+                        placeholder="Enter your email"
                         required
                         onChange={(e) => updateEmail(e.target.value)}
                     />
@@ -124,6 +127,7 @@ export default function CreateAccountForm() {
                         type="password"
                         className="form-control"
                         id="password"
+                        placeholder="Enter your password"
                         required
                         onChange={(e) => updatePassword(e.target.value, e.target)}
                     />
