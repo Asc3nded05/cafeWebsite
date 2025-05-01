@@ -3,11 +3,12 @@ import MenuItem from '../components/MenuItem';
 import OptionMenuItem from '../components/OptionMenuItem';
 import menuData from '../jsonFiles/menuData.json';
 
+
 {/* When placing orders we need to include functionality to select which types of bagels the customer wants and a way to note if they want the bagel toasted or not */}
 {/* Menu Items, descriptions, and prices from http://bagelsetc.biz/Bagelsetc_menu.pdf */}
 
 export default function Menu() {
-    
+ 
     const renderMenuItem = (item) => {
         if (item.options) {
           return <OptionMenuItem item={item} />;
@@ -18,6 +19,7 @@ export default function Menu() {
 
     return (
         <>
+   
             <h1>Menu</h1>
             <Accordion >
                 {menuData.menuData.map((category, idx) => (

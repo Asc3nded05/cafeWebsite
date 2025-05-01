@@ -27,7 +27,7 @@ export default function Login() {
             .then((data) => {
                 <Navigate to="/" replace />
                 alert(`Welcome, ${data.user.firstName} ${data.user.lastName}!`);
-                // Save user data to localStorage or state for session management
+                localStorage.setItem('authToken', data.token);
                 localStorage.setItem('user', JSON.stringify(data.user));
                 setLoggedin(true);
             })
