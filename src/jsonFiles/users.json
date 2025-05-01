@@ -11,22 +11,22 @@
   },
   {
     "id": 1,
-    "firstName": "Riley",
-    "lastName": "Van Heukelum",
-    "email": "rileyvanheukelum2@gmail.com",
-    "password": "password!1",
+    "firstName": "Aidan",
+    "lastName": "Schooley",
+    "email": "schooleyaidan7@gmail.com",
+    "password": "password!",
     "role": "User",
-    "createdAt": "4/30/2025, 2:08:01 PM",
-    "updatedAt": "4/30/2025, 2:08:01 PM"
+    "createdAt": "4/30/2025, 7:49:23 PM",
+    "updatedAt": "4/30/2025, 7:49:23 PM"
   },
   {
     "id": 2,
-    "firstName": "Riley",
-    "lastName": "Van Heukelum",
-    "email": "rileyvanheukelum3@gmail.com",
-    "password": "password!2",
+    "firstName": "joe",
+    "lastName": "smith",
+    "email": "jeosmith@gmail.com",
+    "password": "password!",
     "role": "User",
-    "createdAt": "4/30/2025, 2:08:02 PM",
-    "updatedAt": "4/30/2025, 2:08:02 PM"
+    "createdAt": "4/30/2025, 8:02:54 PM",
+    "updatedAt": "4/30/2025, 8:02:54 PM"
   }
 ]

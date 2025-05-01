@@ -20,21 +20,31 @@ app.use(express.json());
 // Path to the users.json file
 const usersFilePath = path.join(__dirname, '..', 'jsonFiles', 'users.json');
 
+// Function to read users from the file
+const readUsers = () => {
+    try {
+        const data = fs.readFileSync(usersFilePath, 'utf8');
+        return JSON.parse(data) || [];
+    } catch (err) {
+        console.error('Error reading users file:', err);
+        return [];
+    }
+};
+
 // Endpoint to add a new user
 app.post('/api/users', (req, res) => {
     const newUser = req.body;
 
     console.log(newUser);
 
-    // Read the existing users from the file
-    fs.readFile(usersFilePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).json({ message: 'Error reading users file' });
-        }
+    // Read existing users
+    const users = readUsers();
 
-        const users = JSON.parse(data);
-        users.push(newUser); // Add the new user to the array
+    //Determines the next available ID
+    const nextId = users.reduce((maxId, user) => Math.max(maxId, user.id || 0), 0) + 1;
+    newUser.id = nextId; // Assign the new ID to the user
+
+    users.push(newUser); // Add the new user to the array
 
         // Write the updated users back to the file
         fs.writeFile(usersFilePath, JSON.stringify(users, null, 2), (err) => {
@@ -46,7 +56,6 @@ app.post('/api/users', (req, res) => {
             res.status(201).json({ message: 'User added successfully' });
         });
     });
-});
 
 // Endpoint to handle user login
 app.post('/api/login', (req, res) => {
@@ -54,18 +63,7 @@ app.post('/api/login', (req, res) => {
 
     // Read the existing users from the file
     fs.readFile(usersFilePath, 'utf8', (err, data) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).json({ message: 'Error reading users file' });
-        }
-
-        let users = [];
-        try {
-            users = JSON.parse(data) || [];
-        } catch (parseError) {
-            console.error('Error parsing users file:', parseError);
-            return res.status(500).json({ message: 'Invalid users file format' });
-        }
+    const users = readUsers();   
 
         // Find the user with the matching email and password
         const user = users.find((u) => u.email === email && u.password === password);
@@ -77,6 +75,7 @@ app.post('/api/login', (req, res) => {
         }
     });
 });
+
 
 // Start the server
 app.listen(PORT, () => {

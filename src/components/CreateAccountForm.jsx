@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+
 var id = 0;
 
 export default function CreateAccountForm() {
@@ -6,6 +8,8 @@ export default function CreateAccountForm() {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loggedIn, setLoggedin] = useState(false);
+    
 
     function updateFirstName(newFirstName) {
         setFirstName(newFirstName);
@@ -50,7 +54,6 @@ export default function CreateAccountForm() {
 
         const newUser = { id, firstName, lastName, email, password, role, createdAt, updatedAt };
     
-        id++;
 
         // Send the newUser to the backend
         fetch('http://localhost:5000/api/users', {
@@ -63,6 +66,7 @@ export default function CreateAccountForm() {
             .then((response) => {
                 if (response.ok) {
                     alert(`Registration successful for ${firstName} ${lastName}`);
+                    setLoggedin(true);
                 } else {
                     console.log(response); 
                     alert('Failed to register. Please try again.');
@@ -72,6 +76,9 @@ export default function CreateAccountForm() {
                 console.error('Error:', error);
                 alert('An error occurred. Please try again.');
             });
+    }
+    if (loggedIn){
+        return <Navigate to="/" replace />;
     }
 
     return (

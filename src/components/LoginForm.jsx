@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loggedIn, setLoggedin] = useState(false);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -23,17 +25,23 @@ export default function Login() {
                 }
             })
             .then((data) => {
+                <Navigate to="/" replace />
                 alert(`Welcome, ${data.user.firstName} ${data.user.lastName}!`);
                 // Save user data to localStorage or state for session management
                 localStorage.setItem('user', JSON.stringify(data.user));
+                setLoggedin(true);
             })
             .catch((error) => {
                 console.error('Error:', error);
                 alert(error.message);
             });
     }
+    if (loggedIn) {
+        return <Navigate to="/" replace />;
+    }
 
     return (
+        
         <div className="container mt-5">
             <h1 className="text-center">Login</h1>
             <form className="mt-4" onSubmit={handleSubmit}>
