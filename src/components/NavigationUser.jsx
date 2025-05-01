@@ -5,7 +5,7 @@ function logout() {
   location.reload();
 }
 
-export default function NavigationUse() {
+export default function NavigationUser() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="container-fluid">

@@ -58,12 +58,19 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/menu" element={<Menu />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/stats" element={<Stats />} />
             <Route
             path="/orders"
             element={
               <ProtectedRoute role={"admin"}> 
                 <Orders/>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/stats"
+            element={
+              <ProtectedRoute role={"admin"}> 
+                <Stats/>
               </ProtectedRoute>
             }
           />

@@ -3,6 +3,8 @@ import MenuItem from '../components/MenuItem';
 import OptionMenuItem from '../components/OptionMenuItem';
 import menuData from '../jsonFiles/menuData.json';
 import Navigation from '../components/Navigation';
+import NavigationUse from '../components/NavigationUser';
+import NavigationAdmin from '../components/NavigationAdmin';
 
 
 {/* When placing orders we need to include functionality to select which types of bagels the customer wants and a way to note if they want the bagel toasted or not */}
@@ -24,7 +26,7 @@ export default function Menu() {
     if (role == "user"){
         return (
             <>
-                <Navigation/>
+                <NavigationUser/>
     
                 <h1>Menu</h1>
                 <Accordion >
@@ -47,7 +49,30 @@ export default function Menu() {
             </>
         );
     } else if (role == "admin"){
-
+        return (
+            <>
+                <NavigationAdmin/>
+    
+                <h1>Menu</h1>
+                <Accordion >
+                    {menuData.menuData.map((category, idx) => (
+                        <Accordion.Item eventKey={idx.toString()} key={idx}>
+                            <Accordion.Header>{category.category}</Accordion.Header>
+                            <Accordion.Body>
+                                <p>{category.description}</p>
+                                <Row xs={1} md={4} className="g-4">
+                                    {category.items.map((item, itemIdx) => (
+                                        <Col key={itemIdx}>
+                                            {renderMenuItem(item)}
+                                        </Col>
+                                    ))}
+                                </Row>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    ))}
+                </Accordion>
+            </>
+        );
     } else{
         return (
             <>

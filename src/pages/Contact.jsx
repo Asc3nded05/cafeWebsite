@@ -1,5 +1,7 @@
 import ContactForm from "../components/ContactForm";
 import Navigation from "../components/Navigation";
+import NavigationAdmin from "../components/NavigationAdmin";
+import NavigationUse from "../components/NavigationUser";
 
 
 export default function Contact() {
@@ -8,12 +10,15 @@ export default function Contact() {
     console.log("Home page loaded");
     if (role == "user"){
         return <>
-            <Navigation />
+            <NavigationUser />
             
             <ContactForm />
         </>   
     } else if (role == "admin"){
-
+            return<>
+            <NavigationAdmin/>
+            <ContactForm/>
+            </>
     } else{
         return <>
             <Navigation />

@@ -1,5 +1,7 @@
 import LoginForm from "../components/LoginForm.jsx";
 import Navigation from "../components/Navigation.jsx";
+import NavigationAdmin from "../components/NavigationAdmin.jsx";
+import NavigationUse from "../components/NavigationUser.jsx";
 
 
 export default function Login() {
@@ -9,12 +11,12 @@ export default function Login() {
 
     if (role == "user"){
         return <>
-            <Navigation />
+            <NavigationUse />
             <LoginForm />
         </>  
     } else if (role == "admin"){
         return <>
-            <Navigation />
+            <NavigationAdmin />
             <LoginForm />
         </>  
     } else{
