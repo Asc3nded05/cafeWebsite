@@ -10,7 +10,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "1/2 Dozen Bagels",
@@ -19,7 +22,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": true,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Dozen Bagels",
@@ -28,7 +34,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": true,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Bagel with Cream Cheese",
@@ -37,7 +46,10 @@
         "selectToasted": true,
         "selectCreamCheese": true,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Bagel with Butter or Jelly",
@@ -46,7 +58,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Bagel with Peanut Butter",
@@ -55,7 +70,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       }
     ]
   },
@@ -70,7 +88,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Light",
@@ -79,7 +100,10 @@
           "selectToasted": false,
           "selectCreamCheese": false,
           "selectMultipleBagels": false,
-          "selectSandwichToppings": false
+          "selectSandwichToppings": false,
+          "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Strawberry",
@@ -88,7 +112,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Maple and Honey Walnut",
@@ -97,7 +124,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Olive and Pimiento",
@@ -106,7 +136,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Bacon and Scallion",
@@ -115,7 +148,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Onion and Chive",
@@ -124,7 +160,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Jalapeno",
@@ -133,7 +172,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Vegetable",
@@ -142,7 +184,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       }
     ]
   },
@@ -157,7 +202,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Egg and Cheese with Bacon, Sausage, or Ham",
@@ -166,7 +214,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Egg and Cheese Wrap",
@@ -175,7 +226,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Egg and Cheese Wrap with Bacon, Sausage, or Ham",
@@ -184,7 +238,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       }
     ]
   },
@@ -199,7 +256,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Turkey",
@@ -208,7 +268,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Chicken Salad",
@@ -217,7 +280,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Tuna Salad",
@@ -226,7 +292,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Garden Veggie",
@@ -235,7 +304,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "B.L.T.",
@@ -244,7 +316,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Turkey Ranch B.L.T.",
@@ -253,7 +328,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Smoked Salmon",
@@ -262,7 +340,10 @@
         "selectToasted": true,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       }
     ]
   },
@@ -277,7 +358,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Tuna Melt",
@@ -286,7 +370,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Kickin' Chicken",
@@ -295,7 +382,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Turkey Ranch B.L.T.",
@@ -304,7 +394,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Chicken Cheddar Ranch",
@@ -313,7 +406,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Buffalo Chicken",
@@ -322,7 +418,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Three Cheese and Tomato",
@@ -331,7 +430,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Chicken Salad with Cheese",
@@ -340,7 +442,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Garden Veggie",
@@ -349,7 +454,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Chicken Popper",
@@ -358,7 +466,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": true
+        "selectSandwichToppings": true,
+        "selectWrapOrPanini": true,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       }
     ]
   },
@@ -373,7 +484,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Hot Dog Bagel with Cheese",
@@ -382,7 +496,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Pizza Bagel",
@@ -391,7 +508,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Pizza Bagel with Pepperoni",
@@ -400,7 +520,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       }
     ]
   },
@@ -415,7 +538,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Medium",
@@ -424,7 +550,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Large",
@@ -433,7 +562,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       }
     ]
   },
@@ -448,7 +580,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": true,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Hot or Iced Chai Tea",
@@ -457,7 +592,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": true,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Frozen Chai Tea",
@@ -466,7 +604,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": true,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Smoothie",
@@ -475,7 +616,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": true
       },
       {
         "title": "Frappe",
@@ -484,7 +628,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": true,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Frozen Hot Chocolate",
@@ -493,7 +640,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Fresh Fruit Protein Shake",
@@ -502,7 +652,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       },
       {
         "title": "Hot Chocolate",
@@ -511,7 +664,10 @@
         "selectToasted": false,
         "selectCreamCheese": false,
         "selectMultipleBagels": false,
-        "selectSandwichToppings": false
+        "selectSandwichToppings": false,
+        "selectWrapOrPanini": false,
+        "selectDrinkFlavor": false,
+        "selectSmoothieFlavor": false
       }
     ]
   }

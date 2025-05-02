@@ -5,29 +5,10 @@ import NavigationAdmin from '../components/NavigationAdmin';
 import NavigationUser from '../components/NavigationUser';
 import { useEffect, useState } from 'react';
 import { Accordion, Row, Col } from 'react-bootstrap';
-import OptionMenuItem from '../components/OptionMenuItem';
-import MenuItem from '../components/MenuItem';
+import MenuItemUser from '../components/MenuItemUser';
+import MenuItem from "../components/MenuItem";
 
-{/* Menu Items, descriptions, and prices from http://bagelsetc.biz/Bagelsetc_menu.pdf */}
-
-
-// Ordering options that need to be implemented:
-
-// Bagel: choice of bagel type
-// 1/2 Dozen Bagels: a combination of bagel choices that adds up to six bagels
-// Dozen Bagels: a combination of bagel choices that adds up to twelve bagels
-// Bagel with Cream Cheese: choice of bagel type, choice of cream cheese, toasted or not
-// Bagel with Butter or Jelly: choice of bagel type, butter or jelly or both, toasted or not
-// Bagel with Peanut Butter: choice of bagel type, toasted or not
-// Egg and Cheese: choice of bagel
-// Egg and Cheese with Bacon, Sausage, or Ham: choice of bagel, bacon, sausage or ham
-// Egg and Cheese Wrap with Bacon, Sausage, or Ham: bacon, sausage, or ham
-// Bagel Sandwiches: choice of bagel, choice of toppings from lettuce, tomato, onion, sprouts, cheese, ranch, mayo. Roasted red peppers or banana peppers $0.50 extra.
-// Specialty Sandwiches: Wrap or panini
-// Hot or Iced Latte: vanilla or spiced
-// Hot or Iced Chai: vanilla or spiced
-// Frozen Chai: vanilla or spiced
-// Smoothie: Strawberry banana, mango, mint, raspberry
+{/* Menu Items, descriptions, and prices from http://bagelsetc.biz/Bagelsetc_menu.pdf */ }
 
 export default function Menu() {
     const [menuItems, setMenuItems] = useState([]);
@@ -41,7 +22,7 @@ export default function Menu() {
             headers: {
                 'Content-Type': 'application/json',
             },
-           
+
         })
             .then((response) => {
                 if (response.ok) {
@@ -60,26 +41,26 @@ export default function Menu() {
                 alert(error.message);
             });
     }
-      // Fetch menu when the component mounts
-        useEffect(() => {
-            getMenu();
-    
-        }, []);
+    // Fetch menu when the component mounts
+    useEffect(() => {
+        getMenu();
 
-    const renderMenuItem = (item) => {
-        return <MenuItem title={item.title} price={item.price} selectBagel={item.selectBagel} selectCreamCheese={item.selectCreamCheese} selectMultipleBagels={item.selectMultipleBagels} selectSandwichToppings={item.selectSandwichToppings} selectToasted={item.selectToasted} />;
-        // if (item.options) {
-        //   return <OptionMenuItem item={item} />;
-        // } else {
-        //   return <MenuItem title={item.title} price={item.price} note={item.note} />;
-        // }
+    }, []);
+
+    const renderMenuItem = (item, role) => {
+        if (role == "user" || role == "admin") {
+            return <MenuItemUser title={item.title} price={item.price} selectBagel={item.selectBagel} selectCreamCheese={item.selectCreamCheese} selectMultipleBagels={item.selectMultipleBagels} selectSandwichToppings={item.selectSandwichToppings} selectToasted={item.selectToasted} selectDrinkFlavor={item.selectDrinkFlavor} selectSmoothieFlavor={item.selectSmoothieFlavor} selectWrapOrPanini={item.selectWrapOrPanini} />;
+        }
+        else {
+            return <MenuItem title={item.title} price={item.price} />;
+        }
     };
 
-    if (role == "user"){
+    if (role == "user") {
         return (
             <>
-                <NavigationUser/>
-    
+                <NavigationUser />
+
                 <h1>Menu</h1>
                 <Accordion >
                     {menuItems.map((category, idx) => (
@@ -90,7 +71,7 @@ export default function Menu() {
                                 <Row xs={1} md={4} className="g-4">
                                     {category.items.map((item, itemIdx) => (
                                         <Col key={itemIdx}>
-                                            {renderMenuItem(item)}
+                                            {renderMenuItem(item, role)}
                                         </Col>
                                     ))}
                                 </Row>
@@ -100,11 +81,11 @@ export default function Menu() {
                 </Accordion>
             </>
         );
-    } else if (role == "admin"){
+    } else if (role == "admin") {
         return (
             <>
-                <NavigationAdmin/>
-    
+                <NavigationAdmin />
+
                 <h1>Menu</h1>
                 <Accordion >
                     {menuItems.map((category, idx) => (
@@ -115,7 +96,7 @@ export default function Menu() {
                                 <Row xs={1} md={4} className="g-4">
                                     {category.items.map((item, itemIdx) => (
                                         <Col key={itemIdx}>
-                                            {renderMenuItem(item)}
+                                            {renderMenuItem(item, role)}
                                         </Col>
                                     ))}
                                 </Row>
@@ -125,11 +106,11 @@ export default function Menu() {
                 </Accordion>
             </>
         );
-    } else{
+    } else {
         return (
             <>
-                <Navigation/>
-    
+                <Navigation />
+
                 <h1>Menu</h1>
                 <Accordion >
                     {menuItems.map((category, idx) => (
@@ -140,7 +121,7 @@ export default function Menu() {
                                 <Row xs={1} md={4} className="g-4">
                                     {category.items.map((item, itemIdx) => (
                                         <Col key={itemIdx}>
-                                            {renderMenuItem(item)}
+                                            {renderMenuItem(item, role)}
                                         </Col>
                                     ))}
                                 </Row>
