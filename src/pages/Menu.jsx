@@ -67,11 +67,12 @@ export default function Menu() {
         }, []);
 
     const renderMenuItem = (item) => {
-        if (item.options) {
-          return <OptionMenuItem item={item} />;
-        } else {
-          return <MenuItem title={item.title} price={item.price} note={item.note} />;
-        }
+        return <MenuItem title={item.title} price={item.price} note={item.note} />;
+        // if (item.options) {
+        //   return <OptionMenuItem item={item} />;
+        // } else {
+        //   return <MenuItem title={item.title} price={item.price} note={item.note} />;
+        // }
     };
 
     if (role == "user"){
