@@ -8,9 +8,26 @@ import { Accordion, Row, Col } from 'react-bootstrap';
 import OptionMenuItem from '../components/OptionMenuItem';
 import MenuItem from '../components/MenuItem';
 
-
-{/* When placing orders we need to include functionality to select which types of bagels the customer wants and a way to note if they want the bagel toasted or not */}
 {/* Menu Items, descriptions, and prices from http://bagelsetc.biz/Bagelsetc_menu.pdf */}
+
+
+// Ordering options that need to be implemented:
+
+// Bagel: choice of bagel type
+// 1/2 Dozen Bagels: a combination of bagel choices that adds up to six bagels
+// Dozen Bagels: a combination of bagel choices that adds up to twelve bagels
+// Bagel with Cream Cheese: choice of bagel type, choice of cream cheese, toasted or not
+// Bagel with Butter or Jelly: choice of bagel type, butter or jelly or both, toasted or not
+// Bagel with Peanut Butter: choice of bagel type, toasted or not
+// Egg and Cheese: choice of bagel
+// Egg and Cheese with Bacon, Sausage, or Ham: choice of bagel, bacon, sausage or ham
+// Egg and Cheese Wrap with Bacon, Sausage, or Ham: bacon, sausage, or ham
+// Bagel Sandwiches: choice of bagel, choice of toppings from lettuce, tomato, onion, sprouts, cheese, ranch, mayo, chipotle sauce. Roasted red peppers or banana peppers $0.50 extra.
+// Specialty Sandwiches: Wrap or panini
+// Hot or Iced Latte: vanilla or spiced
+// Hot or Iced Chai: vanilla or spiced
+// Frozen Chai: vanilla or spiced
+// Smoothie: Strawberry banana, mango, mint, raspberry
 
 export default function Menu() {
     const [menuItems, setMenuItems] = useState([]);
