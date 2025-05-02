@@ -6,7 +6,7 @@ import SelectBagel from './selectBagel';
 import SelectSandwichToppings from './selectSandwichToppings';
 import SelectMultipleBagels from './selectMultipleBagels';
 
-export default function MenuItem({ title, price }) {
+export default function MenuItem({ title, price, selectBagel, selectToasted, selectCreamCheese, selectSandwichToppings, selectMultipleBagels }) {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
     function handleShowModal() {
@@ -34,11 +34,12 @@ export default function MenuItem({ title, price }) {
             <Modal.Body>
                 {/* Have this section dynamically change based on options set in the json for the menu item. Ex if "selectToasted" is
                     set to True in the json for this menu item, then display the selectToasted.jsx component */}
-                <SelectCreamCheese />
-                <SelectToasted />
-                <SelectBagel />
-                <SelectSandwichToppings />
-                <SelectMultipleBagels maxBagels={12}/>
+                {/* Dynamically render components based on props */}
+                {selectBagel && <SelectBagel />}
+                {selectToasted && <SelectToasted />}
+                {selectCreamCheese && <SelectCreamCheese />}
+                {selectSandwichToppings && <SelectSandwichToppings />}
+                {selectMultipleBagels && <SelectMultipleBagels maxBagels={12} />}
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseModal}>

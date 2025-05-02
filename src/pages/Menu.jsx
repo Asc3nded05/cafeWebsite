@@ -67,7 +67,7 @@ export default function Menu() {
         }, []);
 
     const renderMenuItem = (item) => {
-        return <MenuItem title={item.title} price={item.price} note={item.note} />;
+        return <MenuItem title={item.title} price={item.price} selectBagel={item.selectBagel} selectCreamCheese={item.selectCreamCheese} selectMultipleBagels={item.selectMultipleBagels} selectSandwichToppings={item.selectSandwichToppings} selectToasted={item.selectToasted} />;
         // if (item.options) {
         //   return <OptionMenuItem item={item} />;
         // } else {

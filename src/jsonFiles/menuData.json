@@ -1,199 +1,518 @@
-
-  [
-    {
-      "category": "Fresh Baked Bagels",
-      "description": "NY Style Bagels Made Fresh Daily. Select your bagel type and toasting preference.",
-      "items": [
-        {
-          "title": "Bagel",
-          "price": "$1.25",
-          "options": [
-            {
-              "name": "Type",
-              "type": "radio"
-            },
-            {
-              "name": "Toasted",
-              "type": "checkbox",
-              "choices": [
-                { "label": "Toasted", "value": "toasted" }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "1/2 Dozen Bagels",
-          "price": "$7.25",
-          "options": [
-            {
-              "name": "Type",
-              "type": "radio"
-            },
-            {
-              "name": "Toasted",
-              "type": "checkbox",
-              "choices": [
-                { "label": "Toasted", "value": "toasted" }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Dozen Bagels",
-          "price": "$17.99",
-          "options": [
-            {
-              "name": "Type",
-              "type": "radio"
-            },
-            {
-              "name": "Toasted",
-              "type": "checkbox",
-              "choices": [
-                { "label": "Toasted", "value": "toasted" }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Bagel with Cream Cheese",
-          "price": "$2.95",
-          "options": [
-            {
-              "name": "Type",
-              "type": "radio"
-            },
-            {
-              "name": "Toasted",
-              "type": "checkbox",
-              "choices": [
-                { "label": "Toasted", "value": "toasted" }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Bagel with Butter or Jelly",
-          "price": "$2.00",
-          "options": [
-            {
-              "name": "Type",
-              "type": "radio"
-            },
-            {
-              "name": "Toasted",
-              "type": "checkbox",
-              "choices": [
-                { "label": "Toasted", "value": "toasted" }
-              ]
-            }
-          ]
-        },
-        {
-          "title": "Bagel with Peanut Butter",
-          "price": "$2.85",
-          "options": [
-            {
-              "name": "Type",
-              "type": "radio"
-            },
-            {
-              "name": "Toasted",
-              "type": "checkbox",
-              "choices": [
-                { "label": "Toasted", "value": "toasted" }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "category": "Home Made Cream Cheese",
-      "description": "8oz fresh made Cream Cheese tubs.",
-      "items": [
-        { "title": "Plain", "price": "$3.75" },
-        { "title": "Light", "price": "$3.75" },
-        { "title": "Strawberry", "price": "$3.75" },
-        { "title": "Maple and Honey Walnut", "price": "$3.75" },
-        { "title": "Olive and Pimiento", "price": "$3.75" },
-        { "title": "Bacon and Scallion", "price": "$3.75" },
-        { "title": "Onion and Chive", "price": "$3.75" },
-        { "title": "Jalapeno", "price": "$3.75" },
-        { "title": "Vegetable", "price": "$3.75" }
-      ]
-    },
-    {
-      "category": "Breakfast Sandwiches",
-      "description": "Served all day on your choice of bagel or wrap.",
-      "items": [
-        { "title": "Egg and Cheese", "price": "$3.25" },
-        { "title": "Egg and Cheese with Bacon, Sausage, or Ham", "price": "$4.25" },
-        { "title": "Egg and Cheese Wrap", "price": "$6.29" },
-        { "title": "Egg and Cheese Wrap with Bacon, Sausage, or Ham", "price": "$7.29" }
-      ]
-    },
-    {
-      "category": "Bagel Sandwiches",
-      "description": "Served on your choice of bagel with any of the following: Lettuce, tomato, onion, sprouts, cheese and choice of dressing. Roasted Red peppers & banana peppers .50 extra.",
-      "items": [
-        { "title": "Ham", "price": "$5.95" },
-        { "title": "Turkey", "price": "$5.95" },
-        { "title": "Chicken Salad", "price": "$5.95" },
-        { "title": "Tuna Salad", "price": "$5.95" },
-        { "title": "Garden Veggie", "price": "$6.50" },
-        { "title": "B.L.T.", "price": "$6.50" },
-        { "title": "Turkey Ranch B.L.T.", "price": "$7.25" },
-        { "title": "Smoked Salmon", "price": "$8.25" }
-      ]
-    },
-    {
-      "category": "Specialty Sandwiches",
-      "description": "Served on your choice of wrap or panini.",
-      "items": [
-        { "title": "Chicken Caesar", "price": "$7.25" },
-        { "title": "Tuna Melt", "price": "$7.50" },
-        { "title": "Kickin' Chicken", "price": "$8.15" },
-        { "title": "Turkey Ranch B.L.T.", "price": "$8.15" },
-        { "title": "Chicken Cheddar Ranch", "price": "$8.15" },
-        { "title": "Buffalo Chicken", "price": "$8.15" },
-        { "title": "Three Cheese and Tomato", "price": "$7.75" },
-        { "title": "Chicken Salad with Cheese", "price": "$7.50" },
-        { "title": "Garden Veggie", "price": "$7.50" },
-        { "title": "Chicken Popper", "price": "$8.15" }
-      ]
-    },
-    {
-      "category": "Local Favorites",
-      "description": "Delicious hot and ready-to-go local favorites.",
-      "items": [
-        { "title": "Hot Dog Bagel", "price": "$3.10" },
-        { "title": "Hot Dog Bagel with Cheese", "price": "$3.40" },
-        { "title": "Pizza Bagel", "price": "$1.90" },
-        { "title": "Pizza Bagel with Pepperoni", "price": "$2.10" }
-      ]
-    },
-    {
-      "category": "Hot Coffee and Tea",
-      "description": "We fresh brew Boston’s Best Coffee. We also sell coffee pods and coffee bags.",
-      "items": [
-        { "title": "Small", "price": "$1.70" },
-        { "title": "Medium", "price": "$1.90" },
-        { "title": "Large", "price": "$2.10" }
-      ]
-    },
-    {
-      "category": "Specialty Drinks",
-      "description": "We will prepare for you a cool or a hot specialty drink to either cool you off or warm you up.",
-      "items": [
-        { "title": "Hot or Iced Latte", "price": "$3.65" },
-        { "title": "Hot or Iced Chai Tea", "price": "$3.65" },
-        { "title": "Frozen Chai Tea", "price": "$4.40" },
-        { "title": "Smoothie", "price": "$4.40" },
-        { "title": "Frappe", "price": "$4.40" },
-        { "title": "Frozen Hot Chocolate", "price": "$4.40" },
-        { "title": "Fresh Fruit Protein Shake", "price": "$6.50" },
-        { "title": "Hot Chocolate", "price": "$3.15" }
-      ]
-    }
-  ]
+[
+  {
+    "category": "Fresh Baked Bagels",
+    "description": "NY Style Bagels Made Fresh Daily. Select your bagel type and toasting preference.",
+    "items": [
+      {
+        "title": "Bagel",
+        "price": "$1.25",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "1/2 Dozen Bagels",
+        "price": "$7.25",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": true,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Dozen Bagels",
+        "price": "$17.99",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": true,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Bagel with Cream Cheese",
+        "price": "$2.95",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": true,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Bagel with Butter or Jelly",
+        "price": "$2.00",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Bagel with Peanut Butter",
+        "price": "$2.85",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      }
+    ]
+  },
+  {
+    "category": "Home Made Cream Cheese",
+    "description": "8oz fresh made Cream Cheese tubs.",
+    "items": [
+      {
+        "title": "Plain",
+        "price": "$3.75",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Light",
+        "price": "$3.75",
+        "selectBagel": false,
+          "selectToasted": false,
+          "selectCreamCheese": false,
+          "selectMultipleBagels": false,
+          "selectSandwichToppings": false
+      },
+      {
+        "title": "Strawberry",
+        "price": "$3.75",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Maple and Honey Walnut",
+        "price": "$3.75",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Olive and Pimiento",
+        "price": "$3.75",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Bacon and Scallion",
+        "price": "$3.75",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Onion and Chive",
+        "price": "$3.75",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Jalapeno",
+        "price": "$3.75",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Vegetable",
+        "price": "$3.75",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      }
+    ]
+  },
+  {
+    "category": "Breakfast Sandwiches",
+    "description": "Served all day on your choice of bagel or wrap.",
+    "items": [
+      {
+        "title": "Egg and Cheese",
+        "price": "$3.25",
+        "selectBagel": true,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Egg and Cheese with Bacon, Sausage, or Ham",
+        "price": "$4.25",
+        "selectBagel": true,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Egg and Cheese Wrap",
+        "price": "$6.29",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Egg and Cheese Wrap with Bacon, Sausage, or Ham",
+        "price": "$7.29",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      }
+    ]
+  },
+  {
+    "category": "Bagel Sandwiches",
+    "description": "Served on your choice of bagel with any of the following: Lettuce, tomato, onion, sprouts, cheese and choice of dressing. Roasted Red peppers & banana peppers .50 extra.",
+    "items": [
+      {
+        "title": "Ham",
+        "price": "$5.95",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Turkey",
+        "price": "$5.95",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Chicken Salad",
+        "price": "$5.95",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Tuna Salad",
+        "price": "$5.95",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Garden Veggie",
+        "price": "$6.50",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "B.L.T.",
+        "price": "$6.50",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Turkey Ranch B.L.T.",
+        "price": "$7.25",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Smoked Salmon",
+        "price": "$8.25",
+        "selectBagel": true,
+        "selectToasted": true,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      }
+    ]
+  },
+  {
+    "category": "Specialty Sandwiches",
+    "description": "Served on your choice of wrap or panini.",
+    "items": [
+      {
+        "title": "Chicken Caesar",
+        "price": "$7.25",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Tuna Melt",
+        "price": "$7.50",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Kickin' Chicken",
+        "price": "$8.15",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Turkey Ranch B.L.T.",
+        "price": "$8.15",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Chicken Cheddar Ranch",
+        "price": "$8.15",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Buffalo Chicken",
+        "price": "$8.15",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Three Cheese and Tomato",
+        "price": "$7.75",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Chicken Salad with Cheese",
+        "price": "$7.50",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Garden Veggie",
+        "price": "$7.50",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      },
+      {
+        "title": "Chicken Popper",
+        "price": "$8.15",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": true
+      }
+    ]
+  },
+  {
+    "category": "Local Favorites",
+    "description": "Delicious hot and ready-to-go local favorites.",
+    "items": [
+      {
+        "title": "Hot Dog Bagel",
+        "price": "$3.10",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Hot Dog Bagel with Cheese",
+        "price": "$3.40",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Pizza Bagel",
+        "price": "$1.90",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Pizza Bagel with Pepperoni",
+        "price": "$2.10",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      }
+    ]
+  },
+  {
+    "category": "Hot Coffee and Tea",
+    "description": "We fresh brew Boston’s Best Coffee. We also sell coffee pods and coffee bags.",
+    "items": [
+      {
+        "title": "Small",
+        "price": "$1.70",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Medium",
+        "price": "$1.90",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Large",
+        "price": "$2.10",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      }
+    ]
+  },
+  {
+    "category": "Specialty Drinks",
+    "description": "We will prepare for you a cool or a hot specialty drink to either cool you off or warm you up.",
+    "items": [
+      {
+        "title": "Hot or Iced Latte",
+        "price": "$3.65",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Hot or Iced Chai Tea",
+        "price": "$3.65",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Frozen Chai Tea",
+        "price": "$4.40",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Smoothie",
+        "price": "$4.40",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Frappe",
+        "price": "$4.40",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Frozen Hot Chocolate",
+        "price": "$4.40",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Fresh Fruit Protein Shake",
+        "price": "$6.50",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      },
+      {
+        "title": "Hot Chocolate",
+        "price": "$3.15",
+        "selectBagel": false,
+        "selectToasted": false,
+        "selectCreamCheese": false,
+        "selectMultipleBagels": false,
+        "selectSandwichToppings": false
+      }
+    ]
+  }
+]
