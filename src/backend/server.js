@@ -115,7 +115,7 @@ app.post('/api/login', async (req, res) => {
                 // Generate the JWT
                 const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' }); // Token expires in 1 hour
 
-                res.status(200).json({ message: 'Login successful', token, user: { id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, role: user.role} });
+                res.status(200).json({ message: 'Login successful', token, user: { id: user.id, firstName: user.firstName, lastName: user.lastName, email: user.email, role: user.role } });
             }
             else {
                 res.status(401).json({ message: 'Invalid email or password' });
@@ -375,8 +375,8 @@ app.get('/api/menu', (req, res) => {
     // Read the menu items from the JSON file
     fs.readFile(menuFilePath, 'utf8', (err, data) => {
         if (err) {
-            console.error('Error reading menu file:', err); 
-            return res.status(500).json({ message: 'Error reading menu file' }); 
+            console.error('Error reading menu file:', err);
+            return res.status(500).json({ message: 'Error reading menu file' });
         }
 
         const menuItems = JSON.parse(data);

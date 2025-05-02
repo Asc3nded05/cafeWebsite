@@ -11,11 +11,11 @@ export default function SelectWrapOrPanini() {
                         <label className="form-check-label" htmlFor={`specaltySandwich${index}`}>
                             {option}
                         </label>
-                        <input 
-                            className="form-check-input" 
-                            type="radio" 
-                            name="specialtySandwich" 
-                            id={`specialtySandwich${index}`} 
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="specialtySandwich"
+                            id={`specialtySandwich${index}`}
                         />
                     </div>
                 ))}

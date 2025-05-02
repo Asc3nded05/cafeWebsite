@@ -18,11 +18,11 @@ export default function SelectSandwichToppings() {
                         <label className="form-check-label" htmlFor={`topping${index}`}>
                             {option}
                         </label>
-                        <input 
-                            className="form-check-input" 
-                            type="radio" 
-                            name="topping" 
-                            id={`topping${index}`} 
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="topping"
+                            id={`topping${index}`}
                         />
                     </div>
                 ))}

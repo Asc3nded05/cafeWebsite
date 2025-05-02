@@ -1,6 +1,6 @@
-import { Card} from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
-export default function MenuItem({ title, price, selectBagel, selectToasted, selectCreamCheese, selectSandwichToppings, selectMultipleBagels }) {
+export default function MenuItem({ title, price }) {
     return <>
         <Card style={{ width: '18rem', height: '14rem' }}>
             <Card.Body>

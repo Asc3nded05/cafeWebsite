@@ -13,11 +13,11 @@ export default function SelectSmoothieFlavor() {
                         <label className="form-check-label" htmlFor={`smoothieFlavor${index}`}>
                             {option}
                         </label>
-                        <input 
-                            className="form-check-input" 
-                            type="radio" 
-                            name="smoothieFlavor" 
-                            id={`smoothieFlavor${index}`} 
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="smoothieFlavor"
+                            id={`smoothieFlavor${index}`}
                         />
                     </div>
                 ))}

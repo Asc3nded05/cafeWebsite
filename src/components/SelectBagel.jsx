@@ -24,11 +24,11 @@ export default function SelectBagel() {
                         <label className="form-check-label" htmlFor={`bagel${index}`}>
                             {option}
                         </label>
-                        <input 
-                            className="form-check-input" 
-                            type="radio" 
-                            name="bagel" 
-                            id={`bagel${index}`} 
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="bagel"
+                            id={`bagel${index}`}
                         />
                     </div>
                 ))}

@@ -16,7 +16,7 @@ function ProtectedRoute({ role, children }) {
 
     if (userRoleFromToken != "admin") return <NoPage />;
 
-  return <>{children}</>;
+    return <>{children}</>;
   } catch (error) {
     console.error('Error decoding token:', error);
     localStorage.removeItem('authToken');

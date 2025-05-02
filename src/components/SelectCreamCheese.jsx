@@ -18,11 +18,11 @@ export default function SelectCreamCheese() {
                         <label className="form-check-label" htmlFor={`creamCheese${index}`}>
                             {option}
                         </label>
-                        <input 
-                            className="form-check-input" 
-                            type="radio" 
-                            name="creamCheese" 
-                            id={`creamCheese${index}`} 
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="creamCheese"
+                            id={`creamCheese${index}`}
                         />
                     </div>
                 ))}

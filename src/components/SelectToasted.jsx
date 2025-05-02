@@ -8,11 +8,11 @@ export default function SelectToasted() {
         <div>
             <label>
                 <input
-                type="checkbox"
-                checked={toasted}
-                onChange={(e) => setToasted(e.target.checked)}
+                    type="checkbox"
+                    checked={toasted}
+                    onChange={(e) => setToasted(e.target.checked)}
                 />
-                 &nbsp;Toasted
+                &nbsp;Toasted
             </label>
         </div>
     </>)

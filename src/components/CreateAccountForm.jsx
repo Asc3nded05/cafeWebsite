@@ -9,7 +9,7 @@ export default function CreateAccountForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loggedIn, setLoggedin] = useState(false);
-    
+
 
     function updateFirstName(newFirstName) {
         setFirstName(newFirstName);
@@ -25,7 +25,7 @@ export default function CreateAccountForm() {
 
     function updatePassword(newPassword, inputElement) {
         setPassword(newPassword);
-    
+
         // Check password strength and set custom validity
         if (newPassword.length < 6) {
             inputElement.setCustomValidity('Password is too short!');
@@ -40,7 +40,7 @@ export default function CreateAccountForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-    
+
         if (firstName === '' || lastName === '' || email === '' || password === '') {
             alert('Please fill in all fields!');
             return;
@@ -51,7 +51,7 @@ export default function CreateAccountForm() {
         const role = "user";
 
         const newUser = { id, firstName, lastName, email, password, role, createdAt, updatedAt };
-    
+
 
         // Send the newUser to the backend
         fetch('http://localhost:5000/api/users', {
@@ -67,9 +67,9 @@ export default function CreateAccountForm() {
                     alert(`Registration successful for ${firstName} ${lastName}`);
                     setLoggedin(true);
                 } else if (response.status == 409) {
-                     alert('Email already exists. Go Login')
+                    alert('Email already exists. Go Login')
                 } else {
-                    console.log(response); 
+                    console.log(response);
                     alert('Failed to register. Please try again.');
                 }
             })
@@ -78,8 +78,8 @@ export default function CreateAccountForm() {
                 alert('An error occurred. Please try again.');
             });
     }
-    
-    if (loggedIn){
+
+    if (loggedIn) {
         return <Navigate to="/" replace />;
     }
 
