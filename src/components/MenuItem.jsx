@@ -1,6 +1,10 @@
 import { Card, Button, Modal, Form } from 'react-bootstrap';
 import { useState } from 'react';
+import SelectToasted from './selectToasted';
 import SelectCreamCheese from './selectCreamCheese';
+import SelectBagel from './selectBagel';
+import SelectSandwichToppings from './selectSandwichToppings';
+import SelectMultipleBagels from './selectMultipleBagels';
 
 export default function MenuItem({ title, price }) {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
@@ -30,6 +34,11 @@ export default function MenuItem({ title, price }) {
             <Modal.Body>
                 {/* Have this section dynamically change based on options set in the json for the menu item. Ex if "selectToasted" is
                     set to True in the json for this menu item, then display the selectToasted.jsx component */}
+                <SelectCreamCheese />
+                <SelectToasted />
+                <SelectBagel />
+                <SelectSandwichToppings />
+                <SelectMultipleBagels maxBagels={12}/>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseModal}>

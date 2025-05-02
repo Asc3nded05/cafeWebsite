@@ -1,35 +1,31 @@
 export default function SelectCreamCheese() {
     return (
         <div>
-            <h1>Select Cream Cheese</h1>
+            <h5>Select Cream Cheese</h5>
             <div className="cream-cheese-options">
-                <label>
-                    <input type="radio" /> Plain
-                </label>
-                <label>
-                    <input type="radio" /> Light
-                </label>
-                <label>
-                    <input type="radio" /> Strawberry
-                </label>
-                <label>
-                    <input type="radio" /> Maple and Honey Walnut
-                </label>
-                <label>
-                    <input type="radio" /> Olive and Pimiento
-                </label>
-                <label>
-                    <input type="radio" /> Bacon and Scallion
-                </label>
-                <label>
-                    <input type="radio" /> Onion and Chive
-                </label>
-                <label>
-                    <input type="radio" /> Jalapeno
-                </label>
-                <label>
-                    <input type="radio" /> Vegetable
-                </label>
+                {[
+                    "Plain",
+                    "Light",
+                    "Strawberry",
+                    "Maple and Honey Walnut",
+                    "Olive and Pimiento",
+                    "Bacon and Scallion",
+                    "Onion and Chive",
+                    "Jalapeno",
+                    "Vegetable"
+                ].map((option, index) => (
+                    <div key={index} className="form-check">
+                        <label className="form-check-label" htmlFor={`creamCheese${index}`}>
+                            {option}
+                        </label>
+                        <input 
+                            className="form-check-input" 
+                            type="radio" 
+                            name="creamCheese" 
+                            id={`creamCheese${index}`} 
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );

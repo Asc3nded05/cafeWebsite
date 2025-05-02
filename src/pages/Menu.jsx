@@ -22,7 +22,7 @@ import MenuItem from '../components/MenuItem';
 // Egg and Cheese: choice of bagel
 // Egg and Cheese with Bacon, Sausage, or Ham: choice of bagel, bacon, sausage or ham
 // Egg and Cheese Wrap with Bacon, Sausage, or Ham: bacon, sausage, or ham
-// Bagel Sandwiches: choice of bagel, choice of toppings from lettuce, tomato, onion, sprouts, cheese, ranch, mayo, chipotle sauce. Roasted red peppers or banana peppers $0.50 extra.
+// Bagel Sandwiches: choice of bagel, choice of toppings from lettuce, tomato, onion, sprouts, cheese, ranch, mayo. Roasted red peppers or banana peppers $0.50 extra.
 // Specialty Sandwiches: Wrap or panini
 // Hot or Iced Latte: vanilla or spiced
 // Hot or Iced Chai: vanilla or spiced

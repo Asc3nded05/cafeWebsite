@@ -1,5 +1,9 @@
+import { useState } from "react";
+
 export default function SelectToasted() {
-    return <>
+    const [toasted, setToasted] = useState(false); // State to control the toasted option
+
+    return (<>
         <div>
             <label>
                 <input
@@ -7,8 +11,8 @@ export default function SelectToasted() {
                 checked={toasted}
                 onChange={(e) => setToasted(e.target.checked)}
                 />
-                Toasted?
+                 &nbsp;Toasted
             </label>
         </div>
-    </>
+    </>)
 }
