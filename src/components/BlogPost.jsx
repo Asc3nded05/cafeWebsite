@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 
 export default function BlogPost({ id, title, date, text, initialLikes, initialDislikes }) {
     const [likes, setLikes] = useState(initialLikes); // State for likes

@@ -1,140 +1,81 @@
 [
-    {
-        "orderId": 1,
-        "userId": 1,
-        "customerName": "John Doe",
-        "orderDate": "2023-10-01",
-        "additionalNotes": "",
-        "pickupTime": "2023-10-05T14:00:00Z",
-        "items": [
-            {
-                "itemId": 1,
-                "itemName": "Bagel with Cream Cheese",
-                "price": 0.00,
-                "options": [
-                    {
-                        "selectBagel": "Plain",
-                        "selectCreamCheese": "Onion and Chive",
-                        "selectDrinkFlavor": "",
-                        "selectMultipleBagles": "",
-                        "selectSandwichToppings": "",
-                        "selectSmoothieFlavor": "",
-                        "selectToasted": "Yes",
-                        "selectWrapOrPanini": ""
-                    }
-                ]
-            },
-            {
-                "itemId": 2,
-                "itemName": "Smoothie",
-                "price": 0.00,
-                "options": [
-                    {
-                        "selectBagel": "",
-                        "selectCreamCheese": "",
-                        "selectDrinkFlavor": "",
-                        "selectMultipleBagles": "",
-                        "selectSandwichToppings": "",
-                        "selectSmoothieFlavor": "Strawberry Banana",
-                        "selectToasted": "",
-                        "selectWrapOrPanini": ""
-                    }
-                ]
-            }
-        ],
-        "totalAmount": 150.75,
-        "status": "Completed"
-    },
-    {
-        "orderId": 2,
-        "userId": 4,
-        "customerName": "Jane Smith",
-        "orderDate": "2023-10-02",
-        "additionalNotes": "",
-        "pickupTime": "2023-10-05T14:00:00Z",
-        "items": [
-            {
-                "itemId": 1,
-                "itemName": "Bagel with Cream Cheese",
-                "price": 0.00,
-                "options": [
-                    {
-                        "selectBagel": "Plain",
-                        "selectCreamCheese": "Onion and Chive",
-                        "selectDrinkFlavor": "",
-                        "selectMultipleBagles": "",
-                        "selectSandwichToppings": "",
-                        "selectSmoothieFlavor": "",
-                        "selectToasted": "Yes",
-                        "selectWrapOrPanini": ""
-                    }
-                ]
-            },
-            {
-                "itemId": 2,
-                "itemName": "Smoothie",
-                "price": 0.00,
-                "options": [
-                    {
-                        "selectBagel": "",
-                        "selectCreamCheese": "",
-                        "selectDrinkFlavor": "",
-                        "selectMultipleBagles": "",
-                        "selectSandwichToppings": "",
-                        "selectSmoothieFlavor": "Strawberry Banana",
-                        "selectToasted": "",
-                        "selectWrapOrPanini": ""
-                    }
-                ]
-            }
-        ],
-        "totalAmount": 200.50,
-        "status": "Incomplete"
-    },
-    {
-        "orderId": 3,
-        "userId": 2,
-        "customerName": "Alice Johnson",
-        "orderDate": "2023-10-03",
-        "additionalNotes": "",
-        "pickupTime": "2023-10-05T14:00:00Z",
-        "items": [
-            {
-                "itemId": 1,
-                "itemName": "Bagel with Cream Cheese",
-                "price": 0.00,
-                "options": [
-                    {
-                        "selectBagel": "Plain",
-                        "selectCreamCheese": "Onion and Chive",
-                        "selectDrinkFlavor": "",
-                        "selectMultipleBagles": "",
-                        "selectSandwichToppings": "",
-                        "selectSmoothieFlavor": "",
-                        "selectToasted": "Yes",
-                        "selectWrapOrPanini": ""
-                    }
-                ]
-            },
-            {
-                "itemId": 2,
-                "itemName": "Smoothie",
-                "price": 0.00,
-                "options": [
-                    {
-                        "selectBagel": "",
-                        "selectCreamCheese": "",
-                        "selectDrinkFlavor": "",
-                        "selectMultipleBagles": "",
-                        "selectSandwichToppings": "",
-                        "selectSmoothieFlavor": "Strawberry Banana",
-                        "selectToasted": "",
-                        "selectWrapOrPanini": ""
-                    }
-                ]
-            }
-        ],
-        "totalAmount": 300.00,
-        "status": "Incomplete"
-    }
+  {
+    "orderId": 1,
+    "userId": 1,
+    "customerName": "John Doe",
+    "orderDate": "2023-10-01",
+    "additionalNotes": "",
+    "pickupTime": "2023-10-05T14:00:00Z",
+    "items": [
+      {
+        "itemId": 1,
+        "itemName": "Bagel with Cream Cheese",
+        "price": 0,
+        "options": [
+          {
+            "selectBagel": "Plain",
+            "selectCreamCheese": "Onion and Chive",
+            "selectDrinkFlavor": "",
+            "selectMultipleBagles": "",
+            "selectSandwichToppings": "",
+            "selectSmoothieFlavor": "",
+            "selectToasted": "Yes",
+            "selectWrapOrPanini": ""
+          }
+        ]
+      },
+      {
+        "itemName": "Smoothie",
+        "price": 0,
+        "options": [
+          {
+            "selectBagel": "",
+            "selectCreamCheese": "",
+            "selectDrinkFlavor": "",
+            "selectMultipleBagles": "",
+            "selectSandwichToppings": "",
+            "selectSmoothieFlavor": "Strawberry Banana",
+            "selectToasted": "",
+            "selectWrapOrPanini": ""
+          }
+        ]
+      }
+    ],
+    "totalAmount": 150.75,
+    "status": "Completed"
+  },
+  {
+    "customerName": "Guest User",
+    "orderDate": "2025-05-03T14:08:51.696Z",
+    "items": [
+      {
+        "itemName": "Bagel",
+        "price": "$1.25",
+        "options": {}
+      },
+      {
+        "itemName": "Bacon and Scallion",
+        "price": "$3.75",
+        "options": {}
+      },
+      {
+        "itemName": "Turkey",
+        "price": "$5.95",
+        "options": {}
+      }
+    ],
+    "orderId": 4
+  },
+  {
+    "customerName": "Guest User",
+    "orderDate": "2025-05-03T14:13:25.678Z",
+    "items": [
+      {
+        "itemName": "1/2 Dozen Bagels",
+        "price": "$7.25",
+        "options": {}
+      }
+    ],
+    "orderId": 5
+  }
 ]

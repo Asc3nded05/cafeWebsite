@@ -1,4 +1,4 @@
-import { Card, Button, Modal, Form } from 'react-bootstrap';
+import { Card, Button, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import SelectToasted from './selectToasted';
 import SelectCreamCheese from './selectCreamCheese';
@@ -9,8 +9,21 @@ import SelectDrinkFlavor from './SelectDrinkFlavor';
 import SelectSmoothieFlavor from './SelectSmoothieFlavor';
 import SelectWrapOrPanini from './SelectWrapOrPanini';
 
-export default function MenuItemUser({ title, price, selectBagel, selectToasted, selectCreamCheese, selectSandwichToppings, selectMultipleBagels, selectDrinkFlavor, selectSmoothieFlavor, selectWrapOrPanini }) {
+export default function MenuItemUser({
+    title,
+    price,
+    selectBagel,
+    selectToasted,
+    selectCreamCheese,
+    selectSandwichToppings,
+    selectMultipleBagels,
+    selectDrinkFlavor,
+    selectSmoothieFlavor,
+    selectWrapOrPanini,
+    addItemToOrder, // Function to add an item to the current order
+}) {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
+    const [orderOptions, setOrderOptions] = useState({}); // State to store user selections
 
     function handleShowModal() {
         setShowModal(true); // Show the modal
@@ -20,41 +33,62 @@ export default function MenuItemUser({ title, price, selectBagel, selectToasted,
         setShowModal(false); // Hide the modal
     }
 
-    return <>
-        <Card style={{ width: '18rem', height: '14rem' }}>
-            <Card.Body>
-                <Card.Title>{title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{price}</Card.Subtitle>
-                <Button variant="primary" onClick={handleShowModal}>Add to Order</Button>
-            </Card.Body>
-        </Card>
+    function handleOptionChange(optionName, value) {
+        setOrderOptions((prevOptions) => ({
+            ...prevOptions,
+            [optionName]: value,
+        }));
+    }
 
-        {/* Modal for editing the blog post */}
-        <Modal show={showModal} onHide={handleCloseModal}>
-            <Modal.Header closeButton>
-                <Modal.Title>Select Order Options</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                {/* Have this section dynamically change based on options set in the json for the menu item. Ex if "selectToasted" is
-                    set to True in the json for this menu item, then display the selectToasted.jsx component */}
-                {/* Dynamically render components based on props */}
-                {selectBagel && <SelectBagel />}
-                {selectToasted && <SelectToasted />}
-                {selectCreamCheese && <SelectCreamCheese />}
-                {selectSandwichToppings && <SelectSandwichToppings />}
-                {selectMultipleBagels && <SelectMultipleBagels maxBagels={12} />}
-                {selectDrinkFlavor && <SelectDrinkFlavor />}
-                {selectSmoothieFlavor && <SelectSmoothieFlavor />}
-                {selectWrapOrPanini && <SelectWrapOrPanini />}
-            </Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={handleCloseModal}>
-                    Cancel
-                </Button>
-                <Button variant="primary">
-                    Add to Order
-                </Button>
-            </Modal.Footer>
-        </Modal>
-    </>
+    function handleAddItem() {
+        const newItem = {
+            itemName: title,
+            price: price,
+            options: orderOptions,
+        };
+
+        addItemToOrder(newItem); // Add the item to the current order
+        setShowModal(false); // Close the modal
+        setOrderOptions({}); // Reset options for the next item
+    }
+
+    return (
+        <>
+            <Card style={{ width: '18rem', height: '14rem' }}>
+                <Card.Body>
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{price}</Card.Subtitle>
+                    <Button variant="primary" onClick={handleShowModal}>
+                        Add to Order
+                    </Button>
+                </Card.Body>
+            </Card>
+
+            {/* Modal for selecting order options */}
+            <Modal show={showModal} onHide={handleCloseModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Select Order Options</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {/* Dynamically render components based on props */}
+                    {selectBagel && <SelectBagel onChange={(value) => handleOptionChange('selectBagel', value)} />}
+                    {selectToasted && <SelectToasted onChange={(value) => handleOptionChange('selectToasted', value)} />}
+                    {selectCreamCheese && <SelectCreamCheese onChange={(value) => handleOptionChange('selectCreamCheese', value)} />}
+                    {selectSandwichToppings && <SelectSandwichToppings onChange={(value) => handleOptionChange('selectSandwichToppings', value)} />}
+                    {selectMultipleBagels && <SelectMultipleBagels title={title} onChange={(value) => handleOptionChange('selectMultipleBagels', value)} />}
+                    {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => handleOptionChange('selectDrinkFlavor', value)} />}
+                    {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => handleOptionChange('selectSmoothieFlavor', value)} />}
+                    {selectWrapOrPanini && <SelectWrapOrPanini onChange={(value) => handleOptionChange('selectWrapOrPanini', value)} />}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleCloseModal}>
+                        Cancel
+                    </Button>
+                    <Button variant="primary" onClick={handleAddItem}>
+                        Add Item
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
 }

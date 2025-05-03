@@ -28,6 +28,8 @@ const blogFilePath = path.join(__dirname, '..', 'jsonFiles', 'blog.json');
 
 const menuFilePath = path.join(__dirname, '..', 'jsonFiles', 'menuData.json')
 
+const ordersFilePath = path.join(__dirname, '..', 'jsonFiles', 'orders.json');
+
 // Function to read users from the file
 const readUsers = () => {
     try {
@@ -381,6 +383,38 @@ app.get('/api/menu', (req, res) => {
 
         const menuItems = JSON.parse(data);
         res.status(200).json(menuItems);
+    });
+});
+
+// Endpoint to create a new order
+app.post('/api/orders', (req, res) => {
+    const newOrder = req.body;
+
+    // Read the existing orders from the file
+    fs.readFile(ordersFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading orders file:', err);
+            return res.status(500).json({ message: 'Error reading orders file' });
+        }
+
+        let orders = JSON.parse(data);
+
+        // Determine the next available order ID
+        const nextOrderId = orders.reduce((maxId, order) => Math.max(maxId, order.orderId || 0), 0) + 1;
+        newOrder.orderId = nextOrderId; // Assign the new ID to the order
+
+        // Add the new order to the array
+        orders.push(newOrder);
+
+        // Write the updated orders back to the file
+        fs.writeFile(ordersFilePath, JSON.stringify(orders, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing orders file:', err);
+                return res.status(500).json({ message: 'Error writing orders file' });
+            }
+
+            res.status(201).json({ message: 'Order created successfully', orderId: nextOrderId });
+        });
     });
 });
 

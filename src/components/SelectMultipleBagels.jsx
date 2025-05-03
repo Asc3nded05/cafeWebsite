@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export default function SelectMultipleBagels({ maxBagels }) {
+export default function SelectMultipleBagels({ title }) {
+    var maxBagels = 12; // Default maximum number of bagels that can be selected
+
+    if (title == "1/2 Dozen Bagels") {
+        maxBagels = 6; 
+    }
+
     const bagelOptions = [
         "Plain",
         "Sesame",

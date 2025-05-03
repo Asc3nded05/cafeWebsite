@@ -20,7 +20,7 @@ export default function SelectSandwichToppings() {
                         </label>
                         <input
                             className="form-check-input"
-                            type="radio"
+                            type="checkbox"
                             name="topping"
                             id={`topping${index}`}
                         />
