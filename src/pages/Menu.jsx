@@ -14,6 +14,7 @@ export default function Menu() {
     const [showOffcanvas, setShowOffcanvas] = useState(false); // State to control Offcanvas visibility
     const user = localStorage.getItem('user');
     const role = user ? JSON.parse(user).role : null;
+    const [additionalNotes, setAdditionaNotes] = useState('');
 
     function getMenu() {
         fetch('http://localhost:5000/api/menu', {
@@ -67,6 +68,7 @@ export default function Menu() {
 
     function addItemToOrder(item) {
         setCurrentOrder((prevOrder) => [...prevOrder, item]); // Add the new item to the order
+        setShowOffcanvas(true); // Open the Offcanvas when an item is added
     }
 
     function removeItemFromOrder(index) {
@@ -162,6 +164,18 @@ export default function Menu() {
                                 ))}
                             </ListGroup>
                         )}
+
+                        <div className="mb-3">
+                            <label htmlFor="textArea" className="form-label">Additional Notes</label>
+                            <input
+                                type="textArea"
+                                className="form-control"
+                                id="additionalNotes"
+                                placeholder="Add any other notes for your order here"
+                                value={additionalNotes}
+                                onChange={(e) => setAdditionaNotes(e.target.value)}
+                            />
+                        </div>
                     </Offcanvas.Body>
                     <div className="mt-3 d-flex justify-content-end">
                         <Button

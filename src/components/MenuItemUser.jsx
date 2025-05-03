@@ -25,6 +25,16 @@ export default function MenuItemUser({
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
     const [orderOptions, setOrderOptions] = useState({}); // State to store user selections
 
+    const hasOptions =
+        selectBagel ||
+        selectToasted ||
+        selectCreamCheese ||
+        selectSandwichToppings ||
+        selectMultipleBagels ||
+        selectDrinkFlavor ||
+        selectSmoothieFlavor ||
+        selectWrapOrPanini;
+
     function handleShowModal() {
         setShowModal(true); // Show the modal
     }
@@ -52,43 +62,58 @@ export default function MenuItemUser({
         setOrderOptions({}); // Reset options for the next item
     }
 
+    function handleDirectAdd() {
+        const newItem = {
+            itemName: title,
+            price: price,
+            options: {}, // No options since there are no additional selections
+        };
+
+        addItemToOrder(newItem); // Add the item directly to the order
+    }
+
     return (
         <>
             <Card style={{ width: '18rem', height: '14rem' }}>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{price}</Card.Subtitle>
-                    <Button variant="primary" onClick={handleShowModal}>
+                    <Button
+                        variant="primary"
+                        onClick={hasOptions ? handleShowModal : handleDirectAdd}
+                    >
                         Add to Order
                     </Button>
                 </Card.Body>
             </Card>
 
             {/* Modal for selecting order options */}
-            <Modal show={showModal} onHide={handleCloseModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Select Order Options</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {/* Dynamically render components based on props */}
-                    {selectBagel && <SelectBagel onChange={(value) => handleOptionChange('selectBagel', value)} />}
-                    {selectToasted && <SelectToasted onChange={(value) => handleOptionChange('selectToasted', value)} />}
-                    {selectCreamCheese && <SelectCreamCheese onChange={(value) => handleOptionChange('selectCreamCheese', value)} />}
-                    {selectSandwichToppings && <SelectSandwichToppings onChange={(value) => handleOptionChange('selectSandwichToppings', value)} />}
-                    {selectMultipleBagels && <SelectMultipleBagels title={title} onChange={(value) => handleOptionChange('selectMultipleBagels', value)} />}
-                    {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => handleOptionChange('selectDrinkFlavor', value)} />}
-                    {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => handleOptionChange('selectSmoothieFlavor', value)} />}
-                    {selectWrapOrPanini && <SelectWrapOrPanini onChange={(value) => handleOptionChange('selectWrapOrPanini', value)} />}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleCloseModal}>
-                        Cancel
-                    </Button>
-                    <Button variant="primary" onClick={handleAddItem}>
-                        Add Item
-                    </Button>
-                </Modal.Footer>
-            </Modal>
+            {hasOptions && (
+                <Modal show={showModal} onHide={handleCloseModal}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Select Order Options</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        {/* Dynamically render components based on props */}
+                        {selectBagel && <SelectBagel onChange={(value) => handleOptionChange('selectBagel', value)} />}
+                        {selectToasted && <SelectToasted onChange={(value) => handleOptionChange('selectToasted', value)} />}
+                        {selectCreamCheese && <SelectCreamCheese onChange={(value) => handleOptionChange('selectCreamCheese', value)} />}
+                        {selectSandwichToppings && <SelectSandwichToppings onChange={(value) => handleOptionChange('selectSandwichToppings', value)} />}
+                        {selectMultipleBagels && <SelectMultipleBagels title={title} onChange={(value) => handleOptionChange('selectMultipleBagels', value)} />}
+                        {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => handleOptionChange('selectDrinkFlavor', value)} />}
+                        {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => handleOptionChange('selectSmoothieFlavor', value)} />}
+                        {selectWrapOrPanini && <SelectWrapOrPanini onChange={(value) => handleOptionChange('selectWrapOrPanini', value)} />}
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleCloseModal}>
+                            Cancel
+                        </Button>
+                        <Button variant="primary" onClick={handleAddItem}>
+                            Add Item
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            )}
         </>
     );
 }
