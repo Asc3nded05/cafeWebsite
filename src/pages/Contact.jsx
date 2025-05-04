@@ -1,7 +1,7 @@
 import ContactForm from "../components/ContactForm";
 import Navigation from "../components/Navigation";
 import NavigationAdmin from "../components/NavigationAdmin";
-import NavigationUse from "../components/NavigationUser";
+import NavigationUser from "../components/NavigationUser";
 
 
 export default function Contact() {

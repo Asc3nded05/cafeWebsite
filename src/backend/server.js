@@ -30,6 +30,8 @@ const menuFilePath = path.join(__dirname, '..', 'jsonFiles', 'menuData.json')
 
 const ordersFilePath = path.join(__dirname, '..', 'jsonFiles', 'orders.json');
 
+const messagesFilePath = path.join(__dirname, '..', 'jsonFiles', 'messages.json');
+
 // Function to read users from the file
 const readUsers = () => {
     try {
@@ -431,6 +433,43 @@ app.get('/api/orders', (req, res) => {
     });
 });
 
+app.post('/api/contact/sendMessage', (req, res) => {
+    const newMessage = req.body;
+    console.log(newMessage);
+    // Read the existing messages from the file
+    fs.readFile(messagesFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading blog file:', err);
+            return res.status(500).json({ message: 'Error reading blog file' });
+        }
+
+        let messages = JSON.parse(data);
+
+        // // Check for duplicate messages
+        // const duplicateMessage = messages.find(message => message.title === newMessage.title && message.sender === newMessage.sender && message.email === newMessage.email && message.messsage === newMessage.messsage && message.sentAt === newMessage.sentAt);
+
+        // if (duplicateMessage) {
+        //     return res.status(409).json({ message: 'Duplicate message' });
+        // }
+
+        // Determine the next available ID
+        const nextId = messages.reduce((maxId, message) => Math.max(maxId, message.id || 0), 0) + 1;
+        newMessage.id = nextId; // Assign the new ID to the message
+
+        // Add the new message to the array
+        messages.push(newMessage);
+
+        // Write the updated messages back to the file
+        fs.writeFile(messagesFilePath, JSON.stringify(messages, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing blog file:', err);
+                return res.status(500).json({ message: 'Error writing blog file' });
+            }
+
+            res.status(201).json({ message: 'Message sent successfully' });
+        });
+    });
+});
 
 // Start the server
 app.listen(PORT, () => {
