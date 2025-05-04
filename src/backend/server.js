@@ -433,6 +433,19 @@ app.get('/api/orders', (req, res) => {
     });
 });
 
+app.get('/api/contact/messages', (req, res) => {   
+    // Read the messages from the JSON file
+    fs.readFile(messagesFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading messages file:', err);
+            return res.status(500).json({ message: 'Error reading messages file' });
+        }
+
+        const messages = JSON.parse(data);
+        res.status(200).json(messages);
+    });
+});
+
 app.post('/api/contact/sendMessage', (req, res) => {
     const newMessage = req.body;
     console.log(newMessage);

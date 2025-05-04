@@ -34,7 +34,6 @@ export default function Blog() {
                 }
             })
             .then((data) => {
-                // setBlogPosts(data); // Store the blog posts in state
                 const reversedPosts = [...data].reverse(); // Reverse the order of the posts
                 setBlogPosts(reversedPosts); // Store the reversed posts in state
             })
