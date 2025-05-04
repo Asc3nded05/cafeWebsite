@@ -1,9 +1,11 @@
 import { Card, Button, Modal } from 'react-bootstrap';
 import { useState } from 'react';
 import SelectToasted from './selectToasted';
+import SelectButterOrJelly from './selectButterOrJelly';
 import SelectCreamCheese from './selectCreamCheese';
 import SelectBagel from './selectBagel';
 import SelectSandwichToppings from './selectSandwichToppings';
+import SelectSausageBaconOrHam from './SelectSausageBaconOrHam';
 import SelectMultipleBagels from './selectMultipleBagels';
 import SelectDrinkFlavor from './SelectDrinkFlavor';
 import SelectSmoothieFlavor from './SelectSmoothieFlavor';
@@ -13,9 +15,11 @@ export default function MenuItemUser({
     title,
     price,
     selectBagel,
+    selectButterOrJelly,
     selectToasted,
     selectCreamCheese,
     selectSandwichToppings,
+    selectSausageBaconOrHam,
     selectMultipleBagels,
     selectDrinkFlavor,
     selectSmoothieFlavor,
@@ -27,9 +31,11 @@ export default function MenuItemUser({
 
     const hasOptions =
         selectBagel ||
+        selectButterOrJelly ||
         selectToasted ||
         selectCreamCheese ||
         selectSandwichToppings ||
+        selectSausageBaconOrHam ||
         selectMultipleBagels ||
         selectDrinkFlavor ||
         selectSmoothieFlavor ||
@@ -54,7 +60,7 @@ export default function MenuItemUser({
         const newItem = {
             itemName: title,
             price: price,
-            options: orderOptions,
+            options: orderOptions, // Pass the selected options
         };
 
         addItemToOrder(newItem); // Add the item to the current order
@@ -96,9 +102,11 @@ export default function MenuItemUser({
                     <Modal.Body>
                         {/* Dynamically render components based on props */}
                         {selectBagel && <SelectBagel onChange={(value) => handleOptionChange('selectBagel', value)} />}
+                        {selectButterOrJelly && <SelectButterOrJelly onChange={(value) => handleOptionChange('selectButterOrJelly', value)} />}
                         {selectToasted && <SelectToasted onChange={(value) => handleOptionChange('selectToasted', value)} />}
                         {selectCreamCheese && <SelectCreamCheese onChange={(value) => handleOptionChange('selectCreamCheese', value)} />}
                         {selectSandwichToppings && <SelectSandwichToppings onChange={(value) => handleOptionChange('selectSandwichToppings', value)} />}
+                        {selectSausageBaconOrHam && <SelectSausageBaconOrHam onChange={(value) => handleOptionChange('selectSausageBaconOrHam', value)} />}
                         {selectMultipleBagels && <SelectMultipleBagels title={title} onChange={(value) => handleOptionChange('selectMultipleBagels', value)} />}
                         {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => handleOptionChange('selectDrinkFlavor', value)} />}
                         {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => handleOptionChange('selectSmoothieFlavor', value)} />}

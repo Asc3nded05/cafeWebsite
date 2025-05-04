@@ -1,4 +1,8 @@
-export default function SelectCreamCheese() {
+export default function SelectCreamCheese({ onChange }) {
+    function handleSelection(e) {
+        onChange(e.target.value); // Pass the selected value to the parent
+    }
+
     return (
         <div>
             <h5>Select Cream Cheese</h5>
@@ -22,7 +26,9 @@ export default function SelectCreamCheese() {
                             className="form-check-input"
                             type="radio"
                             name="creamCheese"
-                            id={`creamCheese${index}`}
+                            id={`creamCheese${index}`}c
+                            value={option}
+                            onChange={handleSelection}
                         />
                     </div>
                 ))}

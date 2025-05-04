@@ -1,25 +1,26 @@
-export default function SelectWrapOrPanini({ onChange }) {
+export default function SelectSausageBaconOrHam({ onChange }) {
     function handleSelection(e) {
         onChange(e.target.value); // Pass the selected value to the parent
     }
 
     return (
         <div>
-            <h5>Select Wrap or Panini</h5>
-            <div className="specialty-sandwich-options">
+            <h5>Select Choice of Meat</h5>
+            <div className="meat-options">
                 {[
-                    "Wrap",
-                    "Panini"
+                    "Sausage",
+                    "Bacon",
+                    "Ham"
                 ].map((option, index) => (
                     <div key={index} className="form-check">
-                        <label className="form-check-label" htmlFor={`specaltySandwich${index}`}>
+                        <label className="form-check-label" htmlFor={`meat${index}`}>
                             {option}
                         </label>
                         <input
                             className="form-check-input"
                             type="radio"
-                            name="specialtySandwich"
-                            id={`specialtySandwich${index}`}
+                            name="meat"
+                            id={`meat${index}`}
                             value={option}
                             onChange={handleSelection}
                         />

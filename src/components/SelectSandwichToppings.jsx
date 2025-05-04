@@ -1,4 +1,8 @@
-export default function SelectSandwichToppings() {
+export default function SelectSandwichToppings({ onChange }) {
+    function handleSelection(e) {
+        onChange(e.target.value); // Pass the selected value to the parent
+    }
+
     return (
         <div>
             <h5>Select Toppings</h5>
@@ -23,6 +27,8 @@ export default function SelectSandwichToppings() {
                             type="checkbox"
                             name="topping"
                             id={`topping${index}`}
+                            value={option}
+                            onChange={handleSelection}
                         />
                     </div>
                 ))}

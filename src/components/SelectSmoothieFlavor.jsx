@@ -1,4 +1,8 @@
-export default function SelectSmoothieFlavor() {
+export default function SelectSmoothieFlavor({ onChange }) {
+    function handleSelection(e) {
+        onChange(e.target.value); // Pass the selected value to the parent
+    }
+
     return (
         <div>
             <h5>Select Smoothie Flavor</h5>
@@ -18,6 +22,8 @@ export default function SelectSmoothieFlavor() {
                             type="radio"
                             name="smoothieFlavor"
                             id={`smoothieFlavor${index}`}
+                            value={option}
+                            onChange={handleSelection}
                         />
                     </div>
                 ))}

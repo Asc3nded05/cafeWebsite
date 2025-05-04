@@ -51,9 +51,11 @@ export default function Menu() {
                     title={item.title}
                     price={item.price}
                     selectBagel={item.selectBagel}
+                    selectButterOrJelly={item.selectButterOrJelly}
                     selectCreamCheese={item.selectCreamCheese}
                     selectMultipleBagels={item.selectMultipleBagels}
                     selectSandwichToppings={item.selectSandwichToppings}
+                    selectSausageBaconOrHam={item.selectSausageBaconOrHam}
                     selectToasted={item.selectToasted}
                     selectDrinkFlavor={item.selectDrinkFlavor}
                     selectSmoothieFlavor={item.selectSmoothieFlavor}
