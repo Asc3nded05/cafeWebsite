@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-export default function SelectSmoothieFlavor({onChange}) {
+    export default function SelectSmoothieFlavor({onChange}) {
     const [selectedSmoothieFlavor, setSelectedSmoothieFlavor] = useState('Strawberry-Bannana'); // Track the selected bagel
 
     const handleChange = (event) => {
@@ -32,10 +31,6 @@ export default function SelectSmoothieFlavor({onChange}) {
                             type="radio"
                             name="smoothieFlavor"
                             id={`smoothieFlavor${index}`}
-                            value={option} // Set the value of the radio button
-                            checked={selectedSmoothieFlavor === option}
-                            onChange={handleChange}     // Use our handleChange
-                            
                         />
                     </div>
                 ))}

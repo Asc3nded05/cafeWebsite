@@ -1,13 +1,4 @@
-import { useState } from "react";
-
-export default function SelectDrinkFlavor({onChange}) {
-     const [selectedDrinkFlavor, setSelectedDrinkFlavor] = useState(''); // Track the selected bagel
-    
-      const handleChange = (event) => {
-        const DrinkFlavor = event.target.value;
-        setSelectedDrinkFlavor(DrinkFlavor); // Update state
-        onChange(DrinkFlavor);       // Call the onChange prop!
-      };
+export default function SelectDrinkFlavor() {
     return (
         <div>
             <h5>Select Flavor</h5>
@@ -25,8 +16,6 @@ export default function SelectDrinkFlavor({onChange}) {
                             type="radio"
                             name="drinkFlavor"
                             id={`drinkFlavor${index}`}
-                            value={option} // Set the value of the radio button
-                            onChange={handleChange}     // Use our handleChange
                         />
                     </div>
                 ))}

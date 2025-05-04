@@ -80,8 +80,27 @@
         }
       }
     ],
+    "orderId": 5
+  },
+  {
+    "customerName": "Guest User",
+    "orderDate": "2025-05-04T06:18:39.247Z",
+    "items": [
+      {
+        "itemName": "Bagel",
+        "price": 1.25,
+        "options": {}
+      },
+      {
+        "itemName": "Bagel",
+        "price": 1.25,
+        "options": {
+          "selectBagel": "plain"
+        }
+      }
+    ],
     "comment": "",
-    "totalAmount": "1.35",
-    "orderId": 4
+    "totalAmount": 2.7,
+    "orderId": 6
   }
 ]
