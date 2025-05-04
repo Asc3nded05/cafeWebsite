@@ -14,10 +14,12 @@ export default function MenuItemUser({
     title,
     price,
     selectBagel,
+    selectButterOrJelly,
     selectToasted,
     selectCreamCheese,
     selectSandwichToppings,
     selectMultipleBagels,
+    selectSausageBaconOrHam,
     selectDrinkFlavor,
     selectSmoothieFlavor,
     selectWrapOrPanini,
@@ -83,10 +85,12 @@ export default function MenuItemUser({
                 <Modal.Body>
                     {/* Dynamically render components based on props */}
                     {selectBagel && <SelectBagel onChange={(value) => handleOptionChange('selectBagel', value)} />}
+                    {selectButterOrJelly && <selectButterOrJelly onChange={(value) => handleOptionChange('selectButterOrJelly', value)} />}
                     {selectToasted && <SelectToasted onChange={(value) => handleOptionChange('selectToasted', value)} />}
                     {selectCreamCheese && <SelectCreamCheese onChange={(value) => handleOptionChange('selectCreamCheese', value)} />}
                     {selectSandwichToppings && <SelectSandwichToppings onChange={(value) => handleOptionChange('selectSandwichToppings', value)} />}
                     {selectMultipleBagels && <SelectMultipleBagels title={title} onChange={(value) => handleOptionChange('selectMultipleBagels', value)} />}
+                    {selectSausageBaconOrHam && <selectSausageBaconOrHam onChange={(value) => handleOptionChange('selectSausageBaconOrHam', value)} />}
                     {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => handleOptionChange('selectDrinkFlavor', value)} />}
                     {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => handleOptionChange('selectSmoothieFlavor', value)} />}
                     {selectWrapOrPanini && <SelectWrapOrPanini onChange={(value) => handleOptionChange('selectWrapOrPanini', value)} />}

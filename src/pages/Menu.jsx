@@ -4,6 +4,7 @@ import NavigationUser from '../components/NavigationUser';
 import { useEffect, useState } from 'react';
 import { Accordion, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import MenuItemUser from '../components/MenuItemUser';
+import MenuItemAdmin from '../components/MenuItemAdmin';
 import MenuItem from '../components/MenuItem';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
@@ -51,21 +52,42 @@ export default function Menu() {
     }, [currentOrder]);
 
     const renderMenuItem = (item, role) => {
-        if (role === "user" || role === "admin") {
+        if (role === "user") {
             return (
                 <MenuItemUser
                     title={item.title}
                     price={item.price}
                     selectBagel={item.selectBagel}
+                    selectButterOrJelly={item.selectButterOrJelly}
                     selectCreamCheese={item.selectCreamCheese}
                     selectMultipleBagels={item.selectMultipleBagels}
+                    selectSausageBaconOrHam={item.selectSausageBaconOrHam}
                     selectSandwichToppings={item.selectSandwichToppings}
                     selectToasted={item.selectToasted}
                     selectDrinkFlavor={item.selectDrinkFlavor}
                     selectSmoothieFlavor={item.selectSmoothieFlavor}
                     selectWrapOrPanini={item.selectWrapOrPanini}
                     addItemToOrder={addItemToOrder}
-                    item={item} // Pass the entire item to addItemToOrder
+                    item={item}
+                />
+            );
+        } else if (role === "admin") {
+            return (
+                <MenuItemAdmin
+                    id={item.id}
+                    title={item.title}
+                    price={item.price}
+                    selectBagel={item.selectBagel}
+                    selectButterOrJelly={item.selectButterOrJelly}
+                    selectCreamCheese={item.selectCreamCheese}
+                    selectMultipleBagels={item.selectMultipleBagels}
+                    selectSausageBaconOrHam={item.selectSausageBaconOrHam}
+                    selectSandwichToppings={item.selectSandwichToppings}
+                    selectToasted={item.selectToasted}
+                    selectDrinkFlavor={item.selectDrinkFlavor}
+                    selectSmoothieFlavor={item.selectSmoothieFlavor}
+                    selectWrapOrPanini={item.selectWrapOrPanini}
+                    item={item}
                 />
             );
         } else {
@@ -113,6 +135,43 @@ export default function Menu() {
             console.error('Error:', error);
             alert('An error occurred while submitting your order. Please try again.');
         }
+    }
+
+    const [newItem, setNewItem] = useState({
+        category: '',
+        title: '',
+        price: '',
+        selectBagel: false,
+        selectButterOrJelly: false,
+        selectToasted: false,
+        selectCreamCheese: false,
+        selectMultipleBagels: false,
+        selectSandwichToppings: false,
+        selectSausageBaconOrHam: false,
+        selectWrapOrPanini: false,
+        selectDrinkFlavor: false,
+        selectSmoothieFlavor: false,
+    });
+        
+    function handleCreateItem() {
+        fetch('http://localhost:5000/api/menu/create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newItem),
+        })
+            .then((response) => {
+                if (response.ok) {
+                    location.reload(); // Reload the page after creating
+                } else {
+                    throw new Error('Error creating the menu item');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
     }
 
     if (role === "user") {
@@ -220,6 +279,147 @@ export default function Menu() {
                 <NavigationAdmin />
 
                 <h1>Menu</h1>
+                
+                <div className="mb-4">
+                    <h2>Create New Menu Item</h2>
+                    <div className="mb-3">
+                        <label htmlFor="category" className="form-label">Category</label>
+                        <select
+                            className="form-select"
+                            id="category"
+                            value={newItem.category}
+                            onChange={(e) => setNewItem({ ...newItem, category: e.target.value })}
+                        >
+                            {menuItems.map((category, idx) => (
+                                <option key={idx} value={category.category}>{category.category}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="title" className="form-label">Title</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="title"
+                            value={newItem.title}
+                            onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="price" className="form-label">Price</label>
+                        <input
+                            type="number"
+                            className="form-control"
+                            id="price"
+                            value={newItem.price}
+                            onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
+                        />
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectBagel"
+                            checked={newItem.selectBagel}
+                            onChange={(e) => setNewItem({ ...newItem, selectBagel: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectBagel">Select Bagel</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectButterOrJelly"
+                            checked={newItem.selectButterOrJelly}
+                            onChange={(e) => setNewItem({ ...newItem, selectButterOrJelly: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectButterOrJelly">Select Butter Or Jelly</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectCreamCheese"
+                            checked={newItem.selectCreamCheese}
+                            onChange={(e) => setNewItem({ ...newItem, selectCreamCheese: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectCreamCheese">Select Cream Cheese</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectDrinkFlavor"
+                            checked={newItem.selectDrinkFlavor}
+                            onChange={(e) => setNewItem({ ...newItem, selectDrinkFlavor: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectDrinkFlavor">Select Drink Flavor</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectMultipleBagels"
+                            checked={newItem.selectMultipleBagels}
+                            onChange={(e) => setNewItem({ ...newItem, selectMultipleBagels: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectMultipleBagels">Select Multiple Bagels</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectSandwichToppings"
+                            checked={newItem.selectSandwichToppings}
+                            onChange={(e) => setNewItem({ ...newItem, selectSandwichToppings: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectSandwichToppings">Select Sandwich Toppings</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectSausageBaconOrHam"
+                            checked={newItem.selectSausageBaconOrHam}
+                            onChange={(e) => setNewItem({ ...newItem, selectSausageBaconOrHam: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectSausageBaconOrHam">Select Sausage, Bacon, or Ham</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectSmoothieFlavor"
+                            checked={newItem.selectSmoothieFlavor}
+                            onChange={(e) => setNewItem({ ...newItem, selectSmoothieFlavor: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectSmoothieFlavor">Select Smoothie Flavor</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectToasted"
+                            checked={newItem.selectToasted}
+                            onChange={(e) => setNewItem({ ...newItem, selectToasted: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectToasted">Select Toasted</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectWrapOrPanini"
+                            checked={newItem.selectWrapOrPanini}
+                            onChange={(e) => setNewItem({ ...newItem, selectWrapOrPanini: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectWrapOrPanini">Select Wrap or Panini</label>
+                    </div>
+                    <Button variant="primary" onClick={handleCreateItem}>
+                        Create Item
+                    </Button>
+                </div>
+
                 <Accordion>
                     {menuItems.map((category, idx) => (
                         <Accordion.Item eventKey={idx.toString()} key={idx}>

@@ -388,6 +388,141 @@ app.get('/api/menu', (req, res) => {
     });
 });
 
+// Endpoint to update a menu item
+app.put('/api/menu/update/:id', (req, res) => {
+    const itemId = parseInt(req.params.id); // Parse the item ID from the URL
+    const updatedItem = req.body; // Get the updated item data from the request body
+
+    // Read the menu items from the JSON file
+    fs.readFile(menuFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading menu file:', err);
+            return res.status(500).json({ message: 'Error reading menu file' });
+        }
+
+        let menuData = JSON.parse(data);
+        let itemFound = false;
+
+        // Iterate through each category to find and update the item
+        menuData.forEach((category) => {
+            const itemIndex = category.items.findIndex((item) => item.id === itemId);
+            if (itemIndex !== -1) {
+                // Update the item
+                category.items[itemIndex] = { ...category.items[itemIndex], ...updatedItem };
+                itemFound = true;
+            }
+        });
+
+        if (!itemFound) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
+
+        // Write the updated menu data back to the file
+        fs.writeFile(menuFilePath, JSON.stringify(menuData, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing menu file:', err);
+                return res.status(500).json({ message: 'Error writing menu file' });
+            }
+
+            res.status(200).json({ message: 'Item updated successfully' });
+        });
+    });
+});
+
+// Endpoint to create a new menu item
+app.post('/api/menu/create', (req, res) => {
+    const newItem = req.body;
+
+    fs.readFile(menuFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading menu file:', err);
+            return res.status(500).json({ message: 'Error reading menu file' });
+        }
+
+        let menuData = JSON.parse(data);
+
+        // Find the category to which the new item should be added
+        const category = menuData.find((cat) => cat.category === newItem.category);
+
+        if (!category) {
+            return res.status(400).json({ message: 'Category not found' });
+        }
+
+        // Generate a unique ID for the new item
+        const nextId = menuData.reduce((maxId, cat) => {
+            const categoryMaxId = cat.items.reduce((maxItemId, item) => Math.max(maxItemId, item.id || 0), 0);
+            return Math.max(maxId, categoryMaxId);
+        }, 0) + 1;
+
+        // Add the new item to the category's items array
+        const itemToAdd = {
+            id: nextId,
+            title: newItem.title,
+            price: parseFloat(newItem.price),
+            selectBagel: newItem.selectBagel || false,
+            selectButterOrJelly: newItem.selectButterOrJelly || false,
+            selectToasted: newItem.selectToasted || false,
+            selectCreamCheese: newItem.selectCreamCheese || false,
+            selectMultipleBagels: newItem.selectMultipleBagels || false,
+            selectSandwichToppings: newItem.selectSandwichToppings || false,
+            selectSausageBaconOrHam: newItem.selectSausageBaconOrHam || false,
+            selectWrapOrPanini: newItem.selectWrapOrPanini || false,
+            selectDrinkFlavor: newItem.selectDrinkFlavor || false,
+            selectSmoothieFlavor: newItem.selectSmoothieFlavor || false,
+        };
+
+        category.items.push(itemToAdd);
+
+        // Write the updated menu data back to the file
+        fs.writeFile(menuFilePath, JSON.stringify(menuData, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing menu file:', err);
+                return res.status(500).json({ message: 'Error writing menu file' });
+            }
+
+            res.status(201).json({ message: 'Menu item created successfully', item: itemToAdd });
+        });
+    });
+});
+
+app.delete('/api/menu/delete/:id', (req, res) => {
+    const itemId = parseInt(req.params.id); // Parse the item ID from the URL
+
+    // Read the menu items from the JSON file
+    fs.readFile(menuFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading menu file:', err);
+            return res.status(500).json({ message: 'Error reading menu file' });
+        }
+
+        let menuData = JSON.parse(data);
+        let itemFound = false;
+
+        // Iterate through each category to find and delete the item
+        menuData.forEach((category) => {
+            const itemIndex = category.items.findIndex((item) => item.id === itemId);
+            if (itemIndex !== -1) {
+                category.items.splice(itemIndex, 1); // Remove the item from the array
+                itemFound = true;
+            }
+        });
+
+        if (!itemFound) {
+            return res.status(404).json({ message: 'Item not found' });
+        }
+
+        // Write the updated menu data back to the file
+        fs.writeFile(menuFilePath, JSON.stringify(menuData, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing menu file:', err);
+                return res.status(500).json({ message: 'Error writing menu file' });
+            }
+
+            res.status(200).json({ message: 'Item deleted successfully' });
+        });
+    });
+});
+
 // Endpoint to create a new order
 app.post('/api/orders', (req, res) => {
     const newOrder = req.body;
