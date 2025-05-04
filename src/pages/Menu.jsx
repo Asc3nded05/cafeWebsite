@@ -6,7 +6,6 @@ import { Accordion, Row, Col, Button, ListGroup } from 'react-bootstrap';
 import MenuItemUser from '../components/MenuItemUser';
 import MenuItem from '../components/MenuItem';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Menu() {
     const [menuItems, setMenuItems] = useState([]);
@@ -14,6 +13,8 @@ export default function Menu() {
     const [showOffcanvas, setShowOffcanvas] = useState(false); // State to control Offcanvas visibility
     const user = localStorage.getItem('user');
     const role = user ? JSON.parse(user).role : null;
+    const [totalPrice, setTotalPrice] = useState(0.0);
+    const [comment, setComment] = useState(''); // Add state for comment
 
     function getMenu() {
         fetch('http://localhost:5000/api/menu', {
@@ -43,6 +44,12 @@ export default function Menu() {
         getMenu();
     }, []);
 
+    // Recalculate total price whenever the currentOrder changes
+    useEffect(() => {
+        const newTotal = currentOrder.reduce((sum, item) => sum + parseFloat(item.price), 0);
+        setTotalPrice(newTotal);
+    }, [currentOrder]);
+
     const renderMenuItem = (item, role) => {
         if (role === "user" || role === "admin") {
             return (
@@ -58,6 +65,7 @@ export default function Menu() {
                     selectSmoothieFlavor={item.selectSmoothieFlavor}
                     selectWrapOrPanini={item.selectWrapOrPanini}
                     addItemToOrder={addItemToOrder}
+                    item={item} // Pass the entire item to addItemToOrder
                 />
             );
         } else {
@@ -66,7 +74,7 @@ export default function Menu() {
     };
 
     function addItemToOrder(item) {
-        setCurrentOrder((prevOrder) => [...prevOrder, item]); // Add the new item to the order
+        setCurrentOrder((prevOrder) => [...prevOrder, item]);
     }
 
     function removeItemFromOrder(index) {
@@ -77,7 +85,9 @@ export default function Menu() {
         const newOrder = {
             customerName: "Guest User", // Replace with logged-in user's name if available
             orderDate: new Date().toISOString(),
-            items: currentOrder,
+            items: currentOrder.map(item => ({ itemName: item.itemName, price: item.price, options: item.options })), // Send relevant item details
+            comment: comment,
+            totalAmount: ((totalPrice *.08) + (totalPrice)),
         };
 
         try {
@@ -93,7 +103,9 @@ export default function Menu() {
                 const data = await response.json();
                 alert(`Order submitted successfully! Order ID: ${data.orderId}`);
                 setCurrentOrder([]); // Clear the current order
+                setTotalPrice(0.0); // Reset the total price
                 setShowOffcanvas(false); // Close the Offcanvas
+                setComment(''); // Clear the comment
             } else {
                 throw new Error('Failed to submit order');
             }
@@ -133,7 +145,7 @@ export default function Menu() {
                     className="mt-4"
                     onClick={() => setShowOffcanvas(true)}
                 >
-                    View Order ({currentOrder.length} items)
+                    View Order ({currentOrder.length} items) - Total: ${((totalPrice *.08) + totalPrice).toFixed(2)}
                 </Button>
 
                 {/* Offcanvas for Order Summary */}
@@ -149,7 +161,18 @@ export default function Menu() {
                                 {currentOrder.map((item, index) => (
                                     <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <strong>{item.itemName}</strong> - {item.price}
+                                            <strong>{item.itemName}</strong> - ${parseFloat(item.price).toFixed(2)}
+                                            {item.options && Object.keys(item.options).length > 0 && (
+                                                <div>
+                                                    Options:
+                                                    {Object.entries(item.options).map(([optionName, optionValue]) => (
+                                                        <div key={optionName}>
+                                                            {typeof optionValue === 'boolean' ? (optionValue ? 'Toasted' : 'Untoasted') : optionValue.toString()}
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                           
                                         </div>
                                         <Button
                                             variant="danger"
@@ -163,14 +186,30 @@ export default function Menu() {
                             </ListGroup>
                         )}
                     </Offcanvas.Body>
-                    <div className="mt-3 d-flex justify-content-end">
-                        <Button
-                            variant="success"
-                            onClick={handleSubmitOrder}
-                            disabled={currentOrder.length === 0}
-                        >
-                            Submit Order
-                        </Button>
+
+                    <div>
+                        <p>Subtotal: ${totalPrice.toFixed(2)}</p>
+                        <p>Tax: ${(totalPrice*.08).toFixed(2)}</p>
+                        <p><strong>Total: ${((totalPrice*.08) + (totalPrice)).toFixed(2)}</strong></p>
+                        <div>
+                            <label htmlFor="comment" className="form-label">Add a comment:</label>
+                            <textarea
+                                className="form-control"
+                                id="comment"
+                                rows="3"
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                            ></textarea>
+                        </div>
+                        <div className="d-flex justify-content-end">
+                            <Button
+                                variant="success"
+                                onClick={handleSubmitOrder}
+                                disabled={currentOrder.length === 0}
+                            >
+                                Submit Order
+                            </Button>
+                        </div>
                     </div>
                 </Offcanvas>
             </>

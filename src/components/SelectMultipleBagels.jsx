@@ -1,12 +1,9 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function SelectMultipleBagels({ title }) {
-    var maxBagels = 12; // Default maximum number of bagels that can be selected
-
-    if (title == "1/2 Dozen Bagels") {
-        maxBagels = 6; 
-    }
-
+export default function SelectMultipleBagels({ title, onChange }) {
+    const [selectedBagels, setSelectedBagels] = useState({});
+    const [totalBagels, setTotalBagels] = useState(0);
+    const maxBagels = title === "1/2 Dozen Bagels" ? 6 : 12;
     const bagelOptions = [
         "Plain",
         "Sesame",
@@ -25,20 +22,29 @@ export default function SelectMultipleBagels({ title }) {
         "Pumpernickel"
     ];
 
-    const [selectedBagels, setSelectedBagels] = useState({});
-    const [totalBagels, setTotalBagels] = useState(0);
+    useEffect(() => {
+        // Initialize totalBagels based on selectedBagels
+        const initialTotal = Object.values(selectedBagels).reduce((sum, val) => sum + val, 0);
+        setTotalBagels(initialTotal);
+    }, [selectedBagels]);
 
-    function handleBagelChange(bagel, count) {
-        const newSelectedBagels = { ...selectedBagels, [bagel]: count };
+    const handleBagelChange = (bagel, count) => {
+        const newSelectedBagels = { ...selectedBagels };
+
+        // Input validation: Ensure count is not negative
+        const validCount = Math.max(0, count);
+
+        newSelectedBagels[bagel] = validCount;
+
         const newTotalBagels = Object.values(newSelectedBagels).reduce((sum, val) => sum + val, 0);
 
         if (newTotalBagels <= maxBagels) {
             setSelectedBagels(newSelectedBagels);
-            setTotalBagels(newTotalBagels);
+            onChange(newSelectedBagels); // Send selectedBagels ONLY
         } else {
             alert(`You can only select up to ${maxBagels} bagels.`);
         }
-    }
+    };
 
     return (
         <div>
@@ -56,14 +62,18 @@ export default function SelectMultipleBagels({ title }) {
                             min="0"
                             max={maxBagels}
                             value={selectedBagels[option] || 0}
-                            onChange={(e) => handleBagelChange(option, parseInt(e.target.value) || 0)}
+                            onChange={(e) => handleBagelChange(option, parseInt(e.target.value, 10) || 0)}
                         />
                     </div>
                 ))}
             </div>
             <div className="mt-3">
-                <p>Total Bagels Selected: {totalBagels} / {maxBagels}</p>
-                {totalBagels === maxBagels && <p className="text-success">Your selection is complete!</p>}
+                <p>
+                    Total Bagels Selected: {totalBagels} / {maxBagels}
+                </p>
+                {totalBagels === maxBagels && (
+                    <p className="text-success">Your selection is complete!</p>
+                )}
             </div>
         </div>
     );

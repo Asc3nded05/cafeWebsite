@@ -1,4 +1,18 @@
-export default function SelectSmoothieFlavor() {
+import { useEffect, useState } from "react";
+
+export default function SelectSmoothieFlavor({onChange}) {
+    const [selectedSmoothieFlavor, setSelectedSmoothieFlavor] = useState('Strawberry-Bannana'); // Track the selected bagel
+
+    const handleChange = (event) => {
+        const SmoothieFlavor = event.target.value;
+        setSelectedSmoothieFlavor(SmoothieFlavor); // Update state
+        onChange(SmoothieFlavor);       // Call the onChange prop!
+      };
+
+          useEffect(() => {
+            onChange("Strawberry-Bannana");
+          }, []); 
+       
     return (
         <div>
             <h5>Select Smoothie Flavor</h5>
@@ -18,6 +32,10 @@ export default function SelectSmoothieFlavor() {
                             type="radio"
                             name="smoothieFlavor"
                             id={`smoothieFlavor${index}`}
+                            value={option} // Set the value of the radio button
+                            checked={selectedSmoothieFlavor === option}
+                            onChange={handleChange}     // Use our handleChange
+                            
                         />
                     </div>
                 ))}

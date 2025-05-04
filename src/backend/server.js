@@ -418,6 +418,19 @@ app.post('/api/orders', (req, res) => {
     });
 });
 
+app.get('/api/orders', (req, res) => {
+    // Read the menu items from the JSON file
+    fs.readFile(ordersFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading menu file:', err);
+            return res.status(500).json({ message: 'Error reading menu file' });
+        }
+
+        const menuItems = JSON.parse(data);
+        res.status(200).json(menuItems);
+    });
+});
+
 
 // Start the server
 app.listen(PORT, () => {

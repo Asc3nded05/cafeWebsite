@@ -5,7 +5,7 @@
     "items": [
       {
         "title": "Bagel",
-        "price": "$1.25",
+        "price": 1.25,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -17,7 +17,7 @@
       },
       {
         "title": "1/2 Dozen Bagels",
-        "price": "$7.25",
+        "price": 7.25,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -29,7 +29,7 @@
       },
       {
         "title": "Dozen Bagels",
-        "price": "$17.99",
+        "price": 17.99,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -41,7 +41,7 @@
       },
       {
         "title": "Bagel with Cream Cheese",
-        "price": "$2.95",
+        "price": 2.95,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": true,
@@ -53,7 +53,7 @@
       },
       {
         "title": "Bagel with Butter or Jelly",
-        "price": "$2.00",
+        "price": 2.00,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -65,7 +65,7 @@
       },
       {
         "title": "Bagel with Peanut Butter",
-        "price": "$2.85",
+        "price": 2.85,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -83,7 +83,7 @@
     "items": [
       {
         "title": "Plain",
-        "price": "$3.75",
+        "price": 3.75,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -95,7 +95,7 @@
       },
       {
         "title": "Light",
-        "price": "$3.75",
+        "price": 3.75,
         "selectBagel": false,
           "selectToasted": false,
           "selectCreamCheese": false,
@@ -107,7 +107,7 @@
       },
       {
         "title": "Strawberry",
-        "price": "$3.75",
+        "price": 3.75,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -119,7 +119,7 @@
       },
       {
         "title": "Maple and Honey Walnut",
-        "price": "$3.75",
+        "price": 3.75,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -131,7 +131,7 @@
       },
       {
         "title": "Olive and Pimiento",
-        "price": "$3.75",
+        "price": 3.75,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -143,7 +143,7 @@
       },
       {
         "title": "Bacon and Scallion",
-        "price": "$3.75",
+        "price": 3.75,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -155,7 +155,7 @@
       },
       {
         "title": "Onion and Chive",
-        "price": "$3.75",
+        "price": 3.75,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -167,7 +167,7 @@
       },
       {
         "title": "Jalapeno",
-        "price": "$3.75",
+        "price": 3.75,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -179,7 +179,7 @@
       },
       {
         "title": "Vegetable",
-        "price": "$3.75",
+        "price": 3.75,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -197,7 +197,7 @@
     "items": [
       {
         "title": "Egg and Cheese",
-        "price": "$3.25",
+        "price": 3.25,
         "selectBagel": true,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -209,7 +209,7 @@
       },
       {
         "title": "Egg and Cheese with Bacon, Sausage, or Ham",
-        "price": "$4.25",
+        "price": 4.25,
         "selectBagel": true,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -221,7 +221,7 @@
       },
       {
         "title": "Egg and Cheese Wrap",
-        "price": "$6.29",
+        "price": 6.29,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -233,7 +233,7 @@
       },
       {
         "title": "Egg and Cheese Wrap with Bacon, Sausage, or Ham",
-        "price": "$7.29",
+        "price": 7.29,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -251,7 +251,7 @@
     "items": [
       {
         "title": "Ham",
-        "price": "$5.95",
+        "price": 5.95,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -263,7 +263,7 @@
       },
       {
         "title": "Turkey",
-        "price": "$5.95",
+        "price": 5.95,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -275,7 +275,7 @@
       },
       {
         "title": "Chicken Salad",
-        "price": "$5.95",
+        "price": 5.95,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -287,7 +287,7 @@
       },
       {
         "title": "Tuna Salad",
-        "price": "$5.95",
+        "price": 5.95,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -299,7 +299,7 @@
       },
       {
         "title": "Garden Veggie",
-        "price": "$6.50",
+        "price": 6.50,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -311,7 +311,7 @@
       },
       {
         "title": "B.L.T.",
-        "price": "$6.50",
+        "price": 6.50,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -323,7 +323,7 @@
       },
       {
         "title": "Turkey Ranch B.L.T.",
-        "price": "$7.25",
+        "price": 7.25,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -335,7 +335,7 @@
       },
       {
         "title": "Smoked Salmon",
-        "price": "$8.25",
+        "price": 8.25,
         "selectBagel": true,
         "selectToasted": true,
         "selectCreamCheese": false,
@@ -353,7 +353,7 @@
     "items": [
       {
         "title": "Chicken Caesar",
-        "price": "$7.25",
+        "price": 7.25,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -365,7 +365,7 @@
       },
       {
         "title": "Tuna Melt",
-        "price": "$7.50",
+        "price": 7.50,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -377,7 +377,7 @@
       },
       {
         "title": "Kickin' Chicken",
-        "price": "$8.15",
+        "price": 8.15,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -389,7 +389,7 @@
       },
       {
         "title": "Turkey Ranch B.L.T.",
-        "price": "$8.15",
+        "price": 8.15,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -401,7 +401,7 @@
       },
       {
         "title": "Chicken Cheddar Ranch",
-        "price": "$8.15",
+        "price": 8.15,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -413,7 +413,7 @@
       },
       {
         "title": "Buffalo Chicken",
-        "price": "$8.15",
+        "price": 8.15,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -425,7 +425,7 @@
       },
       {
         "title": "Three Cheese and Tomato",
-        "price": "$7.75",
+        "price": 7.75,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -437,7 +437,7 @@
       },
       {
         "title": "Chicken Salad with Cheese",
-        "price": "$7.50",
+        "price": 7.50,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -449,7 +449,7 @@
       },
       {
         "title": "Garden Veggie",
-        "price": "$7.50",
+        "price": 7.50,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -461,7 +461,7 @@
       },
       {
         "title": "Chicken Popper",
-        "price": "$8.15",
+        "price": 8.15,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -479,7 +479,7 @@
     "items": [
       {
         "title": "Hot Dog Bagel",
-        "price": "$3.10",
+        "price": 3.10,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -491,7 +491,7 @@
       },
       {
         "title": "Hot Dog Bagel with Cheese",
-        "price": "$3.40",
+        "price": 3.40,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -503,7 +503,7 @@
       },
       {
         "title": "Pizza Bagel",
-        "price": "$1.90",
+        "price": 1.90,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -515,7 +515,7 @@
       },
       {
         "title": "Pizza Bagel with Pepperoni",
-        "price": "$2.10",
+        "price": 2.10,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -533,7 +533,7 @@
     "items": [
       {
         "title": "Small",
-        "price": "$1.70",
+        "price": 1.70,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -545,7 +545,7 @@
       },
       {
         "title": "Medium",
-        "price": "$1.90",
+        "price": 1.90,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -557,7 +557,7 @@
       },
       {
         "title": "Large",
-        "price": "$2.10",
+        "price": 2.10,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -575,7 +575,7 @@
     "items": [
       {
         "title": "Hot or Iced Latte",
-        "price": "$3.65",
+        "price": 3.65,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -587,7 +587,7 @@
       },
       {
         "title": "Hot or Iced Chai Tea",
-        "price": "$3.65",
+        "price": 3.65,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -599,7 +599,7 @@
       },
       {
         "title": "Frozen Chai Tea",
-        "price": "$4.40",
+        "price": 4.40,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -611,7 +611,7 @@
       },
       {
         "title": "Smoothie",
-        "price": "$4.40",
+        "price": 4.40,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -623,7 +623,7 @@
       },
       {
         "title": "Frappe",
-        "price": "$4.40",
+        "price": 4.40,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -635,7 +635,7 @@
       },
       {
         "title": "Frozen Hot Chocolate",
-        "price": "$4.40",
+        "price": 4.40,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -647,7 +647,7 @@
       },
       {
         "title": "Fresh Fruit Protein Shake",
-        "price": "$6.50",
+        "price": 6.50,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,
@@ -659,7 +659,7 @@
       },
       {
         "title": "Hot Chocolate",
-        "price": "$3.15",
+        "price": 3.15,
         "selectBagel": false,
         "selectToasted": false,
         "selectCreamCheese": false,

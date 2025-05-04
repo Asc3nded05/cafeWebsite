@@ -1,81 +1,87 @@
 [
   {
-    "orderId": 1,
-    "userId": 1,
-    "customerName": "John Doe",
-    "orderDate": "2023-10-01",
-    "additionalNotes": "",
-    "pickupTime": "2023-10-05T14:00:00Z",
-    "items": [
-      {
-        "itemId": 1,
-        "itemName": "Bagel with Cream Cheese",
-        "price": 0,
-        "options": [
-          {
-            "selectBagel": "Plain",
-            "selectCreamCheese": "Onion and Chive",
-            "selectDrinkFlavor": "",
-            "selectMultipleBagles": "",
-            "selectSandwichToppings": "",
-            "selectSmoothieFlavor": "",
-            "selectToasted": "Yes",
-            "selectWrapOrPanini": ""
-          }
-        ]
-      },
-      {
-        "itemName": "Smoothie",
-        "price": 0,
-        "options": [
-          {
-            "selectBagel": "",
-            "selectCreamCheese": "",
-            "selectDrinkFlavor": "",
-            "selectMultipleBagles": "",
-            "selectSandwichToppings": "",
-            "selectSmoothieFlavor": "Strawberry Banana",
-            "selectToasted": "",
-            "selectWrapOrPanini": ""
-          }
-        ]
-      }
-    ],
-    "totalAmount": 150.75,
-    "status": "Completed"
-  },
-  {
     "customerName": "Guest User",
-    "orderDate": "2025-05-03T14:08:51.696Z",
+    "orderDate": "2025-05-04T05:33:52.784Z",
     "items": [
       {
         "itemName": "Bagel",
-        "price": "$1.25",
-        "options": {}
+        "price": 1.25,
+        "options": {
+          "selectBagel": "plain",
+          "selectToasted": false
+        }
       },
       {
-        "itemName": "Bacon and Scallion",
-        "price": "$3.75",
-        "options": {}
-      },
-      {
-        "itemName": "Turkey",
-        "price": "$5.95",
-        "options": {}
+        "itemName": "1/2 Dozen Bagels",
+        "price": 7.25,
+        "options": {
+          "selectMultipleBagels": {
+            "Plain": 1,
+            "Everything": 3,
+            "Sesame": 1,
+            "Cinnamon Sugar": 1
+          }
+        }
       }
     ],
-    "orderId": 4
+    "comment": "",
+    "totalAmount": 8.5,
+    "orderId": 1
   },
   {
     "customerName": "Guest User",
-    "orderDate": "2025-05-03T14:13:25.678Z",
+    "orderDate": "2025-05-04T05:39:48.281Z",
     "items": [
       {
-        "itemName": "1/2 Dozen Bagels",
-        "price": "$7.25",
-        "options": {}
+        "itemName": "Turkey",
+        "price": 5.95,
+        "options": {
+          "selectBagel": "Poppy",
+          "selectToasted": false,
+          "selectSandwichToppings": [
+            "Lettuce",
+            "Tomato",
+            "Onion"
+          ]
+        }
       }
     ],
-    "orderId": 5
+    "comment": "here is a comment",
+    "totalAmount": 5.95,
+    "orderId": 2
+  },
+  {
+    "customerName": "Guest User",
+    "orderDate": "2025-05-04T05:50:54.762Z",
+    "items": [
+      {
+        "itemName": "Bagel",
+        "price": 1.25,
+        "options": {
+          "selectBagel": "plain",
+          "selectToasted": false
+        }
+      }
+    ],
+    "comment": "",
+    "totalAmount": "1.35",
+    "orderId": 3
+  },
+  {
+    "customerName": "Guest User",
+    "orderDate": "2025-05-04T05:52:10.405Z",
+    "items": [
+      {
+        "itemName": "Bagel",
+        "price": 1.25,
+        "options": {
+          "selectBagel": "plain",
+          "selectToasted": false
+        }
+      }
+    ],
+    "comment": "",
+    "totalAmount": "1.35",
+    "orderId": 4
   }
 ]

@@ -8,6 +8,7 @@ import SelectMultipleBagels from './selectMultipleBagels';
 import SelectDrinkFlavor from './SelectDrinkFlavor';
 import SelectSmoothieFlavor from './SelectSmoothieFlavor';
 import SelectWrapOrPanini from './SelectWrapOrPanini';
+import CommentOption from './CommentOption';
 
 export default function MenuItemUser({
     title,
@@ -24,6 +25,7 @@ export default function MenuItemUser({
 }) {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
     const [orderOptions, setOrderOptions] = useState({}); // State to store user selections
+    const [comment, setComment] = useState("");
 
     function handleShowModal() {
         setShowModal(true); // Show the modal
@@ -33,7 +35,13 @@ export default function MenuItemUser({
         setShowModal(false); // Hide the modal
     }
 
+    const handleCommentChange = (commentValue) => {
+        setComment(commentValue);
+      };
+    
+
     function handleOptionChange(optionName, value) {
+        console.log(optionName);
         setOrderOptions((prevOptions) => ({
             ...prevOptions,
             [optionName]: value,
@@ -41,15 +49,18 @@ export default function MenuItemUser({
     }
 
     function handleAddItem() {
+        console.log(orderOptions)
         const newItem = {
             itemName: title,
             price: price,
             options: orderOptions,
+            comment: comment,
         };
 
         addItemToOrder(newItem); // Add the item to the current order
         setShowModal(false); // Close the modal
         setOrderOptions({}); // Reset options for the next item
+        setComment("")
     }
 
     return (
@@ -79,6 +90,7 @@ export default function MenuItemUser({
                     {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => handleOptionChange('selectDrinkFlavor', value)} />}
                     {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => handleOptionChange('selectSmoothieFlavor', value)} />}
                     {selectWrapOrPanini && <SelectWrapOrPanini onChange={(value) => handleOptionChange('selectWrapOrPanini', value)} />}
+                
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseModal}>
