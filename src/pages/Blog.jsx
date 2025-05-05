@@ -104,7 +104,10 @@ export default function Blog() {
             <>
                 <NavigationUser />
                 <div className="container mt-5">
-                    <h1 className="text-center">Blog</h1>
+                    <h1>Blog</h1>
+
+                    <hr></hr>
+
                     <div className="mt-5">
                         {blogPosts.map((post) => (
                             <BlogPostUser
@@ -128,9 +131,11 @@ export default function Blog() {
             <>
                 <NavigationAdmin />
                 <div className="container mt-5">
-                    <h1 className="text-center">Blog</h1>
                     <div className="container mt-5">
-                        <h2 className="text-center">Add new blog post</h2>
+                        <h1>Add new blog post</h1>
+
+                        <hr></hr>
+
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <label htmlFor="Name" className="form-label">Title</label>
@@ -144,20 +149,24 @@ export default function Blog() {
                         </form>
                     </div>
 
-                    <h2 className="text-center">Post History</h2>
+                    <div className="container mt-5">
+                        <h1>Post History</h1>
 
-                    <div className="mt-4">
-                        {blogPosts.map((post) => (
-                            <BlogPostAdmin
-                                key={post.id}
-                                id={post.id}
-                                title={post.title}
-                                date={post.updatedAt}
-                                text={post.content}
-                                likes={post.likes}
-                                dislikes={post.dislikes}
-                            />
-                        ))}
+                        <hr></hr>
+
+                        <div className="mt-4">
+                            {blogPosts.map((post) => (
+                                <BlogPostAdmin
+                                    key={post.id}
+                                    id={post.id}
+                                    title={post.title}
+                                    date={post.updatedAt}
+                                    text={post.content}
+                                    likes={post.likes}
+                                    dislikes={post.dislikes}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
             </>
@@ -167,7 +176,10 @@ export default function Blog() {
             <>
                 <Navigation />
                 <div className="container mt-5">
-                    <h1 className="text-center">Blog</h1>
+                    <h1>Blog</h1>
+
+                    <hr></hr>
+
                     <div className="mt-4">
                         {blogPosts.map((post) => (
                             <BlogPost

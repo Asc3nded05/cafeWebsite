@@ -6,8 +6,8 @@ export default function Footer() {
 
         <footer className="footer bg-body-tertiary text-center text-lg-start">
             <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
-                © {currentYear} Copyright:
-                <a className="text-body" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+                © 2022 - {currentYear},
+                <span className="text-body"> Bagels Etc.</span>
             </div>
         </footer>
     );

@@ -43,7 +43,10 @@ export default function Login() {
     return (
 
         <div className="container mt-5">
-            <h1 className="text-center">Login</h1>
+            <h1>Login</h1>
+
+            <hr></hr>
+            
             <form className="mt-4" onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>

@@ -6,7 +6,7 @@ body {
   max-width: 100%; /* Remove the width constraint */
   margin: 0; /* Remove centering */
   padding: 0; /* Remove padding */
-  padding-top: 3rem; /* Add padding to the top for spacing */
+  padding-top: 1.9rem; /* Add padding to the top for spacing */
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* Ensure it fills the viewport height */
@@ -23,6 +23,7 @@ footer {
   position: relative; /* Keeps it in the normal document flow */
   left: 0; /* Ensures it aligns with the left edge of the screen */
   box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
+  padding-top: 2vh; /* Adds padding to the top of the footer */
 }
 
 .light-green {

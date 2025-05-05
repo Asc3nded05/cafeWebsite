@@ -249,7 +249,10 @@ export default function Menu() {
                 <div className="container mt-5">
                     <NavigationUser />
 
-                    <h1 className="text-center">Menu</h1>
+                    <h1>Menu</h1>
+
+                    <hr></hr>
+
                     <Accordion>
                         {menuItems.map((category, idx) => (
                             <Accordion.Item eventKey={idx.toString()} key={idx}>
@@ -369,7 +372,10 @@ export default function Menu() {
                 <NavigationAdmin />
                 
                 <div className="container mt-5">
-                    <h1 className="text-center">Create New Menu Item</h1>
+                    <h1>Create New Menu Item</h1>
+
+                    <hr></hr>
+
                     <form onSubmit={(e) => { e.preventDefault(); handleCreateItem(); }} className="mt-4">
                         <div className="mb-3">
                             <label htmlFor="category" className="form-label">Category</label>
@@ -518,7 +524,9 @@ export default function Menu() {
                 </div>
                 
                 <div className="container mt-5">
-                    <h1 className="text-center">Menu</h1>
+                    <h1>Menu</h1>
+
+                    <hr></hr>
 
                     <Accordion>
                         {menuItems.map((category, idx) => (
@@ -548,7 +556,10 @@ export default function Menu() {
                 <div className="container mt-5">
                     <Navigation />
 
-                    <h1 className="text-center">Menu</h1>
+                    <h1>Menu</h1>
+
+                    <hr></hr>
+                    
                     <Accordion>
                         {menuItems.map((category, idx) => (
                             <Accordion.Item eventKey={idx.toString()} key={idx}>

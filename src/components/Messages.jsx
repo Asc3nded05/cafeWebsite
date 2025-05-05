@@ -35,7 +35,10 @@ export default function Messages() {
 
     return <>
         <div className="container mt-5">
-            <h1 className="text-center">Messages</h1>
+            <h1>Messages</h1>
+
+            <hr></hr>
+            
             <div className="mt-4">
                 {messages.map((message) => (
                     <MessageCard

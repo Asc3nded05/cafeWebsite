@@ -87,7 +87,10 @@ export default function CreateAccountForm() {
 
     return (
         <div className="container mt-5">
-            <h1 className="text-center">Create Account</h1>
+            <h1>Create Account</h1>
+
+            <hr></hr>
+            
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="firstName" className="form-label">First Name</label>

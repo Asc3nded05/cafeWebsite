@@ -59,7 +59,10 @@ export default function ContactForm() {
 
     return (
         <div className="container mt-5">
-            <h1 className="text-center">Contact Us</h1>
+            <h1>Contact Us</h1>
+
+            <hr></hr>
+            
             <form onSubmit={handleSubmit} className="mt-4">
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
