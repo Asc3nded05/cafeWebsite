@@ -105,6 +105,8 @@ export default function Blog() {
                         text={post.content}
                         initialLikes={post.likes}
                         initialDislikes={post.dislikes}
+                        likedBy={post.likedBy}
+                        dislikedBy={post.dislikedBy}
                     />
                 ))}
                 </div>

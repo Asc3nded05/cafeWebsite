@@ -4,6 +4,10 @@
     "content": "content",
     "likes": 1,
     "dislikes": 0,
+    "likedBy": [
+      0
+    ],
+    "dislikedBy": [],
     "createdAt": "5/1/2025, 2:59:29 PM",
     "updatedAt": "5/1/2025, 2:59:29 PM",
     "id": 1
@@ -13,6 +17,10 @@
     "content": "update content",
     "likes": 2,
     "dislikes": 0,
+    "likedBy": [
+      0
+    ],
+    "dislikedBy": [],
     "createdAt": "5/1/2025, 2:59:44 PM",
     "updatedAt": "5/1/2025, 3:09:36 PM",
     "id": 2
@@ -22,6 +30,10 @@
     "content": "content",
     "likes": 1,
     "dislikes": 2,
+    "likedBy": [
+      0
+    ],
+    "dislikedBy": [],
     "createdAt": "5/1/2025, 3:11:09 PM",
     "updatedAt": "5/1/2025, 3:11:09 PM",
     "id": 3
@@ -31,6 +43,10 @@
     "content": "content",
     "likes": 3,
     "dislikes": 5,
+    "likedBy": [
+      0
+    ],
+    "dislikedBy": [],
     "createdAt": "5/1/2025, 3:12:46 PM",
     "updatedAt": "5/1/2025, 3:12:46 PM",
     "id": 4
@@ -38,8 +54,14 @@
   {
     "title": "Blog Post 5",
     "content": "content",
-    "likes": 20,
-    "dislikes": 21,
+    "likes": 1,
+    "dislikes": 1,
+    "likedBy": [
+      6
+    ],
+    "dislikedBy": [
+      4
+    ],
     "createdAt": "5/1/2025, 3:16:47 PM",
     "updatedAt": "5/1/2025, 3:16:47 PM",
     "id": 5

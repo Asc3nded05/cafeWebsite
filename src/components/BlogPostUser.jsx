@@ -1,20 +1,27 @@
 import { useState, useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
 
-export default function BlogPost({ id, title, date, text, initialLikes, initialDislikes }) {
+export default function BlogPost({ id, title, date, text, initialLikes, initialDislikes, likedBy, dislikedBy }) {
     const [likes, setLikes] = useState(initialLikes); // State for likes
     const [dislikes, setDislikes] = useState(initialDislikes); // State for dislikes
     const [userAction, setUserAction] = useState(null); // 'liked', 'disliked', or null
 
-    // Load user action from localStorage when the component mounts
+    // Load user action when the component mounts
     useEffect(() => {
-        const storedAction = localStorage.getItem(`post-${id}-action`);
-        if (storedAction) {
-            setUserAction(storedAction);
+        const user = JSON.parse(localStorage.getItem('user')); // Get the logged-in user
+        const userId = user?.id;
+
+        if (likedBy.includes(userId)) {
+            setUserAction('liked');
+        } else if (dislikedBy.includes(userId)) {
+            setUserAction('disliked');
         }
-    }, [id]);
+    }, [likedBy, dislikedBy]);
 
     function handleLike() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const userId = user?.id;
+
         if (userAction === 'liked') {
             // Remove the like
             fetch(`http://localhost:5000/api/blog/unlike/${id}`, {
@@ -22,12 +29,12 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ userId }),
             })
                 .then((response) => {
                     if (response.ok) {
-                        setLikes(likes - 1); // Decrement likes in the frontend
-                        setUserAction(null); // Reset user action
-                        localStorage.removeItem(`post-${id}-action`); // Remove from localStorage
+                        setLikes(likes - 1);
+                        setUserAction(null);
                     } else {
                         throw new Error('Error unliking the post');
                     }
@@ -43,15 +50,15 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ userId }),
             })
                 .then((response) => {
                     if (response.ok) {
-                        setLikes(likes + 1); // Increment likes in the frontend
+                        setLikes(likes + 1);
                         if (userAction === 'disliked') {
                             setDislikes(dislikes - 1); // Remove dislike if previously disliked
                         }
-                        setUserAction('liked'); // Update user action
-                        localStorage.setItem(`post-${id}-action`, 'liked'); // Save to localStorage
+                        setUserAction('liked');
                     } else {
                         throw new Error('Error liking the post');
                     }
@@ -64,6 +71,9 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
     }
 
     function handleDislike() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        const userId = user?.id;
+
         if (userAction === 'disliked') {
             // Remove the dislike
             fetch(`http://localhost:5000/api/blog/undislike/${id}`, {
@@ -71,12 +81,12 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ userId }),
             })
                 .then((response) => {
                     if (response.ok) {
-                        setDislikes(dislikes - 1); // Decrement dislikes in the frontend
-                        setUserAction(null); // Reset user action
-                        localStorage.removeItem(`post-${id}-action`); // Remove from localStorage
+                        setDislikes(dislikes - 1);
+                        setUserAction(null);
                     } else {
                         throw new Error('Error undisliking the post');
                     }
@@ -92,15 +102,15 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ userId }),
             })
                 .then((response) => {
                     if (response.ok) {
-                        setDislikes(dislikes + 1); // Increment dislikes in the frontend
+                        setDislikes(dislikes + 1);
                         if (userAction === 'liked') {
                             setLikes(likes - 1); // Remove like if previously liked
                         }
-                        setUserAction('disliked'); // Update user action
-                        localStorage.setItem(`post-${id}-action`, 'disliked'); // Save to localStorage
+                        setUserAction('disliked');
                     } else {
                         throw new Error('Error disliking the post');
                     }
@@ -113,29 +123,27 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
     }
 
     return (
-        <>
-            <Card style={{ width: '50rem' }}>
-                <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
-                    <Card.Text>{text}</Card.Text>
-                    <Button
-                        variant={userAction === 'liked' ? 'success' : 'primary'}
-                        onClick={handleLike}
-                    >
-                        {userAction === 'liked' ? 'Liked' : 'Like'}
-                    </Button>{' '}
-                    <label>{likes}</label>
-                    <Button
-                        variant={userAction === 'disliked' ? 'danger' : 'primary'}
-                        className="ms-2"
-                        onClick={handleDislike}
-                    >
-                        {userAction === 'disliked' ? 'Disliked' : 'Dislike'}
-                    </Button>{' '}
-                    <label>{dislikes}</label>
-                </Card.Body>
-            </Card>
-        </>
+        <Card style={{ width: '50rem' }}>
+            <Card.Body>
+                <Card.Title>{title}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
+                <Card.Text>{text}</Card.Text>
+                <Button
+                    variant={userAction === 'liked' ? 'success' : 'primary'}
+                    onClick={handleLike}
+                >
+                    {userAction === 'liked' ? 'Liked' : 'Like'}
+                </Button>{' '}
+                <label>{likes}</label>
+                <Button
+                    variant={userAction === 'disliked' ? 'danger' : 'primary'}
+                    className="ms-2"
+                    onClick={handleDislike}
+                >
+                    {userAction === 'disliked' ? 'Disliked' : 'Dislike'}
+                </Button>{' '}
+                <label>{dislikes}</label>
+            </Card.Body>
+        </Card>
     );
 }

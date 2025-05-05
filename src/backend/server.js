@@ -218,8 +218,8 @@ app.put('/api/blog/update/:id', (req, res) => {
 // Endpoint to like a blog post
 app.put('/api/blog/like/:id', (req, res) => {
     const postId = parseInt(req.params.id);
+    const userId = req.body.userId;
 
-    // Read the blog posts from the JSON file
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading blog file:', err);
@@ -227,24 +227,31 @@ app.put('/api/blog/like/:id', (req, res) => {
         }
 
         let blogPosts = JSON.parse(data);
+        const post = blogPosts.find(post => post.id === postId);
 
-        // Find the blog post by ID
-        const postIndex = blogPosts.findIndex(post => post.id === postId);
-        if (postIndex === -1) {
+        if (!post) {
             return res.status(404).json({ message: 'Post not found' });
         }
 
-        // Increment the likes count
-        blogPosts[postIndex].likes += 1;
+        // Check if the user is in the dislikedBy array and remove them
+        if (post.dislikedBy.includes(userId)) {
+            post.dislikedBy = post.dislikedBy.filter(id => id !== userId);
+            post.dislikes -= 1; // Decrement dislikes count
+        }
 
-        // Write the updated blog posts back to the file
+        // Add the user to the likedBy array if not already present
+        if (!post.likedBy.includes(userId)) {
+            post.likedBy.push(userId);
+            post.likes += 1; // Increment likes count
+        }
+
         fs.writeFile(blogFilePath, JSON.stringify(blogPosts, null, 2), (err) => {
             if (err) {
                 console.error('Error writing blog file:', err);
                 return res.status(500).json({ message: 'Error writing blog file' });
             }
 
-            res.status(200).json({ message: 'Post liked successfully', post: blogPosts[postIndex] });
+            res.status(200).json({ message: 'Post liked successfully', post });
         });
     });
 });
@@ -252,8 +259,8 @@ app.put('/api/blog/like/:id', (req, res) => {
 // Endpoint to dislike a blog post
 app.put('/api/blog/dislike/:id', (req, res) => {
     const postId = parseInt(req.params.id);
+    const userId = req.body.userId;
 
-    // Read the blog posts from the JSON file
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading blog file:', err);
@@ -261,24 +268,31 @@ app.put('/api/blog/dislike/:id', (req, res) => {
         }
 
         let blogPosts = JSON.parse(data);
+        const post = blogPosts.find(post => post.id === postId);
 
-        // Find the blog post by ID
-        const postIndex = blogPosts.findIndex(post => post.id === postId);
-        if (postIndex === -1) {
+        if (!post) {
             return res.status(404).json({ message: 'Post not found' });
         }
 
-        // Increment the dislikes count
-        blogPosts[postIndex].dislikes += 1;
+        // Check if the user is in the likedBy array and remove them
+        if (post.likedBy.includes(userId)) {
+            post.likedBy = post.likedBy.filter(id => id !== userId);
+            post.likes -= 1; // Decrement likes count
+        }
 
-        // Write the updated blog posts back to the file
+        // Add the user to the dislikedBy array if not already present
+        if (!post.dislikedBy.includes(userId)) {
+            post.dislikedBy.push(userId);
+            post.dislikes += 1; // Increment dislikes count
+        }
+
         fs.writeFile(blogFilePath, JSON.stringify(blogPosts, null, 2), (err) => {
             if (err) {
                 console.error('Error writing blog file:', err);
                 return res.status(500).json({ message: 'Error writing blog file' });
             }
 
-            res.status(200).json({ message: 'Post disliked successfully', post: blogPosts[postIndex] });
+            res.status(200).json({ message: 'Post disliked successfully', post });
         });
     });
 });
@@ -286,6 +300,7 @@ app.put('/api/blog/dislike/:id', (req, res) => {
 // Endpoint to remove a like
 app.put('/api/blog/unlike/:id', (req, res) => {
     const postId = parseInt(req.params.id);
+    const userId = req.body.userId;
 
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
@@ -294,9 +309,16 @@ app.put('/api/blog/unlike/:id', (req, res) => {
         }
 
         let blogPosts = JSON.parse(data);
+        const post = blogPosts.find(post => post.id === postId);
         const postIndex = blogPosts.findIndex(post => post.id === postId);
+
         if (postIndex === -1) {
             return res.status(404).json({ message: 'Post not found' });
+        }
+
+        post.likedBy = post.likedBy.filter(id => id !== userId);
+        if (post.likedBy.includes(userId)) {
+            post.likes -= 1;
         }
 
         blogPosts[postIndex].likes = Math.max(0, blogPosts[postIndex].likes - 1);
@@ -315,6 +337,7 @@ app.put('/api/blog/unlike/:id', (req, res) => {
 // Endpoint to remove a dislike
 app.put('/api/blog/undislike/:id', (req, res) => {
     const postId = parseInt(req.params.id);
+    const userId = req.body.userId;
 
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
@@ -323,9 +346,16 @@ app.put('/api/blog/undislike/:id', (req, res) => {
         }
 
         let blogPosts = JSON.parse(data);
+        const post = blogPosts.find(post => post.id === postId); 
         const postIndex = blogPosts.findIndex(post => post.id === postId);
+        
         if (postIndex === -1) {
             return res.status(404).json({ message: 'Post not found' });
+        }
+
+        post.dislikedBy = post.dislikedBy.filter(id => id !== userId);
+        if (post.dislikedBy.includes(userId)) {
+            post.dislikes -= 1;
         }
 
         blogPosts[postIndex].dislikes = Math.max(0, blogPosts[postIndex].dislikes - 1);

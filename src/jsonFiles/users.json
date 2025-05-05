@@ -48,5 +48,15 @@
     "role": "admin",
     "createdAt": "5/1/2025, 8:49:47 AM",
     "updatedAt": "5/1/2025, 8:49:47 AM"
+  },
+  {
+    "id": 6,
+    "firstName": "Jack",
+    "lastName": "Johnson",
+    "email": "email@gmail.com",
+    "password": "$2b$10$KGFKudYcnqzL1rJf8wAiGOqSisRQ9AwJicigo7LgiNKQSHpLtZUTq",
+    "role": "user",
+    "createdAt": "5/5/2025, 8:10:23 AM",
+    "updatedAt": "5/5/2025, 8:10:23 AM"
   }
 ]
