@@ -568,6 +568,38 @@ app.get('/api/orders', (req, res) => {
     });
 });
 
+app.put('/api/orders/complete/:id', (req, res) => {
+    const orderId = parseInt(req.params.id); // Parse the order ID from the URL
+
+    // Read the orders from the JSON file
+    fs.readFile(ordersFilePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading orders file:', err);
+            return res.status(500).json({ message: 'Error reading orders file' });
+        }
+
+        let orders = JSON.parse(data);
+        const orderIndex = orders.findIndex((order) => order.orderId === orderId);
+
+        if (orderIndex === -1) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        // Mark the order as completed
+        orders[orderIndex].completed = true;
+
+        // Write the updated orders back to the file
+        fs.writeFile(ordersFilePath, JSON.stringify(orders, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing orders file:', err);
+                return res.status(500).json({ message: 'Error writing orders file' });
+            }
+
+            res.status(200).json({ message: 'Order marked as completed' });
+        });
+    });
+});
+
 app.get('/api/contact/messages', (req, res) => {   
     // Read the messages from the JSON file
     fs.readFile(messagesFilePath, 'utf8', (err, data) => {

@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import NavigationAdmin from "../components/NavigationAdmin";
+import { Card, Button, Row, Col } from "react-bootstrap";
 
 export default function Orders() {
-    const user = localStorage.getItem('user');
-    const role = user ? JSON.parse(user).role : null;
-    console.log("Orders page loaded");
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
@@ -12,7 +10,7 @@ export default function Orders() {
     }, []); // Fetch orders on component mount
 
     function getOrders() {
-        fetch('http://localhost:5000/api/orders', { // Assuming your orders endpoint is /api/orders
+        fetch('http://localhost:5000/api/orders', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +25,6 @@ export default function Orders() {
             })
             .then((data) => {
                 setOrders(data);
-                console.log("Orders data:", data);
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -35,43 +32,115 @@ export default function Orders() {
             });
     }
 
+    function markOrderAsComplete(orderId) {
+        fetch(`http://localhost:5000/api/orders/complete/${orderId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert('Order marked as completed');
+                    getOrders(); // Refresh the orders list
+                } else {
+                    throw new Error('Error marking order as completed');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert(error.message);
+            });
+    }
+
+    const currentOrders = orders.filter((order) => !order.completed);
+    const completedOrders = orders.filter((order) => order.completed);
+
     return (
         <>
-          <NavigationAdmin />
-          <h1>Orders</h1>
-          <div>
-            {orders.length > 0 ? (
-              orders.map((order) => (
-                <div key={order.orderId}>
-                  <h3>Order ID: {order.orderId}</h3>
-                  <p>Customer Name: {order.customerName}</p>
-                  <p>Order Date: {order.orderDate}</p>
-    
-                  <h4>Items:</h4>
-                  <ul>
-                    {order.items.map((item, index) => (
-                      <li key={index}>
-                        {item.itemName} - Price: {item.price}
-                        {item.options && Object.keys(item.options).length > 0 && (
-                          <ul>
-                            {Object.entries(item.options).map(([key, value]) => (
-                              <li key={key}>
-                                {key}: {typeof value === 'object' ? JSON.stringify(value) : (Array.isArray(value) ? value.join(', ') : value)}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {item.comment && <p>Comment: {item.comment}</p>}
-                      </li>
-                    ))}
-                  </ul>
-                  <p>Total Amount: ${order.totalAmount}</p>
-                </div>
-              ))
-            ) : (
-              <p>No orders found.</p>
-            )}
-          </div>
+            <NavigationAdmin />
+            <h1>Orders</h1>
+
+            <h2>Current Orders</h2>
+            <Row xs={1} md={2} className="g-4">
+                {currentOrders.length > 0 ? (
+                    currentOrders.map((order) => (
+                        <Col key={order.orderId}>
+                            <Card>
+                                <Card.Body>
+                                    <Card.Title>Order ID: {order.orderId}</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">
+                                        Customer: {order.customerName}
+                                    </Card.Subtitle>
+                                    <Card.Text>
+                                        <strong>Order Date:</strong> {new Date(order.orderDate).toLocaleString()}
+                                    </Card.Text>
+                                    <Card.Text>
+                                        <strong>Items:</strong>
+                                    </Card.Text>
+                                    <ul>
+                                        {order.items.map((item, index) => (
+                                            <li key={index}>
+                                                {item.itemName} - ${item.price.toFixed(2)}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <Card.Text>
+                                        <strong>Total Amount:</strong> ${order.totalAmount.toFixed(2)}
+                                    </Card.Text>
+                                    <Button
+                                        variant="success"
+                                        onClick={() => markOrderAsComplete(order.orderId)}
+                                    >
+                                        Mark as Complete
+                                    </Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))
+                ) : (
+                    <p>No current orders found.</p>
+                )}
+            </Row>
+
+            <h2 className="mt-5">Completed Orders</h2>
+            <Row xs={1} md={2} className="g-4">
+                {completedOrders.length > 0 ? (
+                    completedOrders.map((order) => (
+                        <Col key={order.orderId}>
+                            <Card>
+                                <Card.Body>
+                                    <Card.Title>Order ID: {order.orderId}</Card.Title>
+                                    <Card.Subtitle className="mb-2 text-muted">
+                                        Customer: {order.customerName}
+                                    </Card.Subtitle>
+                                    <Card.Text>
+                                        <strong>Order Date:</strong> {new Date(order.orderDate).toLocaleString()}
+                                    </Card.Text>
+                                    <Card.Text>
+                                        <strong>Items:</strong>
+                                    </Card.Text>
+                                    <ul>
+                                        {order.items.map((item, index) => (
+                                            <li key={index}>
+                                                {item.itemName} - ${item.price.toFixed(2)}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <Card.Text>
+                                        <strong>Total Amount:</strong> ${order.totalAmount.toFixed(2)}
+                                    </Card.Text>
+                                    <Card.Text>
+                                        <strong>Status:</strong> Completed
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))
+                ) : (
+                    <p>No completed orders found.</p>
+                )}
+            </Row>
         </>
-      );
-    }
+    );
+}
