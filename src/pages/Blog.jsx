@@ -1,3 +1,4 @@
+// Importing necessary components and libraries
 import { useState, useEffect } from "react";
 import BlogPost from "../components/BlogPost.jsx";
 import BlogPostAdmin from "../components/BlogPostAdmin.jsx";
@@ -8,9 +9,9 @@ import NavigationUser from "../components/NavigationUser.jsx";
 
 export default function Blog() {
     const [blogPosts, setBlogPosts] = useState([]); // State to store blog posts
-    const user = localStorage.getItem('user');
-    const role = user ? JSON.parse(user).role : null;
-
+    const user = localStorage.getItem('user'); // Retrieve user data from local storage
+    const role = user ? JSON.parse(user).role : null; // Gets the role of the user (user or admin)
+    //Variables to store the new post data
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [likes, setLikes] = useState(0);
@@ -36,7 +37,7 @@ export default function Blog() {
                 }
             })
             .then((data) => {
-                const reversedPosts = [...data].reverse(); // Reverse the order of the posts
+                const reversedPosts = [...data].reverse(); // Reverse the order of the posts so that most recent posts are first
                 setBlogPosts(reversedPosts); // Store the reversed posts in state
             })
             .catch((error) => {
@@ -50,6 +51,7 @@ export default function Blog() {
         getBlogPosts();
     }, []);
 
+    // Function to update the title and content of the new post
     function updateTitle(newTitle) {
         setTitle(newTitle);
     }
@@ -58,9 +60,11 @@ export default function Blog() {
         setContent(newContent);
     }
 
+    // Function to handle form submission for creating a new post
     function handleSubmit(e) {
         e.preventDefault();
-    
+        
+        // Creates a new post object with the data from the form
         const newPost = { title, content, likes, dislikes, likedBy, dislikedBy, createdAt, updatedAt };
     
         // Send the new post to the backend
@@ -92,6 +96,9 @@ export default function Blog() {
             });
     }
 
+    // If the user is not logged in, show the blog posts without the ability to like or dislike them.
+    // If the user is logged in as a normal user, show the blog posts with the ability to like or dislike them.
+    // If the user is logged in as an admin, show the blog posts witht the ability to add, update, and delete posts.
     if (role === "user") {
         return (
             <>

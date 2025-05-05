@@ -5,7 +5,6 @@ import Blog from './pages/Blog'
 import CreateAccount from './pages/CreateAccount'
 import Login from './pages/Login'
 import Menu from './pages/Menu'
-import Checkout from './pages/Checkout'
 import Orders from './pages/Orders'
 import Stats from './pages/Stats'
 import ProtectedRoute from './components/ProtectedRoutes'
@@ -32,7 +31,6 @@ function App() {
             <Route path="/createAccount" element={<CreateAccount />} />
             <Route path="/login" element={<Login />} />
             <Route path="/menu" element={<Menu />} />
-            <Route path="/checkout" element={<Checkout />} />
             <Route
             path="/orders"
             element={

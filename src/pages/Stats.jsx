@@ -1,3 +1,4 @@
+// Importing necessary components and libraries
 import NavigationAdmin from "../components/NavigationAdmin";
 
 export default function Stats() {

@@ -1,14 +1,16 @@
+// Importing necessary components and libraries
 import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import NavigationAdmin from "../components/NavigationAdmin";
 import NavigationUser from "../components/NavigationUser";
 
 export default function Home() {
-    
-    const user = localStorage.getItem('user');
-    const role = user ? JSON.parse(user).role : null;
-    console.log("Home page loaded");
+    const user = localStorage.getItem('user'); // Retrieve user data from local storage
+    const role = user ? JSON.parse(user).role : null; // Gets the role of the user (user or admin)
 
+    // If the user is not logged in render home page with the guest navigation bar
+    // If the user is logged in as a normal user render the home page with the user navigation bar
+    // If the user is logged in as an admin render the home page with the adnmin navigation bar
     if (role == "user") {
         return (
             <>
