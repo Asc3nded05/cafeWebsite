@@ -1,5 +1,3 @@
-
-
 export default function Checkout() {
     const user = localStorage.getItem('user');
     const role = user ? JSON.parse(user).role : null;

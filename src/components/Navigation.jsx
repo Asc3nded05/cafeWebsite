@@ -7,13 +7,13 @@ export default function Navigation() {
 				{/* Logo and Title */}
 				<Link className="navbar-brand" to="/">
 					<img
-						src="src/assets/react.svg" // Replace with proper logo
+						src="src\assets\BagelLogo.png"
 						alt="Logo"
 						width="30"
 						height="30"
 						className="d-inline-block align-text-top"
 					/>
-					Cafe Name
+					Bagels Etc.
 				</Link>
 
 				{/* Toggle Button for Mobile View */}

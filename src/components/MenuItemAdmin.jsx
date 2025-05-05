@@ -1,6 +1,6 @@
 import { Card, Button, Modal } from 'react-bootstrap';
 import { useState } from 'react';
-import SelectToasted from './selectToasted';
+import SelectToasted from './SelectToasted';
 import SelectCreamCheese from './selectCreamCheese';
 import SelectBagel from './selectBagel';
 import SelectSandwichToppings from './selectSandwichToppings';
