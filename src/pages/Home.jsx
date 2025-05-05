@@ -40,7 +40,7 @@ export default function Home() {
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d875.9662338635214!2d-77.60309277012688!3d43.207380924058135!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b660d9680bb9%3A0xef6d5c28eb2762bc!2s525%20Titus%20Ave%2C%20Irondequoit%2C%20NY%2014617!5e0!3m2!1sen!2sus!4v1745872729453!5m2!1sen!2sus"
                             width="100%"
-                            height="60%"
+                            height="100%"
                             style={{ position: 'absolute', top: 0, left: 0, border: 0 }}
                             allowFullScreen=""
                             loading="lazy"
@@ -76,12 +76,12 @@ export default function Home() {
 
                     <hr></hr>
 
-                    <div style={{ position: 'relative', overflow: 'hidden', paddingTop: '56.25%' }}>
+                    <div style={{ position: 'relative', overflow: 'hidden', paddingTop: '56.25%'}}>
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d875.9662338635214!2d-77.60309277012688!3d43.207380924058135!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b660d9680bb9%3A0xef6d5c28eb2762bc!2s525%20Titus%20Ave%2C%20Irondequoit%2C%20NY%2014617!5e0!3m2!1sen!2sus!4v1745872729453!5m2!1sen!2sus"
                             width="100%"
-                            height="60%"
-                            style={{ position: 'absolute', top: 0, left: 0, border: 0 }}
+                            height="100%"
+                            style={{ position: 'absolute', top: 0, left: 0, border: 0, paddingBottom: 0}}
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
@@ -121,7 +121,7 @@ export default function Home() {
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d875.9662338635214!2d-77.60309277012688!3d43.207380924058135!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b660d9680bb9%3A0xef6d5c28eb2762bc!2s525%20Titus%20Ave%2C%20Irondequoit%2C%20NY%2014617!5e0!3m2!1sen!2sus!4v1745872729453!5m2!1sen!2sus"
                             width="100%"
-                            height="60%"
+                            height="100%"
                             style={{ position: 'absolute', top: 0, left: 0, border: 0 }}
                             allowFullScreen=""
                             loading="lazy"
