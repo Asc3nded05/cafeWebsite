@@ -330,148 +330,157 @@ export default function Menu() {
         return (
             <>
                 <NavigationAdmin />
-
-                <h1>Menu</h1>
                 
-                <div className="mb-4">
-                    <h2>Create New Menu Item</h2>
-                    <div className="mb-3">
-                        <label htmlFor="category" className="form-label">Category</label>
-                        <select
-                            className="form-select"
-                            id="category"
-                            value={newItem.category}
-                            onChange={(e) => setNewItem({ ...newItem, category: e.target.value })}
-                        >
-                            {menuItems.map((category, idx) => (
-                                <option key={idx} value={category.category}>{category.category}</option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="title" className="form-label">Title</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            id="title"
-                            value={newItem.title}
-                            onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
-                        />
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="price" className="form-label">Price</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            id="price"
-                            value={newItem.price}
-                            onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
-                        />
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectBagel"
-                            checked={newItem.selectBagel}
-                            onChange={(e) => setNewItem({ ...newItem, selectBagel: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectBagel">Select Bagel</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectButterOrJelly"
-                            checked={newItem.selectButterOrJelly}
-                            onChange={(e) => setNewItem({ ...newItem, selectButterOrJelly: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectButterOrJelly">Select Butter Or Jelly</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectCreamCheese"
-                            checked={newItem.selectCreamCheese}
-                            onChange={(e) => setNewItem({ ...newItem, selectCreamCheese: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectCreamCheese">Select Cream Cheese</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectDrinkFlavor"
-                            checked={newItem.selectDrinkFlavor}
-                            onChange={(e) => setNewItem({ ...newItem, selectDrinkFlavor: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectDrinkFlavor">Select Drink Flavor</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectMultipleBagels"
-                            checked={newItem.selectMultipleBagels}
-                            onChange={(e) => setNewItem({ ...newItem, selectMultipleBagels: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectMultipleBagels">Select Multiple Bagels</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectSandwichToppings"
-                            checked={newItem.selectSandwichToppings}
-                            onChange={(e) => setNewItem({ ...newItem, selectSandwichToppings: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectSandwichToppings">Select Sandwich Toppings</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectSausageBaconOrHam"
-                            checked={newItem.selectSausageBaconOrHam}
-                            onChange={(e) => setNewItem({ ...newItem, selectSausageBaconOrHam: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectSausageBaconOrHam">Select Sausage, Bacon, or Ham</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectSmoothieFlavor"
-                            checked={newItem.selectSmoothieFlavor}
-                            onChange={(e) => setNewItem({ ...newItem, selectSmoothieFlavor: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectSmoothieFlavor">Select Smoothie Flavor</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectToasted"
-                            checked={newItem.selectToasted}
-                            onChange={(e) => setNewItem({ ...newItem, selectToasted: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectToasted">Select Toasted</label>
-                    </div>
-                    <div className="form-check">
-                        <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="selectWrapOrPanini"
-                            checked={newItem.selectWrapOrPanini}
-                            onChange={(e) => setNewItem({ ...newItem, selectWrapOrPanini: e.target.checked })}
-                        />
-                        <label className="form-check-label" htmlFor="selectWrapOrPanini">Select Wrap or Panini</label>
-                    </div>
-                    <Button variant="primary" onClick={handleCreateItem}>
-                        Create Item
-                    </Button>
+                <div className="container mt-5">
+                    <h1 className="text-center">Create New Menu Item</h1>
+                    <form onSubmit={(e) => { e.preventDefault(); handleCreateItem(); }} className="mt-4">
+                        <div className="mb-3">
+                            <label htmlFor="category" className="form-label">Category</label>
+                            <select
+                                className="form-select"
+                                id="category"
+                                value={newItem.category}
+                                onChange={(e) => setNewItem({ ...newItem, category: e.target.value })}
+                                required
+                            >
+                                <option value="" disabled>Select a category</option>
+                                {menuItems.map((category, idx) => (
+                                    <option key={idx} value={category.category}>{category.category}</option>
+                                ))}
+                            </select>
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="title" className="form-label">Title</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                id="title"
+                                value={newItem.title}
+                                onChange={(e) => setNewItem({ ...newItem, title: e.target.value })}
+                                placeholder="Enter the item title"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label htmlFor="price" className="form-label">Price</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                id="price"
+                                value={newItem.price}
+                                onChange={(e) => setNewItem({ ...newItem, price: e.target.value })}
+                                placeholder="Enter the item price"
+                                required
+                            />
+                        </div>
+                        <div className="mb-3">
+                            <label className="form-label">Options</label>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectBagel"
+                                    checked={newItem.selectBagel}
+                                    onChange={(e) => setNewItem({ ...newItem, selectBagel: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectBagel">Select Bagel</label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectButterOrJelly"
+                                    checked={newItem.selectButterOrJelly}
+                                    onChange={(e) => setNewItem({ ...newItem, selectButterOrJelly: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectButterOrJelly">Select Butter Or Jelly</label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectCreamCheese"
+                                    checked={newItem.selectCreamCheese}
+                                    onChange={(e) => setNewItem({ ...newItem, selectCreamCheese: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectCreamCheese">Select Cream Cheese</label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectDrinkFlavor"
+                                    checked={newItem.selectDrinkFlavor}
+                                    onChange={(e) => setNewItem({ ...newItem, selectDrinkFlavor: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectDrinkFlavor">Select Drink Flavor</label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectMultipleBagels"
+                                    checked={newItem.selectMultipleBagels}
+                                    onChange={(e) => setNewItem({ ...newItem, selectMultipleBagels: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectMultipleBagels">Select Multiple Bagels</label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectSandwichToppings"
+                                    checked={newItem.selectSandwichToppings}
+                                    onChange={(e) => setNewItem({ ...newItem, selectSandwichToppings: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectSandwichToppings">Select Sandwich Toppings</label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectSausageBaconOrHam"
+                                    checked={newItem.selectSausageBaconOrHam}
+                                    onChange={(e) => setNewItem({ ...newItem, selectSausageBaconOrHam: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectSausageBaconOrHam">Select Sausage, Bacon, or Ham</label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectSmoothieFlavor"
+                                    checked={newItem.selectSmoothieFlavor}
+                                    onChange={(e) => setNewItem({ ...newItem, selectSmoothieFlavor: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectSmoothieFlavor">Select Smoothie Flavor</label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectToasted"
+                                    checked={newItem.selectToasted}
+                                    onChange={(e) => setNewItem({ ...newItem, selectToasted: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectToasted">Select Toasted</label>
+                            </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectWrapOrPanini"
+                                    checked={newItem.selectWrapOrPanini}
+                                    onChange={(e) => setNewItem({ ...newItem, selectWrapOrPanini: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectWrapOrPanini">Select Wrap or Panini</label>
+                            </div>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Create Item</button>
+                    </form>
                 </div>
+
+                <h1 className="text-center">Menu</h1>
 
                 <Accordion>
                     {menuItems.map((category, idx) => (
