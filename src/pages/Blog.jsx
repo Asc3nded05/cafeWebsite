@@ -15,6 +15,8 @@ export default function Blog() {
     const [content, setContent] = useState('');
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
+    const [likedBy, setLikeBy] = useState([]);
+    const [dislikedBy, setDislikedBy] = useState([]);
     const createdAt = new Date().toLocaleString() + "";
     const updatedAt = new Date().toLocaleString() + "";
 
@@ -59,7 +61,7 @@ export default function Blog() {
     function handleSubmit(e) {
         e.preventDefault();
     
-        const newPost = { title, content, likes, dislikes, createdAt, updatedAt };
+        const newPost = { title, content, likes, dislikes, likedBy, dislikedBy, createdAt, updatedAt };
     
         // Send the new post to the backend
         fetch('http://localhost:5000/api/blog/create', {
@@ -127,7 +129,7 @@ export default function Blog() {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="content" className="form-label">Post Content</label>
-                            <input type="text" className="form-control" id="content" onChange={(e) => updateContent(e.target.value)} placeholder="Enter the post content" required />
+                            <textarea type="text" className="form-control" id="content" onChange={(e) => updateContent(e.target.value)} placeholder="Enter the post content" required />
                         </div>
                         <button type="submit" className="btn btn-primary">Post</button>
                     </form>
