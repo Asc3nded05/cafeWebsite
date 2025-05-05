@@ -4,12 +4,14 @@ import NavigationAdmin from "../components/NavigationAdmin";
 import { Card, Button, Row, Col } from "react-bootstrap";
 
 export default function Orders() {
-    const [orders, setOrders] = useState([]);
+    const [orders, setOrders] = useState([]); // State to hold orders
 
+    // Fetch orders on component mount
     useEffect(() => {
         getOrders();
-    }, []); // Fetch orders on component mount
+    }, []); 
 
+    // Function to fetch orders from the API
     function getOrders() {
         fetch('http://localhost:5000/api/orders', {
             method: 'GET',
@@ -33,6 +35,7 @@ export default function Orders() {
             });
     }
 
+    // Function to mark an order as completed
     function markOrderAsComplete(orderId) {
         fetch(`http://localhost:5000/api/orders/complete/${orderId}`, {
             method: 'PUT',
@@ -54,9 +57,10 @@ export default function Orders() {
             });
     }
 
+    // Filters the orders into one that have been complete and ones that still need to be fulfilled
     const currentOrders = orders.filter((order) => !order.completed);
     const completedOrders = orders.filter((order) => order.completed);
-
+    
     return (
         <>
             <NavigationAdmin />

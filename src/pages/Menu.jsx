@@ -10,18 +10,27 @@ import MenuItem from '../components/MenuItem';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 export default function Menu() {
-    const [menuItems, setMenuItems] = useState([]);
+    const user = localStorage.getItem('user'); // Retrieve user data from local storage
+    const role = user ? JSON.parse(user).role : null; // Gets the role from the user (user or admin)
+
+    const [menuItems, setMenuItems] = useState([]); // State to store menu items
     const [currentOrder, setCurrentOrder] = useState([]); // State to track the current order
     const [showOffcanvas, setShowOffcanvas] = useState(false); // State to control Offcanvas visibility
-    const user = localStorage.getItem('user');
-    const role = user ? JSON.parse(user).role : null;
-    const [totalPrice, setTotalPrice] = useState(0.0);
-    const [comment, setComment] = useState(''); // Add state for comment
+    const [totalPrice, setTotalPrice] = useState(0.0); // State to store the total price of the order
+    const [comment, setComment] = useState(''); // State to store user comments
     const [pickupDateTime, setPickupDateTime] = useState(''); // State for pickup date and time
 
+    // Functions to get the minimum and maximum pickup date and time so that orders can only be placed within the next
+    // two weeks between 6:00 am and 2:00 pm on Tuesday-Sunday. The shop is closed on Mondays and does not accept orders for that day. 
     function getMinPickupDateTime() {
         const now = new Date();
         const today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 6, 0); // 6:00 AM today
+    
+        // If today is Monday, set the minimum pickup date to Tuesday
+        if (today.getDay() === 1) { // 1 = Monday
+            today.setDate(today.getDate() + 1);
+        }
+    
         return now > today ? now.toISOString().slice(0, 16) : today.toISOString().slice(0, 16);
     }
     
@@ -31,6 +40,7 @@ export default function Menu() {
         return maxDate.toISOString().slice(0, 16);
     }
 
+    // Function to fetch the menu from the server
     function getMenu() {
         fetch('http://localhost:5000/api/menu', {
             method: 'GET',
@@ -65,6 +75,9 @@ export default function Menu() {
         setTotalPrice(newTotal);
     }, [currentOrder]);
 
+    // If the user is not logged in, display the menu without the ability to place an order
+    // If the user is logged in as a normal user, display the menu with the ability to place an order
+    // If the user is logged in as an admin, display the menu with the ability to create, update, and delete menu items
     const renderMenuItem = (item, role) => {
         if (role === "user") {
             return (
@@ -109,27 +122,37 @@ export default function Menu() {
         }
     };
 
+    // Function to add an item to the current order
     function addItemToOrder(item) {
         setCurrentOrder((prevOrder) => [...prevOrder, item]);
     }
 
+    // Function to remove an item from the current order by the index
     function removeItemFromOrder(index) {
         setCurrentOrder((prevOrder) => prevOrder.filter((_, i) => i !== index)); // Remove item by index
     }
 
+    // Function to handle order submission
     async function handleSubmitOrder() {
+        // Validate pickup date and time
         if (!pickupDateTime) {
             alert('Please select a valid pickup date and time.');
             return;
         }
-    
+        
+        // Check if the selected date is within the valid range
         const selectedDate = new Date(pickupDateTime);
         const minDate = new Date(getMinPickupDateTime());
         const maxDate = new Date(getMaxPickupDateTime());
     
-        // Check if the selected date is within the valid range
         if (selectedDate < minDate || selectedDate > maxDate) {
             alert('Pickup date and time must be within the next two weeks and between 6:00 AM and 2:00 PM.');
+            return;
+        }
+    
+        // Check if the selected day is Monday
+        if (selectedDate.getDay() === 1) { // 1 = Monday
+            alert('Pickup is not available on Mondays. Please select another day.');
             return;
         }
     
@@ -140,7 +163,8 @@ export default function Menu() {
             alert('Pickup time must be between 6:00 AM and 2:00 PM.');
             return;
         }
-    
+        
+        // Prepares the order data to be sent to the server
         const newOrder = {
             customerName: user ? JSON.parse(user).firstName + ' ' + JSON.parse(user).lastName : "Guest User",
             orderDate: new Date().toISOString(),
@@ -149,7 +173,8 @@ export default function Menu() {
             comment: comment,
             totalAmount: ((totalPrice * 0.08) + totalPrice),
         };
-    
+        
+        // Sends the order data to the server
         try {
             const response = await fetch('http://localhost:5000/api/orders', {
                 method: 'POST',
@@ -161,7 +186,7 @@ export default function Menu() {
     
             if (response.ok) {
                 const data = await response.json();
-                alert(`Order submitted successfully! Order ID: ${data.orderId}`);
+                alert(`Order submitted successfully!`);
                 setCurrentOrder([]); // Clear the current order
                 setTotalPrice(0.0); // Reset the total price
                 setPickupDateTime(''); // Reset the pickup date and time
@@ -176,6 +201,7 @@ export default function Menu() {
         }
     }
 
+    // State to manage the new item creation form
     const [newItem, setNewItem] = useState({
         category: '',
         title: '',
@@ -191,7 +217,8 @@ export default function Menu() {
         selectDrinkFlavor: false,
         selectSmoothieFlavor: false,
     });
-        
+    
+    // Function to handle the creation of a new menu item
     function handleCreateItem() {
         fetch('http://localhost:5000/api/menu/create', {
             method: 'POST',
@@ -213,6 +240,9 @@ export default function Menu() {
             });
     }
 
+    // If the user is not logged in, display the menu wihtout the ability to place an order
+    // If the user is logged in as a normal user, display the menu with the ability to place an order
+    // If the user is logged in as an admin, display the menu with the ability to create, update, and delete menu items
     if (role === "user") {
         return (
             <>
@@ -303,7 +333,7 @@ export default function Menu() {
                                 max={getMaxPickupDateTime()} // Set the maximum valid date and time
                             />
                             <small className="text-muted">
-                                Pickup is available Monday-Friday between 6:00 AM and 2:00 PM within the next two weeks.
+                                Pickup is available Tuesday-Sunday between 6:00 AM and 2:00 PM within the next two weeks.
                             </small>
                         </div>
                         <div>
