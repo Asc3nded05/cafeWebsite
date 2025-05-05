@@ -46,9 +46,7 @@ const readUsers = () => {
 // Endpoint to add a new user
 app.post('/api/users', async (req, res) => {
     const newUser = req.body;
-    console.log(newUser);
     const userEmail = newUser.email.toLowerCase();
-    console.log(userEmail)
     const plainTextPassword = newUser.password;
 
     // Read existing users
@@ -62,13 +60,11 @@ app.post('/api/users', async (req, res) => {
     }
 
     try {
-        //Hash Password
-
+        // Hash Password
         const hashedPassword = await bcrypt.hash(plainTextPassword, SALT_ROUNDS);
         newUser.password = hashedPassword;
 
-
-        //Determines the next available ID
+        // Determine the next available ID
         const nextId = users.reduce((maxId, user) => Math.max(maxId, user.id || 0), 0) + 1;
         newUser.id = nextId; // Assign the new ID to the user
 
@@ -81,7 +77,28 @@ app.post('/api/users', async (req, res) => {
                 return res.status(500).json({ message: 'Error writing to users file' });
             }
 
-            res.status(201).json({ message: 'User added successfully' });
+            // Generate a JWT token for the new user
+            const payload = {
+                userId: newUser.id,
+                email: newUser.email,
+                firstName: newUser.firstName,
+                lastName: newUser.lastName,
+                role: newUser.role,
+            };
+
+            const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
+
+            res.status(201).json({
+                message: 'User added successfully',
+                token,
+                user: {
+                    id: newUser.id,
+                    firstName: newUser.firstName,
+                    lastName: newUser.lastName,
+                    email: newUser.email,
+                    role: newUser.role,
+                },
+            });
         });
     } catch (error) {
         console.error('Error hashing password:', error);

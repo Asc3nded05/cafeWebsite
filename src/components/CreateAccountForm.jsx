@@ -40,19 +40,18 @@ export default function CreateAccountForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
+    
         if (firstName === '' || lastName === '' || email === '' || password === '') {
             alert('Please fill in all fields!');
             return;
         }
-
+    
         const createdAt = new Date().toLocaleString() + "";
         const updatedAt = new Date().toLocaleString() + "";
         const role = "user";
-
+    
         const newUser = { id, firstName, lastName, email, password, role, createdAt, updatedAt };
-
-
+    
         // Send the newUser to the backend
         fetch('http://localhost:5000/api/users', {
             method: 'POST',
@@ -61,15 +60,18 @@ export default function CreateAccountForm() {
             },
             body: JSON.stringify(newUser),
         })
-            .then((response) => {
-                console.log(response)
-                if (response.ok) {
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.token) {
+                    // Store the token and user information in localStorage
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+    
                     alert(`Registration successful for ${firstName} ${lastName}`);
-                    setLoggedin(true);
-                } else if (response.status == 409) {
-                    alert('Email already exists. Go Login')
+                    setLoggedin(true); // Redirect to the homepage
+                } else if (data.message === 'Email address is already registered.') {
+                    alert('Email already exists. Go Login');
                 } else {
-                    console.log(response);
                     alert('Failed to register. Please try again.');
                 }
             })
