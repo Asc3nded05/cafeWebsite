@@ -103,21 +103,23 @@ export default function Blog() {
         return (
             <>
                 <NavigationUser />
-                <h1>Blog</h1>
-                <div className="mt-4">
-                {blogPosts.map((post) => (
-                    <BlogPostUser
-                        key={post.id}
-                        id={post.id}
-                        title={post.title}
-                        date={post.updatedAt}
-                        text={post.content}
-                        initialLikes={post.likes}
-                        initialDislikes={post.dislikes}
-                        likedBy={post.likedBy}
-                        dislikedBy={post.dislikedBy}
-                    />
-                ))}
+                <div className="container mt-5">
+                    <h1 className="text-center">Blog</h1>
+                    <div className="mt-5">
+                        {blogPosts.map((post) => (
+                            <BlogPostUser
+                                key={post.id}
+                                id={post.id}
+                                title={post.title}
+                                date={post.updatedAt}
+                                text={post.content}
+                                initialLikes={post.likes}
+                                initialDislikes={post.dislikes}
+                                likedBy={post.likedBy}
+                                dislikedBy={post.dislikedBy}
+                            />
+                        ))}
+                    </div>
                 </div>
             </>
         );
@@ -125,37 +127,38 @@ export default function Blog() {
         return (
             <>
                 <NavigationAdmin />
-                <h1>Blog</h1>
-
                 <div className="container mt-5">
-                    <h2 className="text-center">Add new blog post</h2>
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-3">
-                            <label htmlFor="Name" className="form-label">Title</label>
-                            <input type="text" className="form-control" id="title" onChange={(e) => updateTitle(e.target.value)} placeholder="Enter a title" required />
-                        </div>
-                        <div className="mb-3">
-                            <label htmlFor="content" className="form-label">Post Content</label>
-                            <textarea type="text" className="form-control" id="content" onChange={(e) => updateContent(e.target.value)} placeholder="Enter the post content" required />
-                        </div>
-                        <button type="submit" className="btn btn-primary">Post</button>
-                    </form>
-                </div>
+                    <h1 className="text-center">Blog</h1>
+                    <div className="container mt-5">
+                        <h2 className="text-center">Add new blog post</h2>
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <label htmlFor="Name" className="form-label">Title</label>
+                                <input type="text" className="form-control" id="title" onChange={(e) => updateTitle(e.target.value)} placeholder="Enter a title" required />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="content" className="form-label">Post Content</label>
+                                <textarea type="text" className="form-control" id="content" onChange={(e) => updateContent(e.target.value)} placeholder="Enter the post content" required />
+                            </div>
+                            <button type="submit" className="btn btn-primary">Post</button>
+                        </form>
+                    </div>
 
-                <h2 className="text-center">Post History</h2>
+                    <h2 className="text-center">Post History</h2>
 
-                <div className="mt-4">
-                    {blogPosts.map((post) => (
-                        <BlogPostAdmin
-                            key={post.id}
-                            id={post.id}
-                            title={post.title}
-                            date={post.updatedAt}
-                            text={post.content}
-                            likes={post.likes}
-                            dislikes={post.dislikes}
-                        />
-                    ))}
+                    <div className="mt-4">
+                        {blogPosts.map((post) => (
+                            <BlogPostAdmin
+                                key={post.id}
+                                id={post.id}
+                                title={post.title}
+                                date={post.updatedAt}
+                                text={post.content}
+                                likes={post.likes}
+                                dislikes={post.dislikes}
+                            />
+                        ))}
+                    </div>
                 </div>
             </>
         );
@@ -163,19 +166,21 @@ export default function Blog() {
         return (
             <>
                 <Navigation />
-                <h1>Blog</h1>
-                <div className="mt-4">
-                    {blogPosts.map((post) => (
-                        <BlogPost
-                            key={post.id}
-                            id={post.id}
-                            title={post.title}
-                            date={post.updatedAt}
-                            text={post.content}
-                            initialLikes={post.likes}
-                            initialDislikes={post.dislikes}
-                        />
-                    ))}
+                <div className="container mt-5">
+                    <h1 className="text-center">Blog</h1>
+                    <div className="mt-4">
+                        {blogPosts.map((post) => (
+                            <BlogPost
+                                key={post.id}
+                                id={post.id}
+                                title={post.title}
+                                date={post.updatedAt}
+                                text={post.content}
+                                initialLikes={post.likes}
+                                initialDislikes={post.dislikes}
+                            />
+                        ))}
+                    </div>
                 </div>
             </>
         );

@@ -25,6 +25,10 @@ footer {
   box-sizing: border-box; /* Ensures padding and border are included in the element's total width and height */
 }
 
+.light-green {
+  background-color: #a8cd04;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

@@ -2,18 +2,18 @@ import { Link } from "react-router-dom";
 
 export default function Navigation() {
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+		<nav className="navbar navbar-expand-lg navbar-light light-green fixed-top">
 			<div className="container-fluid">
 				{/* Logo and Title */}
 				<Link className="navbar-brand" to="/">
 					<img
-						src="src\assets\BagelLogo.png"
+						src="src\assets\BagelLogoRectangular.png"
 						alt="Logo"
-						width="30"
+						width="auto"
 						height="30"
 						className="d-inline-block align-text-top"
 					/>
-					Bagels Etc.
+					&nbsp; Bagels Etc.
 				</Link>
 
 				{/* Toggle Button for Mobile View */}
