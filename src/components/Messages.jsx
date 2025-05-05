@@ -34,18 +34,21 @@ export default function Messages() {
     }, []);
 
     return <>
-        <div className="mt-4">
-            {messages.map((message) => (
-                <MessageCard
-                    key={message.id}
-                    id={message.id}
-                    title={message.title}
-                    senderName={message.sender}
-                    email={message.email}
-                    text={message.message}
-                    date={message.sentAt}
-                />
-            ))}
+        <div className="container mt-5">
+            <h1 className="text-center">Messages</h1>
+            <div className="mt-4">
+                {messages.map((message) => (
+                    <MessageCard
+                        key={message.id}
+                        id={message.id}
+                        title={message.title}
+                        senderName={message.sender}
+                        email={message.email}
+                        text={message.message}
+                        date={message.sentAt}
+                    />
+                ))}
+            </div>
         </div>
     </>
 }

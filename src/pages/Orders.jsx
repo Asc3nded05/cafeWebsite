@@ -64,7 +64,8 @@ export default function Orders() {
     return (
         <>
             <NavigationAdmin />
-            <h1>Orders</h1>
+            <div className="container mt-5">
+            <h1 className="text-center">Orders</h1>
 
             <h2>Current Orders</h2>
             <Row xs={1} md={2} className="g-4">
@@ -81,8 +82,8 @@ export default function Orders() {
                                         <strong>Order Date:</strong> {new Date(order.orderDate).toLocaleString()}
                                     </Card.Text>
                                     <Card.Text>
-                                      <strong>Pickup Date and Time:</strong> {new Date(order.pickupDateTime).toLocaleString()}
-                                  </Card.Text>
+                                    <strong>Pickup Date and Time:</strong> {new Date(order.pickupDateTime).toLocaleString()}
+                                </Card.Text>
                                     <Card.Text>
                                         <strong>Items:</strong>
                                     </Card.Text>
@@ -149,6 +150,7 @@ export default function Orders() {
                     <p>No completed orders found.</p>
                 )}
             </Row>
+            </div>
         </>
     );
 }

@@ -11,7 +11,7 @@ export default function NavigationAdmin() {
 	const lastName = user ? JSON.parse(user).lastName : null;
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+		<nav className="navbar navbar-expand-lg navbar-light light-green fixed-top">
 			<div className="container-fluid">
 				{/* Logo and Title */}
 				<Link className="navbar-brand" to="/">
@@ -64,11 +64,6 @@ export default function NavigationAdmin() {
 						<li className="nav-item">
 							<Link className="nav-link" to="/orders">
 								Orders
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link" to="/stats">
-								Stats
 							</Link>
 						</li>
 						{/* Login Button */}

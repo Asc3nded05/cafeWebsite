@@ -246,117 +246,121 @@ export default function Menu() {
     if (role === "user") {
         return (
             <>
-                <NavigationUser />
+                <div className="container mt-5">
+                    <NavigationUser />
 
-                <h1>Menu</h1>
-                <Accordion>
-                    {menuItems.map((category, idx) => (
-                        <Accordion.Item eventKey={idx.toString()} key={idx}>
-                            <Accordion.Header>{category.category}</Accordion.Header>
-                            <Accordion.Body>
-                                <p>{category.description}</p>
-                                <div className="d-flex justify-content-center">
-                                    <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4">
-                                        {category.items.map((item, itemIdx) => (
-                                            <Col key={itemIdx}>
-                                                {renderMenuItem(item, role)}
-                                            </Col>
-                                        ))}
-                                    </Row>
+                    <h1 className="text-center">Menu</h1>
+                    <Accordion>
+                        {menuItems.map((category, idx) => (
+                            <Accordion.Item eventKey={idx.toString()} key={idx}>
+                                <Accordion.Header>{category.category}</Accordion.Header>
+                                <Accordion.Body>
+                                    <p>{category.description}</p>
+                                    <div className="d-flex justify-content-center">
+                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={4} className="g-4">
+                                            {category.items.map((item, itemIdx) => (
+                                                <Col key={itemIdx}>
+                                                    {renderMenuItem(item, role)}
+                                                </Col>
+                                            ))}
+                                        </Row>
+                                    </div>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        ))}
+                    </Accordion>
+
+                    {/* Button to open the Offcanvas */}
+                    <Button
+                        variant="primary"
+                        className="mt-4"
+                        onClick={() => setShowOffcanvas(true)}
+                    >
+                        View Order ({currentOrder.length} items) - Total: ${((totalPrice *.08) + totalPrice).toFixed(2)}
+                    </Button>
+
+                    {/* Offcanvas for Order Summary */}
+                    <Offcanvas show={showOffcanvas} onHide={() => setShowOffcanvas(false)} placement="end">
+                        <Offcanvas.Header closeButton>
+                            <Offcanvas.Title>Your Order</Offcanvas.Title>
+                        </Offcanvas.Header>
+                        <Offcanvas.Body>
+                            {currentOrder.length === 0 ? (
+                                <p>Your order is empty.</p>
+                            ) : (
+                                <ListGroup>
+                                    {currentOrder.map((item, index) => (
+                                        <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <strong>{item.itemName}</strong> - ${parseFloat(item.price).toFixed(2)}
+                                                {item.options && Object.keys(item.options).length > 0 && (
+                                                    <div>
+                                                        Options:
+                                                        {Object.entries(item.options).map(([optionName, optionValue]) => (
+                                                            <div key={optionName}>
+                                                                {typeof optionValue === 'boolean' ? (optionValue ? 'Toasted' : 'Untoasted') : optionValue.toString()}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            
+                                            </div>
+                                            <Button
+                                                variant="danger"
+                                                size="sm"
+                                                onClick={() => removeItemFromOrder(index)}
+                                            >
+                                                Remove
+                                            </Button>
+                                        </ListGroup.Item>
+                                    ))}
+                                </ListGroup>
+                            )}
+                        </Offcanvas.Body>
+                        
+                        <Offcanvas.Body>
+                            <div>
+                                <p>Subtotal: ${totalPrice.toFixed(2)}</p>
+                                <p>Tax: ${(totalPrice*.08).toFixed(2)}</p>
+                                <p><strong>Total: ${((totalPrice*.08) + (totalPrice)).toFixed(2)}</strong></p>
+                                <div>
+                                    <label htmlFor="pickupDateTime" className="form-label">Pickup Date and Time:</label>
+                                    <input
+                                        type="datetime-local"
+                                        className="form-control"
+                                        id="pickupDateTime"
+                                        value={pickupDateTime}
+                                        onChange={(e) => setPickupDateTime(e.target.value)}
+                                        min={getMinPickupDateTime()} // Set the minimum valid date and time
+                                        max={getMaxPickupDateTime()} // Set the maximum valid date and time
+                                    />
+                                    <small className="text-muted">
+                                        Pickup is available Tuesday-Sunday between 6:00 AM and 2:00 PM within the next two weeks.
+                                    </small>
                                 </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    ))}
-                </Accordion>
-
-                {/* Button to open the Offcanvas */}
-                <Button
-                    variant="primary"
-                    className="mt-4"
-                    onClick={() => setShowOffcanvas(true)}
-                >
-                    View Order ({currentOrder.length} items) - Total: ${((totalPrice *.08) + totalPrice).toFixed(2)}
-                </Button>
-
-                {/* Offcanvas for Order Summary */}
-                <Offcanvas show={showOffcanvas} onHide={() => setShowOffcanvas(false)} placement="end">
-                    <Offcanvas.Header closeButton>
-                        <Offcanvas.Title>Your Order</Offcanvas.Title>
-                    </Offcanvas.Header>
-                    <Offcanvas.Body>
-                        {currentOrder.length === 0 ? (
-                            <p>Your order is empty.</p>
-                        ) : (
-                            <ListGroup>
-                                {currentOrder.map((item, index) => (
-                                    <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <strong>{item.itemName}</strong> - ${parseFloat(item.price).toFixed(2)}
-                                            {item.options && Object.keys(item.options).length > 0 && (
-                                                <div>
-                                                    Options:
-                                                    {Object.entries(item.options).map(([optionName, optionValue]) => (
-                                                        <div key={optionName}>
-                                                            {typeof optionValue === 'boolean' ? (optionValue ? 'Toasted' : 'Untoasted') : optionValue.toString()}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                           
-                                        </div>
-                                        <Button
-                                            variant="danger"
-                                            size="sm"
-                                            onClick={() => removeItemFromOrder(index)}
-                                        >
-                                            Remove
-                                        </Button>
-                                    </ListGroup.Item>
-                                ))}
-                            </ListGroup>
-                        )}
-                    </Offcanvas.Body>
-
-                    <div>
-                        <p>Subtotal: ${totalPrice.toFixed(2)}</p>
-                        <p>Tax: ${(totalPrice*.08).toFixed(2)}</p>
-                        <p><strong>Total: ${((totalPrice*.08) + (totalPrice)).toFixed(2)}</strong></p>
-                        <div>
-                            <label htmlFor="pickupDateTime" className="form-label">Pickup Date and Time:</label>
-                            <input
-                                type="datetime-local"
-                                className="form-control"
-                                id="pickupDateTime"
-                                value={pickupDateTime}
-                                onChange={(e) => setPickupDateTime(e.target.value)}
-                                min={getMinPickupDateTime()} // Set the minimum valid date and time
-                                max={getMaxPickupDateTime()} // Set the maximum valid date and time
-                            />
-                            <small className="text-muted">
-                                Pickup is available Tuesday-Sunday between 6:00 AM and 2:00 PM within the next two weeks.
-                            </small>
-                        </div>
-                        <div>
-                            <label htmlFor="comment" className="form-label">Add a comment:</label>
-                            <textarea
-                                className="form-control"
-                                id="comment"
-                                rows="3"
-                                value={comment}
-                                onChange={(e) => setComment(e.target.value)}
-                            ></textarea>
-                        </div>
-                        <div className="d-flex justify-content-end">
-                            <Button
-                                variant="success"
-                                onClick={handleSubmitOrder}
-                                disabled={currentOrder.length === 0}
-                            >
-                                Submit Order
-                            </Button>
-                        </div>
-                    </div>
-                </Offcanvas>
+                                <div>
+                                    <label htmlFor="comment" className="form-label">Add a comment:</label>
+                                    <textarea
+                                        className="form-control"
+                                        id="comment"
+                                        rows="3"
+                                        value={comment}
+                                        onChange={(e) => setComment(e.target.value)}
+                                    ></textarea>
+                                </div>
+                                <div className="d-flex justify-content-end">
+                                    <Button
+                                        variant="success"
+                                        onClick={handleSubmitOrder}
+                                        disabled={currentOrder.length === 0}
+                                    >
+                                        Submit Order
+                                    </Button>
+                                </div>
+                            </div>
+                        </Offcanvas.Body>
+                    </Offcanvas>
+                </div>
             </>
         );
     } else if (role === "admin") {
@@ -512,55 +516,59 @@ export default function Menu() {
                         <button type="submit" className="btn btn-primary">Create Item</button>
                     </form>
                 </div>
+                
+                <div className="container mt-5">
+                    <h1 className="text-center">Menu</h1>
 
-                <h1 className="text-center">Menu</h1>
-
-                <Accordion>
-                    {menuItems.map((category, idx) => (
-                        <Accordion.Item eventKey={idx.toString()} key={idx}>
-                            <Accordion.Header>{category.category}</Accordion.Header>
-                            <Accordion.Body>
-                                <p>{category.description}</p>
-                                <div className="d-flex justify-content-center">
-                                    <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4">
-                                        {category.items.map((item, itemIdx) => (
-                                            <Col key={itemIdx}>
-                                                {renderMenuItem(item, role)}
-                                            </Col>
-                                        ))}
-                                    </Row>
-                                </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    ))}
-                </Accordion>
+                    <Accordion>
+                        {menuItems.map((category, idx) => (
+                            <Accordion.Item eventKey={idx.toString()} key={idx}>
+                                <Accordion.Header>{category.category}</Accordion.Header>
+                                <Accordion.Body>
+                                    <p>{category.description}</p>
+                                    <div className="d-flex justify-content-center">
+                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={4} className="g-4">
+                                            {category.items.map((item, itemIdx) => (
+                                                <Col key={itemIdx}>
+                                                    {renderMenuItem(item, role)}
+                                                </Col>
+                                            ))}
+                                        </Row>
+                                    </div>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        ))}
+                    </Accordion>
+                </div>
             </>
         );
     } else {
         return (
             <>
-                <Navigation />
+                <div className="container mt-5">
+                    <Navigation />
 
-                <h1>Menu</h1>
-                <Accordion>
-                    {menuItems.map((category, idx) => (
-                        <Accordion.Item eventKey={idx.toString()} key={idx}>
-                            <Accordion.Header>{category.category}</Accordion.Header>
-                            <Accordion.Body>
-                                <p>{category.description}</p>
-                                <div className="d-flex justify-content-center">
-                                    <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4">
-                                        {category.items.map((item, itemIdx) => (
-                                            <Col key={itemIdx}>
-                                                {renderMenuItem(item, role)}
-                                            </Col>
-                                        ))}
-                                    </Row>
-                                </div>
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    ))}
-                </Accordion>
+                    <h1 className="text-center">Menu</h1>
+                    <Accordion>
+                        {menuItems.map((category, idx) => (
+                            <Accordion.Item eventKey={idx.toString()} key={idx}>
+                                <Accordion.Header>{category.category}</Accordion.Header>
+                                <Accordion.Body>
+                                    <p>{category.description}</p>
+                                    <div className="d-flex justify-content-center">
+                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={4} className="g-4">
+                                            {category.items.map((item, itemIdx) => (
+                                                <Col key={itemIdx}>
+                                                    {renderMenuItem(item, role)}
+                                                </Col>
+                                            ))}
+                                        </Row>
+                                    </div>
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        ))}
+                    </Accordion>
+                </div>
             </>
         );
     }
