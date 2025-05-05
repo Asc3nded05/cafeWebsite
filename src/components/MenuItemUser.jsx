@@ -30,9 +30,26 @@ export default function MenuItemUser({
     const [comment, setComment] = useState("");
 
     function handleShowModal() {
-        setShowModal(true); // Show the modal
+        // Check if the item has any options
+        const hasOptions =
+            selectBagel ||
+            selectButterOrJelly ||
+            selectToasted ||
+            selectCreamCheese ||
+            selectSandwichToppings ||
+            selectMultipleBagels ||
+            selectSausageBaconOrHam ||
+            selectDrinkFlavor ||
+            selectSmoothieFlavor ||
+            selectWrapOrPanini;
+    
+        if (hasOptions) {
+            setShowModal(true); // Show the modal if options are available
+        } else {
+            handleAddItem(); // Add the item directly if no options are available
+        }
     }
-
+    
     function handleCloseModal() {
         setShowModal(false); // Hide the modal
     }

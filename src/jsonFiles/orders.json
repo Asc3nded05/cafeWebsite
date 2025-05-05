@@ -67,6 +67,125 @@
     ],
     "comment": "",
     "totalAmount": 1.35,
-    "orderId": 3
+    "orderId": 3,
+    "completed": true
+  },
+  {
+    "customerName": "Guest User",
+    "orderDate": "2025-05-05T02:11:05.596Z",
+    "pickupDateTime": "2025-05-04T07:00",
+    "items": [
+      {
+        "itemName": "B.L.T.",
+        "price": 6.5,
+        "options": {
+          "selectBagel": "Pumpernickel",
+          "selectToasted": true,
+          "selectSandwichToppings": [
+            "Lettuce",
+            "Tomato"
+          ]
+        }
+      },
+      {
+        "itemName": "Bagel with Cream Cheese",
+        "price": 2.95,
+        "options": {
+          "selectBagel": "Sesame",
+          "selectToasted": true,
+          "selectCreamCheese": "Onion and Chive"
+        }
+      },
+      {
+        "itemName": "Vegetable",
+        "price": 3.75,
+        "options": {}
+      }
+    ],
+    "comment": "",
+    "totalAmount": 14.256,
+    "orderId": 4
+  },
+  {
+    "customerName": "Bob Jones",
+    "orderDate": "2025-05-05T02:20:12.430Z",
+    "pickupDateTime": "2025-05-04T14:34",
+    "items": [
+      {
+        "itemName": "Bagel",
+        "price": 1.25,
+        "options": {
+          "selectBagel": "Jalapeno",
+          "selectToasted": true
+        }
+      },
+      {
+        "itemName": "Bacon and Scallion",
+        "price": 3.75,
+        "options": {}
+      },
+      {
+        "itemName": "Turkey",
+        "price": 5.95,
+        "options": {
+          "selectBagel": "Onion",
+          "selectToasted": false,
+          "selectSandwichToppings": [
+            "Sprouts",
+            "Cheese",
+            "Mayo",
+            "Lettuce"
+          ]
+        }
+      }
+    ],
+    "comment": "",
+    "totalAmount": 11.825999999999999,
+    "orderId": 5,
+    "completed": true
+  },
+  {
+    "customerName": "Bob Jones",
+    "orderDate": "2025-05-05T02:24:53.984Z",
+    "pickupDateTime": "2025-05-12T22:30",
+    "items": [
+      {
+        "itemName": "Bacon and Scallion",
+        "price": 3.75,
+        "options": {}
+      },
+      {
+        "itemName": "Onion and Chive",
+        "price": 3.75,
+        "options": {}
+      }
+    ],
+    "comment": "",
+    "totalAmount": 8.1,
+    "orderId": 6
+  },
+  {
+    "customerName": "Bob Jones",
+    "orderDate": "2025-05-05T02:29:28.832Z",
+    "pickupDateTime": "2025-05-07T09:00",
+    "items": [
+      {
+        "itemName": "1/2 Dozen Bagels",
+        "price": 7.25,
+        "options": {
+          "selectMultipleBagels": {
+            "Plain": 1,
+            "Sesame": 1,
+            "Jalapeno": 1,
+            "Salt": 1,
+            "Onion": 1,
+            "Poppy": 1
+          }
+        }
+      }
+    ],
+    "comment": "comments................................",
+    "totalAmount": 7.83,
+    "orderId": 7
   }
 ]

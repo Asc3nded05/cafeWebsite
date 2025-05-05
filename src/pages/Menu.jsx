@@ -16,6 +16,19 @@ export default function Menu() {
     const role = user ? JSON.parse(user).role : null;
     const [totalPrice, setTotalPrice] = useState(0.0);
     const [comment, setComment] = useState(''); // Add state for comment
+    const [pickupDateTime, setPickupDateTime] = useState(''); // State for pickup date and time
+
+    function getMinPickupDateTime() {
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 6, 0); // 6:00 AM today
+        return now > today ? now.toISOString().slice(0, 16) : today.toISOString().slice(0, 16);
+    }
+    
+    function getMaxPickupDateTime() {
+        const now = new Date();
+        const maxDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 14, 14, 0); // 2:00 PM two weeks from today
+        return maxDate.toISOString().slice(0, 16);
+    }
 
     function getMenu() {
         fetch('http://localhost:5000/api/menu', {
@@ -104,14 +117,38 @@ export default function Menu() {
     }
 
     async function handleSubmitOrder() {
+        if (!pickupDateTime) {
+            alert('Please select a valid pickup date and time.');
+            return;
+        }
+    
+        const selectedDate = new Date(pickupDateTime);
+        const minDate = new Date(getMinPickupDateTime());
+        const maxDate = new Date(getMaxPickupDateTime());
+    
+        // Check if the selected date is within the valid range
+        if (selectedDate < minDate || selectedDate > maxDate) {
+            alert('Pickup date and time must be within the next two weeks and between 6:00 AM and 2:00 PM.');
+            return;
+        }
+    
+        // Check if the selected time is between 6:00 AM and 2:00 PM
+        const selectedHours = selectedDate.getHours();
+        const selectedMinutes = selectedDate.getMinutes();
+        if (selectedHours < 6 || (selectedHours === 14 && selectedMinutes > 0) || selectedHours > 14) {
+            alert('Pickup time must be between 6:00 AM and 2:00 PM.');
+            return;
+        }
+    
         const newOrder = {
-            customerName: "Guest User", // Replace with logged-in user's name if available
+            customerName: user ? JSON.parse(user).firstName + ' ' + JSON.parse(user).lastName : "Guest User",
             orderDate: new Date().toISOString(),
-            items: currentOrder.map(item => ({ itemName: item.itemName, price: item.price, options: item.options })), // Send relevant item details
+            pickupDateTime: pickupDateTime,
+            items: currentOrder.map(item => ({ itemName: item.itemName, price: item.price, options: item.options })),
             comment: comment,
-            totalAmount: ((totalPrice *.08) + (totalPrice)),
+            totalAmount: ((totalPrice * 0.08) + totalPrice),
         };
-
+    
         try {
             const response = await fetch('http://localhost:5000/api/orders', {
                 method: 'POST',
@@ -120,12 +157,13 @@ export default function Menu() {
                 },
                 body: JSON.stringify(newOrder),
             });
-
+    
             if (response.ok) {
                 const data = await response.json();
                 alert(`Order submitted successfully! Order ID: ${data.orderId}`);
                 setCurrentOrder([]); // Clear the current order
                 setTotalPrice(0.0); // Reset the total price
+                setPickupDateTime(''); // Reset the pickup date and time
                 setShowOffcanvas(false); // Close the Offcanvas
                 setComment(''); // Clear the comment
             } else {
@@ -250,6 +288,21 @@ export default function Menu() {
                         <p>Subtotal: ${totalPrice.toFixed(2)}</p>
                         <p>Tax: ${(totalPrice*.08).toFixed(2)}</p>
                         <p><strong>Total: ${((totalPrice*.08) + (totalPrice)).toFixed(2)}</strong></p>
+                        <div>
+                            <label htmlFor="pickupDateTime" className="form-label">Pickup Date and Time:</label>
+                            <input
+                                type="datetime-local"
+                                className="form-control"
+                                id="pickupDateTime"
+                                value={pickupDateTime}
+                                onChange={(e) => setPickupDateTime(e.target.value)}
+                                min={getMinPickupDateTime()} // Set the minimum valid date and time
+                                max={getMaxPickupDateTime()} // Set the maximum valid date and time
+                            />
+                            <small className="text-muted">
+                                Pickup is available Monday-Friday between 6:00 AM and 2:00 PM within the next two weeks.
+                            </small>
+                        </div>
                         <div>
                             <label htmlFor="comment" className="form-label">Add a comment:</label>
                             <textarea

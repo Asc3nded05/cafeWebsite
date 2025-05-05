@@ -76,6 +76,9 @@ export default function Orders() {
                                         <strong>Order Date:</strong> {new Date(order.orderDate).toLocaleString()}
                                     </Card.Text>
                                     <Card.Text>
+                                      <strong>Pickup Date and Time:</strong> {new Date(order.pickupDateTime).toLocaleString()}
+                                  </Card.Text>
+                                    <Card.Text>
                                         <strong>Items:</strong>
                                     </Card.Text>
                                     <ul>
