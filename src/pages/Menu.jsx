@@ -224,13 +224,15 @@ export default function Menu() {
                             <Accordion.Header>{category.category}</Accordion.Header>
                             <Accordion.Body>
                                 <p>{category.description}</p>
-                                <Row xs={1} md={4} className="g-4">
-                                    {category.items.map((item, itemIdx) => (
-                                        <Col key={itemIdx}>
-                                            {renderMenuItem(item, role)}
-                                        </Col>
-                                    ))}
-                                </Row>
+                                <div className="d-flex justify-content-center">
+                                    <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4">
+                                        {category.items.map((item, itemIdx) => (
+                                            <Col key={itemIdx}>
+                                                {renderMenuItem(item, role)}
+                                            </Col>
+                                        ))}
+                                    </Row>
+                                </div>
                             </Accordion.Body>
                         </Accordion.Item>
                     ))}
@@ -488,13 +490,15 @@ export default function Menu() {
                             <Accordion.Header>{category.category}</Accordion.Header>
                             <Accordion.Body>
                                 <p>{category.description}</p>
-                                <Row xs={1} md={4} className="g-4">
-                                    {category.items.map((item, itemIdx) => (
-                                        <Col key={itemIdx}>
-                                            {renderMenuItem(item, role)}
-                                        </Col>
-                                    ))}
-                                </Row>
+                                <div className="d-flex justify-content-center">
+                                    <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4">
+                                        {category.items.map((item, itemIdx) => (
+                                            <Col key={itemIdx}>
+                                                {renderMenuItem(item, role)}
+                                            </Col>
+                                        ))}
+                                    </Row>
+                                </div>
                             </Accordion.Body>
                         </Accordion.Item>
                     ))}
@@ -513,13 +517,15 @@ export default function Menu() {
                             <Accordion.Header>{category.category}</Accordion.Header>
                             <Accordion.Body>
                                 <p>{category.description}</p>
-                                <Row xs={1} md={4} className="g-4">
-                                    {category.items.map((item, itemIdx) => (
-                                        <Col key={itemIdx}>
-                                            {renderMenuItem(item, role)}
-                                        </Col>
-                                    ))}
-                                </Row>
+                                <div className="d-flex justify-content-center">
+                                    <Row xs={1} sm={2} md={2} lg={3} xl={4} className="g-4">
+                                        {category.items.map((item, itemIdx) => (
+                                            <Col key={itemIdx}>
+                                                {renderMenuItem(item, role)}
+                                            </Col>
+                                        ))}
+                                    </Row>
+                                </div>
                             </Accordion.Body>
                         </Accordion.Item>
                     ))}
