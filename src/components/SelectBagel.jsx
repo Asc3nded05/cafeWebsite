@@ -16,6 +16,7 @@ function SelectBagel({ onChange }) {
 	return (
 		<div>
 			<h5>Select Bagel Flavor</h5>
+			{/* bagel options */}
 			<div className="bagel-options">
 				{[
 					"Plain",
@@ -34,6 +35,7 @@ function SelectBagel({ onChange }) {
 					"Oat with Bran",
 					"Pumpernickel"
 				].map((option, index) => (
+					// maps bagel options
 					<div key={index} className="form-check">
 						<label className="form-check-label" htmlFor={`bagel${index}`}>
 							{option}

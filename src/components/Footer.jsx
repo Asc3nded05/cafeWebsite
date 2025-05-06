@@ -2,7 +2,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        // Replace website link with our own
+        // footer of all pages
 
         <footer className="footer bg-body-tertiary text-center text-lg-start">
             <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>

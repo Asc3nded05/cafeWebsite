@@ -17,10 +17,10 @@ export default function ContactFormUser({ firstName, lastName, email }) { // Des
     
         const newMessage = {
             title: title,
-            sender: `${firstName} ${lastName}`, // Properly format the sender
-            email: email, // Include the email
+            sender: `${firstName} ${lastName}`, // sets the sender based on login info
+            email: email, // Includes the email
             message: messageContent,
-            sentAt: new Date().toLocaleString(),
+            sentAt: new Date().toLocaleString(), //sets the date sent
         };
     
         // Send the new post to the backend

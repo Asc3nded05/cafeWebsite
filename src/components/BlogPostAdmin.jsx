@@ -14,7 +14,10 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
         setShowModal(false); // Hide the modal
     }
 
+
+    //Function to update a post
     function handleUpdatePost() {
+        // Prepares the data for the updated post
         const updatedPost = {
             id: id,
             title: editedTitle,
@@ -22,6 +25,8 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
             updatedAt: new Date().toLocaleString() + "",
         };
 
+
+        // Updates the blog post by sending the new data to the backend
         fetch(`http://localhost:5000/api/blog/update/${id}`, {
             method: 'PUT',
             headers: {
@@ -43,7 +48,9 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
             });
     }
 
+    // Function to delete a blog post
     function deletePost() {
+        // Deletes the blog post from the backend based on its id
         fetch(`http://localhost:5000/api/blog/delete/${id}`, {
             method: 'DELETE',
             headers: {
@@ -65,6 +72,7 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
 
     return (
         <>
+        {/* Card for a blog post */}
             <Card>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>

@@ -51,6 +51,7 @@ export default function SelectMultipleBagels({ title, onChange }) {
             <h5>Select Bagel Flavors</h5>
             <div className="bagel-options">
                 {bagelOptions.map((option, index) => (
+                    //maps bagel options
                     <div key={index} className="form-group mb-2">
                         <label htmlFor={`bagel${index}`} className="form-label">
                             {option}

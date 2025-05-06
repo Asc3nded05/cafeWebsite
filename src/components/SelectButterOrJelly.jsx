@@ -7,10 +7,12 @@ export default function SelectButterOrJelly({ onChange }) {
         <div>
             <h5>Select Butter or Jelly</h5>
             <div className="topping-options">
+                {/* butter/jelly options */}
                 {[
                     "Butter",
                     "Jelly"
                 ].map((option, index) => (
+                    //mps butter/jelly
                     <div key={index} className="form-check">
                         <label className="form-check-label" htmlFor={`topping${index}`}>
                             {option}

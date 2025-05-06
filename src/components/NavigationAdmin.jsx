@@ -66,7 +66,7 @@ export default function NavigationAdmin() {
 								Orders
 							</Link>
 						</li>
-						{/* Login Button */}
+						{/* displays name and role */}
 						<li className="nav-item">
 							<Link className="btn btn-outline-primary me-2">
 								{firstName} {lastName} (Admin)

@@ -20,6 +20,7 @@ export default function SelectSandwichToppings({ onChange }) {
 	return (
 		<div>
 		<h5>Select Toppings</h5>
+		{/*topping options*/}
 		<div className="topping-options">
 			{[
 			"Lettuce",
@@ -32,6 +33,7 @@ export default function SelectSandwichToppings({ onChange }) {
 			"Roasted Red Peppers",
 			"Bannana Peppers",
 			].map((option, index) => (
+				//maps toppings
 			<div key={index} className="form-check">
 				<label className="form-check-label" htmlFor={`topping${index}`}>
 				{option}
