@@ -21,19 +21,19 @@ export default function Contact() {
     if (role == "user"){
         return <>
             <NavigationUser />
-            
+            {/*Contact form user component */}
             <ContactFormUser firstName={senderFirstName} lastName={senderLastName} email={senderEmail} />
         </>   
     } else if (role == "admin"){
             return<>
             <NavigationAdmin/>
-            
+            {/*Views Messages */}
             <Messages />
             </>
     } else{
         return <>
             <Navigation />
-            
+            {/*Contact for guest */}
             <ContactForm />
         </>   
     }

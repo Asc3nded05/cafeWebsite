@@ -66,20 +66,25 @@ export default function ContactForm() {
             <form onSubmit={handleSubmit} className="mt-4">
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
+                    {/*Updates the title of the form onChange */}
                     <input type="text" className="form-control" id="title" onChange={(e) => updateTitle(e.target.value)} placeholder="Enter a title" required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
+                    {/*Updates the Sender of the form onChange */}
                     <input type="text" className="form-control" id="name" onChange={(e) => updateSender(e.target.value)} placeholder="Enter your name" required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
+                    {/*Updates the Email of the form onChange */}
                     <input type="email" className="form-control" id="email" onChange={(e) => updateEmail(e.target.value)} placeholder="Enter your email" required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="message" className="form-label">Message</label>
+                    {/*Updates the Email of the form onChange */}
                     <textarea className="form-control" id="message" onChange={(e) => updateMessage(e.target.value)} placeholder="Enter your message" required />
                 </div>
+                {/*Submit Button */}
                 <button type="submit" className="btn btn-primary">Send</button>
             </form>
         </div>

@@ -104,7 +104,8 @@
     ],
     "comment": "",
     "totalAmount": 14.256,
-    "orderId": 4
+    "orderId": 4,
+    "completed": true
   },
   {
     "customerName": "Bob Jones",
@@ -186,7 +187,8 @@
     ],
     "comment": "comments................................",
     "totalAmount": 7.83,
-    "orderId": 7
+    "orderId": 7,
+    "completed": true
   },
   {
     "customerName": "Bob Jones",
@@ -258,7 +260,8 @@
     ],
     "comment": "Comment",
     "totalAmount": 13.716,
-    "orderId": 10
+    "orderId": 10,
+    "completed": true
   },
   {
     "customerName": "Bob Jones",
@@ -284,7 +287,8 @@
     ],
     "comment": "",
     "totalAmount": 3.51,
-    "orderId": 11
+    "orderId": 11,
+    "completed": true
   },
   {
     "customerName": "Bob Jones",
@@ -293,7 +297,7 @@
     "items": [
       {
         "itemName": "Bagel",
-        "price": "1.25",
+        "price": 1.25,
         "options": {
           "selectBagel": "Blueberry",
           "selectToasted": true
@@ -301,7 +305,7 @@
       },
       {
         "itemName": "Bagel with Cream Cheese",
-        "price": "2.95",
+        "price": 2.95,
         "options": {
           "selectBagel": "Pumpernickel",
           "selectToasted": true,
@@ -310,12 +314,12 @@
       },
       {
         "itemName": "Bacon and Scallion",
-        "price": "3.75",
+        "price": 3.75,
         "options": {}
       },
       {
         "itemName": "Egg and Cheese with Bacon, Sausage, or Ham",
-        "price": "4.25",
+        "price": 4.25,
         "options": {
           "selectBagel": "Poppy",
           "selectSausageBaconOrHam": "Bacon"
@@ -323,7 +327,7 @@
       },
       {
         "itemName": "B.L.T.",
-        "price": "6.50",
+        "price": 6.5,
         "options": {
           "selectBagel": "Spinach",
           "selectToasted": true,
@@ -335,24 +339,85 @@
       },
       {
         "itemName": "Pizza Bagel with Pepperoni",
-        "price": "2.10",
+        "price": 2.1,
         "options": {}
       },
       {
         "itemName": "Hot or Iced Latte",
-        "price": "3.65",
+        "price": 3.65,
         "options": {
           "selectHotorIced": "Hot"
         }
       },
       {
         "itemName": "Hot Chocolate",
-        "price": "3.15",
+        "price": 3.15,
         "options": {}
       }
     ],
     "comment": "Comment",
     "totalAmount": 29.807999999999996,
-    "orderId": 12
+    "orderId": 12,
+    "completed": true
+  },
+  {
+    "customerName": "Bob Jones",
+    "orderDate": "2025-05-06T02:59:58.833Z",
+    "pickupDateTime": "2025-05-06T13:00",
+    "items": [
+      {
+        "itemName": "Hot or Iced Latte",
+        "price": 3.65,
+        "options": {
+          "selectHotorIced": "Hot"
+        }
+      }
+    ],
+    "comment": "",
+    "totalAmount": 3.9419999999999997,
+    "orderId": 13
+  },
+  {
+    "customerName": "Bob Jones",
+    "orderDate": "2025-05-06T03:03:42.870Z",
+    "pickupDateTime": "2025-05-06T13:00",
+    "items": [
+      {
+        "itemName": "Hot or Iced Latte",
+        "price": 3.65,
+        "options": {
+          "selectHotorIced": "Hot"
+        }
+      }
+    ],
+    "comment": "",
+    "totalAmount": 3.9419999999999997,
+    "orderId": 14
+  },
+  {
+    "customerName": "Bob Jones",
+    "orderDate": "2025-05-06T03:11:03.551Z",
+    "pickupDateTime": "2025-05-06T13:00",
+    "items": [
+      {
+        "itemName": "Egg and Cheese with Bacon, Sausage, or Ham",
+        "price": 4.25,
+        "options": {
+          "selectBagel": "plain",
+          "selectSausageBaconOrHam": "Sausage"
+        }
+      },
+      {
+        "itemName": "Hot or Iced Latte",
+        "price": 3.65,
+        "options": {
+          "selectHotorIced": "Hot",
+          "selectDrinkFlavor": "Vanilla"
+        }
+      }
+    ],
+    "comment": "",
+    "totalAmount": 8.532,
+    "orderId": 15
   }
 ]

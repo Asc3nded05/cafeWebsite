@@ -15,8 +15,8 @@
     "id": 1
   },
   {
-    "title": "Blog Post 2",
-    "content": "post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content ",
+    "title": "Updated Blog Post 2",
+    "content": "updated post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content ",
     "likes": 2,
     "dislikes": 0,
     "likedBy": [
@@ -25,7 +25,7 @@
     ],
     "dislikedBy": [],
     "createdAt": "5/5/2025, 8:29:53 AM",
-    "updatedAt": "5/5/2025, 8:29:53 AM",
+    "updatedAt": "5/5/2025, 10:49:36 PM",
     "id": 2
   },
   {

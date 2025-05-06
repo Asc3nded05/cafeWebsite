@@ -27,6 +27,7 @@ export default function CreateAccountForm() {
         setPassword(newPassword);
 
         // Check password strength and set custom validity
+        //Password must be length 6 or more,  less than 24, at least one non-letter character, and not empty
         if (newPassword.length < 6) {
             inputElement.setCustomValidity('Password is too short!');
         } else if (newPassword.length >= 24) {
@@ -91,7 +92,7 @@ export default function CreateAccountForm() {
             <h1>Create Account</h1>
 
             <hr></hr>
-            
+            {/*First name required */}
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="firstName" className="form-label">First Name</label>
@@ -104,6 +105,7 @@ export default function CreateAccountForm() {
                         onChange={(e) => updateFirstName(e.target.value)}
                     />
                 </div>
+                {/*last name required */}
                 <div className="mb-3">
                     <label htmlFor="lastName" className="form-label">Last Name</label>
                     <input
@@ -115,6 +117,7 @@ export default function CreateAccountForm() {
                         onChange={(e) => updateLastName(e.target.value)}
                     />
                 </div>
+                {/*Email addres required */}
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input
@@ -126,6 +129,7 @@ export default function CreateAccountForm() {
                         onChange={(e) => updateEmail(e.target.value)}
                     />
                 </div>
+                {/*Password required */}
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
                     <input
@@ -137,6 +141,7 @@ export default function CreateAccountForm() {
                         onChange={(e) => updatePassword(e.target.value, e.target)}
                     />
                 </div>
+                {/*Submit Button */}
                 <button type="submit" className="btn btn-primary">Create Account</button>
             </form>
         </div>

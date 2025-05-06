@@ -57,7 +57,7 @@ export default function MenuItemUser({
         setShowModal(false); // Hide the modal
     }
     
-
+    //Changes to Option selection
     function handleOptionChange(optionName, value) {
         console.log(optionName);
         setOrderOptions((prevOptions) => ({
@@ -66,8 +66,9 @@ export default function MenuItemUser({
         }));
     }
 
+    //Adds Item
     function handleAddItem() {
-        console.log(orderOptions)
+       //new item including Name,Price, Options and Comments
         const newItem = {
             itemName: title,
             price: price,
@@ -78,7 +79,7 @@ export default function MenuItemUser({
         addItemToOrder(newItem); // Add the item to the current order
         setShowModal(false); // Close the modal
         setOrderOptions({}); // Reset options for the next item
-        setComment("")
+        setComment("") //resets comment
     }
 
     // Format the price to two decimal places with a dollar sign
@@ -90,9 +91,12 @@ export default function MenuItemUser({
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{formattedPrice}</Card.Subtitle>
-                    <Button variant="primary" onClick={handleShowModal}>
-                        Add to Order
-                    </Button>
+                    {/* Add to Order Button */}
+                    <div className="d-flex justify-content-center mt-3">
+                        <Button variant="primary" onClick={handleShowModal}>
+                            Add to Order
+                        </Button>
+                    </div>
                 </Card.Body>
             </Card>
 
@@ -116,9 +120,11 @@ export default function MenuItemUser({
                     {selectHotorIced && <SelectHotorIced onChange={(value) => handleOptionChange('selectHotorIced', value)} />}
                 </Modal.Body>
                 <Modal.Footer>
+                    {/*Cancel Button */}
                     <Button variant="secondary" onClick={handleCloseModal}>
                         Cancel
                     </Button>
+                    {/*Add Item Button */}
                     <Button variant="primary" onClick={handleAddItem}>
                         Add Item
                     </Button>

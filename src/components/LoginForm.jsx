@@ -19,14 +19,17 @@ export default function Login() {
         })
             .then((response) => {
                 if (response.ok) {
+                    //return json file
                     return response.json();
                 } else {
                     throw new Error('Invalid email or password');
                 }
             })
             .then((data) => {
+                //after response, returns to Home page
                 <Navigate to="/" replace />
                 alert(`Welcome, ${data.user.firstName} ${data.user.lastName}!`);
+                //sets token and user to local storage
                 localStorage.setItem('authToken', data.token);
                 localStorage.setItem('user', JSON.stringify(data.user));
                 setLoggedin(true);
@@ -36,6 +39,7 @@ export default function Login() {
                 alert(error.message);
             });
     }
+    //when logged in, Navigates to Home
     if (loggedIn) {
         return <Navigate to="/" replace />;
     }
@@ -46,7 +50,7 @@ export default function Login() {
             <h1>Login</h1>
 
             <hr></hr>
-            
+            {/*Email Address */}
             <form className="mt-4" onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
@@ -60,6 +64,7 @@ export default function Login() {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
+                {/*Password */}
                 <div className="mb-3">
                     <label htmlFor="password" className="form-label">Password</label>
                     <input

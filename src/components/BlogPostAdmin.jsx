@@ -59,6 +59,7 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
         })
             .then((response) => {
                 if (response.ok) {
+                    alert("Post succesfully deleted")
                     location.reload(); // Reload the page after deletion
                 } else {
                     throw new Error('Error deleting the blog post');
@@ -116,9 +117,11 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
+                    {/**Cancel Button */}
                     <Button variant="secondary" onClick={handleCloseModal}>
                         Cancel
                     </Button>
+                    {/**Save Button */}
                     <Button variant="primary" onClick={handleUpdatePost}>
                         Save Changes
                     </Button>

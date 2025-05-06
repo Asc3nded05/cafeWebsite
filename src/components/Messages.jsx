@@ -42,9 +42,11 @@ export default function Messages() {
             
             <div className="mt-4">
                 {/* dynamically displays the messages from the contact page */}
+                {/*Sends data to MessageCard */}
                 {messages.map((message) => (
+                    
                     <MessageCard
-                        key={message.id}
+                        key={message.id} 
                         id={message.id}
                         title={message.title}
                         senderName={message.sender}
@@ -52,6 +54,7 @@ export default function Messages() {
                         text={message.message}
                         date={message.sentAt}
                     />
+                    
                 ))}
             </div>
         </div>

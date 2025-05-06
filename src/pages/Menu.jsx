@@ -82,7 +82,9 @@ export default function Menu() {
         //converts to float and two decimal places
         const price = parseFloat(item.price);
          const priceRounded = price.toFixed(2);
+
         if (role === "user") {
+            //Loads the Menu Item User sending the menu data
             return (
                 <MenuItemUser
                     title={item.title}
@@ -104,6 +106,7 @@ export default function Menu() {
             );
         } else if (role === "admin") {
             return (
+                //loads the Menu Item Admin  sending the menu data
                 <MenuItemAdmin
                     id={item.id}
                     title={item.title}
@@ -129,7 +132,12 @@ export default function Menu() {
 
     // Function to add an item to the current order
     function addItemToOrder(item) {
-        setCurrentOrder((prevOrder) => [...prevOrder, item]);
+        const itemWithParsedPrice = {
+            ...item,
+            price: parseFloat(item.price), // Ensure the price is a number
+        };
+        setCurrentOrder((prevOrder) => [...prevOrder, itemWithParsedPrice]);
+        alert(`Item added to order successfully!`);
     }
 
     // Function to remove an item from the current order by the index
@@ -236,6 +244,7 @@ export default function Menu() {
             .then((response) => {
                 if (response.ok) {
                     location.reload(); // Reload the page after creating
+                    alert("New menu item created successfully")
                 } else {
                     throw new Error('Error creating the menu item');
                 }
@@ -258,7 +267,7 @@ export default function Menu() {
                     <h1>Menu</h1>
 
                     <hr></hr>
-
+                    {/*Maps menu Items */}
                     <Accordion>
                         {menuItems.map((category, idx) => (
                             <Accordion.Item eventKey={idx.toString()} key={idx}>
@@ -298,6 +307,7 @@ export default function Menu() {
                                 <p>Your order is empty.</p>
                             ) : (
                                 <ListGroup>
+                                    {/*Maps the Current Order */}
                                     {currentOrder.map((item, index) => (
                                         <ListGroup.Item key={index} className="d-flex justify-content-between align-items-center">
                                             <div>
@@ -314,6 +324,7 @@ export default function Menu() {
                                                 )}
                                             
                                             </div>
+                                            {/*Button to remove items */}
                                             <Button
                                                 variant="danger"
                                                 size="sm"
@@ -329,9 +340,11 @@ export default function Menu() {
                         
                         <Offcanvas.Body>
                             <div>
+                                {/*Subtotal, Tax and then total added together */}
                                 <p>Subtotal: ${totalPrice.toFixed(2)}</p>
                                 <p>Tax: ${(totalPrice*.08).toFixed(2)}</p>
                                 <p><strong>Total: ${((totalPrice*.08) + (totalPrice)).toFixed(2)}</strong></p>
+                                {/*Pickup date object */}
                                 <div>
                                     <label htmlFor="pickupDateTime" className="form-label">Pickup Date and Time:</label>
                                     <input
@@ -347,6 +360,7 @@ export default function Menu() {
                                         Pickup is available Tuesday-Sunday between 6:00 AM and 2:00 PM within the next two weeks.
                                     </small>
                                 </div>
+                                {/*Comment Box */}
                                 <div>
                                     <label htmlFor="comment" className="form-label">Add a comment:</label>
                                     <textarea
@@ -357,6 +371,7 @@ export default function Menu() {
                                         onChange={(e) => setComment(e.target.value)}
                                     ></textarea>
                                 </div>
+                                {/*Submit Button */}
                                 <div className="d-flex justify-content-end">
                                     <Button
                                         variant="success"
@@ -381,7 +396,7 @@ export default function Menu() {
                     <h1>Create New Menu Item</h1>
 
                     <hr></hr>
-                    
+                    {/*Form to create new Item */}
                     <form onSubmit={(e) => { e.preventDefault(); handleCreateItem(); }} className="mt-4">
                         <div className="mb-3">
                             <label htmlFor="category" className="form-label">Category</label>
@@ -398,6 +413,7 @@ export default function Menu() {
                                 ))}
                             </select>
                         </div>
+                        {/*title */}
                         <div className="mb-3">
                             <label htmlFor="title" className="form-label">Title</label>
                             <input
@@ -410,6 +426,7 @@ export default function Menu() {
                                 required
                             />
                         </div>
+                        {/*Price */}
                         <div className="mb-3">
                             <label htmlFor="price" className="form-label">Price</label>
                             <input
@@ -422,6 +439,7 @@ export default function Menu() {
                                 required
                             />
                         </div>
+                        {/*Bagel Options */}
                         <div className="mb-3">
                             <label className="form-label">Options</label>
                             <div className="form-check">
@@ -434,6 +452,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectBagel">Select Bagel</label>
                             </div>
+                        {/*Butter and Jelly Options */}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -444,6 +463,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectButterOrJelly">Select Butter Or Jelly</label>
                             </div>
+                            {/*Cream Cheese Options */}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -454,6 +474,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectCreamCheese">Select Cream Cheese</label>
                             </div>
+                            {/*Drink flavor Options*/}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -464,6 +485,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectDrinkFlavor">Select Drink Flavor</label>
                             </div>
+                            {/*Multiple Bagel Options */}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -474,6 +496,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectMultipleBagels">Select Multiple Bagels</label>
                             </div>
+                            {/*Sandwhich Toppings Options */}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -484,6 +507,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectSandwichToppings">Select Sandwich Toppings</label>
                             </div>
+                            {/*Meat Options */}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -494,6 +518,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectSausageBaconOrHam">Select Sausage, Bacon, or Ham</label>
                             </div>
+                            {/*Smoothie Flavor Options*/}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -504,6 +529,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectSmoothieFlavor">Select Smoothie Flavor</label>
                             </div>
+                            {/*Toasted Options */}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -514,6 +540,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectToasted">Select Toasted</label>
                             </div>
+                            {/*Wrap or Panini Option */}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -524,6 +551,7 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectWrapOrPanini">Select Wrap or Panini</label>
                             </div>
+                            {/*Drink Type Option */}
                             <div className="form-check">
                                 <input
                                     type="checkbox"
@@ -535,6 +563,7 @@ export default function Menu() {
                                 <label className="form-check-label" htmlFor="selectHotOrIced">Select Hot or Iced</label>
                             </div>
                         </div>
+                        {/*Submit Button*/}
                         <button type="submit" className="btn btn-primary">Create Item</button>
                     </form>
                 </div>
@@ -543,7 +572,7 @@ export default function Menu() {
                     <h1>Menu</h1>
 
                     <hr></hr>
-
+                    {/*Maps menu items in a Accordion*/}
                     <Accordion>
                         {menuItems.map((category, idx) => (
                             <Accordion.Item eventKey={idx.toString()} key={idx}>
@@ -567,6 +596,7 @@ export default function Menu() {
             </>
         );
     } else {
+        {/*Unlogged in Menu */}
         return (
             <>
                 <div className="container mt-5">
@@ -575,7 +605,7 @@ export default function Menu() {
                     <h1>Menu</h1>
 
                     <hr></hr>
-                    
+                    {/*Maps Menu item details */}
                     <Accordion>
                         {menuItems.map((category, idx) => (
                             <Accordion.Item eventKey={idx.toString()} key={idx}>

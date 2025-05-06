@@ -15,19 +15,19 @@ export default function Login() {
     if (role == "user"){
         return <>
             <NavigationUser />
-
+            {/*Sends signed-in user to nopage */}
             <NoPage />
         </>  
     } else if (role == "admin"){
         return <>
             <NavigationAdmin />
-
+            {/*Sends Signed in admin to nopage */}
             <NoPage />
         </>  
     } else{
         return <>
             <Navigation />
-
+            {/*Sends not signed in guest to login page */}
             <LoginForm />
         </>   
     }

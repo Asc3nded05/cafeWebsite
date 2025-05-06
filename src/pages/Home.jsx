@@ -31,19 +31,20 @@ export default function Home() {
             bagel.
           </p>
 
+          {/*Link Send to the Menu Page */}
           <Link className="btn btn-primary" to="/menu">
             Check out our menu!
           </Link>
 
           <hr></hr>
-          {/**Map */}
+         
           <div
             style={{
               position: "relative",
               overflow: "hidden",
               paddingTop: "56.25%",
             }}
-          >
+          > {/**Map */}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d875.9662338635214!2d-77.60309277012688!3d43.207380924058135!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b660d9680bb9%3A0xef6d5c28eb2762bc!2s525%20Titus%20Ave%2C%20Irondequoit%2C%20NY%2014617!5e0!3m2!1sen!2sus!4v1745872729453!5m2!1sen!2sus"
               width="100%"
@@ -61,14 +62,14 @@ export default function Home() {
     return (
       <>
         <NavigationAdmin />
-
+      {/*Banner Image */}
         <img src="src\assets\BagelBanner.png" width="100%"></img>
 
         <div className="container mt-5">
           <h1>Welcome to Bagels Etc!</h1>
 
           <hr></hr>
-
+          {/*About Bagels etc. */}
           <p style={{ textAlign: "justify" }}>
             Bagels etc. was founded on the principal of quality NY style bagels
             made fresh daily. We are proud to be serving the community of
@@ -77,6 +78,7 @@ export default function Home() {
             bagel.
           </p>
 
+          {/*Links to the menu Page */}
           <Link className="btn btn-primary" to="/menu">
             Check out our menu!
           </Link>
@@ -89,7 +91,7 @@ export default function Home() {
               overflow: "hidden",
               paddingTop: "56.25%",
             }}
-          >
+          > {/*Map */}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d875.9662338635214!2d-77.60309277012688!3d43.207380924058135!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b660d9680bb9%3A0xef6d5c28eb2762bc!2s525%20Titus%20Ave%2C%20Irondequoit%2C%20NY%2014617!5e0!3m2!1sen!2sus!4v1745872729453!5m2!1sen!2sus"
               width="100%"
@@ -113,13 +115,14 @@ export default function Home() {
     return (
       <>
         <Navigation />
+        {/*Banner Image */}
         <img src="src\assets\BagelBanner.png" width="100%"></img>
 
         <div className="container mt-5">
           <h1>Welcome to Bagels Etc!</h1>
 
           <hr></hr>
-
+          {/*About */}
           <p style={{ textAlign: "justify" }}>
             Bagels etc. was founded on the principal of quality NY style bagels
             made fresh daily. We are proud to be serving the community of
@@ -127,7 +130,7 @@ export default function Home() {
             by and see us and savor one of your local favorites the hot dog
             bagel.
           </p>
-
+          {/*Links send to the menu page */}
           <Link className="btn btn-primary" to="/menu">
             Check out our menu!
           </Link>
@@ -140,7 +143,7 @@ export default function Home() {
               overflow: "hidden",
               paddingTop: "56.25%",
             }}
-          >
+          >{/*Menu */}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d875.9662338635214!2d-77.60309277012688!3d43.207380924058135!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d6b660d9680bb9%3A0xef6d5c28eb2762bc!2s525%20Titus%20Ave%2C%20Irondequoit%2C%20NY%2014617!5e0!3m2!1sen!2sus!4v1745872729453!5m2!1sen!2sus"
               width="100%"

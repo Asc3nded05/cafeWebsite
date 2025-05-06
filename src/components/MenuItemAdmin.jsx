@@ -12,6 +12,7 @@ import SelectSausageBaconOrHam from './SelectSausageBaconOrHam';
 import SelectButterOrJelly from './selectButterOrJelly';
 import SelectHotorIced from './selectHotorIced';
 
+//excepts the data of a menu item
 export default function MenuItemAdmin({
     id,
     title,
@@ -30,6 +31,7 @@ export default function MenuItemAdmin({
 }) {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
+    //finds if an item has any of these options
     const hasOptions =
         selectBagel ||
         selectButterOrJelly ||
@@ -50,7 +52,7 @@ export default function MenuItemAdmin({
     function handleCloseModal() {
         setShowModal(false); // Hide the modal
     }
-    //sends to backedn to delete
+    //sends to backend to delete
     function deleteItem() {
         fetch(`http://localhost:5000/api/menu/delete/${id}`, {
             method: 'DELETE',
@@ -61,6 +63,7 @@ export default function MenuItemAdmin({
             .then((response) => {
                 if (response.ok) {
                     location.reload(); // Reload the page after deletion
+                    alert("Menu item deleted succesfully");
                 } else {
                     throw new Error('Error deleting the menu item');
                 }
@@ -107,6 +110,7 @@ export default function MenuItemAdmin({
             .then((response) => {
                 if (response.ok) {
                     location.reload(); // Reload the page after updating
+                    alert("Menu item updated successfully");
                 } else {
                     throw new Error('Error updating the menu item');
                 }
@@ -127,16 +131,20 @@ export default function MenuItemAdmin({
                     <Card.Title>{title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{formattedPrice}</Card.Subtitle>
                     {hasOptions && (
-                        <Button variant="primary" onClick={handleShowModal}>
-                            Show Order Options
-                        </Button>
+                        <div className="d-flex flex-column gap-2">
+                            <Button variant="primary" onClick={handleShowModal}>
+                                Show Order Options
+                            </Button>
+                            <div className="d-flex justify-content-between">
+                                <Button variant="primary" onClick={() => setShowUpdateModal(true)}>
+                                    Update
+                                </Button>
+                                <Button variant="danger" onClick={deleteItem}>
+                                    Delete
+                                </Button>
+                            </div>
+                        </div>
                     )}
-                    <Button variant="primary" className="ms-2" onClick={() => setShowUpdateModal(true)}>
-                        Update
-                    </Button>
-                    <Button variant="danger" className="ms-2" onClick={deleteItem}>
-                        Delete
-                    </Button>
                 </Card.Body>
             </Card>
 
@@ -167,12 +175,13 @@ export default function MenuItemAdmin({
                     </Modal.Footer>
                 </Modal>
             )}
-
+            {/*Update Modal */}
             <Modal show={showUpdateModal} onHide={() => setShowUpdateModal(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Update Menu Item</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+                    {/*Title */}
                     <div className="mb-3">
                         <label htmlFor="title" className="form-label">Title</label>
                         <input
@@ -184,6 +193,7 @@ export default function MenuItemAdmin({
                         />
                     </div>
                     <div className="mb-3">
+                        {/*Price */}
                         <label htmlFor="price" className="form-label">Price</label>
                         <input
                             type="number"
@@ -193,6 +203,7 @@ export default function MenuItemAdmin({
                             onChange={(e) => setUpdatedPrice(e.target.value)}
                         />
                     </div>
+                    {/*Bagel Option */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -203,6 +214,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectBagel">Select Bagel</label>
                     </div>
+                    {/*Butter or Jelly Options */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -213,6 +225,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectButterOrJelly">Select Butter Or Jelly</label>
                     </div>
+                    {/*Cream Cheese Options */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -223,6 +236,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectCreamCheese">Select Cream Cheese</label>
                     </div>
+                    {/*Drink Flavor Options */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -233,6 +247,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectDrinkFlavor">Select Drink Flavor</label>
                     </div>
+                    {/*Multiple Bagel Options */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -243,6 +258,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectMultipleBagels">Select Multiple Bagels</label>
                     </div>
+                    {/*Sandwhich Toppings Options */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -253,6 +269,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectSandwichToppings">Select Sandwich Toppings</label>
                     </div>
+                    {/*Meat Options */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -263,6 +280,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectSausageBaconOrHam">Select Sausage, Bacon, or Ham</label>
                     </div>
+                    {/*Smoothie Flavor Options */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -273,6 +291,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectSmoothieFlavor">Select Smoothie Flavor</label>
                     </div>
+                    {/*Toasted Options */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -283,6 +302,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectToasted">Select Toasted</label>
                     </div>
+                    {/*Wrap or Panini Option */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -293,6 +313,7 @@ export default function MenuItemAdmin({
                         />
                         <label className="form-check-label" htmlFor="selectWrapOrPanini">Select Wrap or Panini</label>
                     </div>
+                    {/*Drink Top Option */}
                     <div className="form-check">
                         <input
                             type="checkbox"
@@ -305,9 +326,11 @@ export default function MenuItemAdmin({
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
+                    {/*Cancel Button */}
                     <Button variant="secondary" onClick={() => setShowUpdateModal(false)}>
                         Cancel
                     </Button>
+                    {/*Save Button */}
                     <Button variant="primary" onClick={handleUpdateItem}>
                         Save Changes
                     </Button>

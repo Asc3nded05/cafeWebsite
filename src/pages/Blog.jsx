@@ -109,6 +109,7 @@ export default function Blog() {
                     <hr></hr>
 
                     <div className="mt-5">
+                        {/*Blog Post User component and sending data to that */}
                         {blogPosts.map((post) => (
                             //shows blog posts
                             <BlogPostUser
@@ -139,10 +140,12 @@ export default function Blog() {
 
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
+                                {/*Title Input */}
                                 <label htmlFor="Name" className="form-label">Title</label>
                                 <input type="text" className="form-control" id="title" onChange={(e) => updateTitle(e.target.value)} placeholder="Enter a title" required />
                             </div>
                             <div className="mb-3">
+                                {/*Content Input */}
                                 <label htmlFor="content" className="form-label">Post Content</label>
                                 <textarea type="text" className="form-control" id="content" onChange={(e) => updateContent(e.target.value)} placeholder="Enter the post content" required />
                             </div>
@@ -184,6 +187,7 @@ export default function Blog() {
                     <hr></hr>
 
                     <div className="mt-4">
+                        {/*Map Blog Posts sending data */}
                         {blogPosts.map((post) => (
                             <BlogPost
                                 key={post.id}

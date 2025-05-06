@@ -61,10 +61,12 @@ export default function ContactFormUser({ firstName, lastName, email }) { // Des
             <form onSubmit={handleSubmit} className="mt-4">
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
+                    {/*Updates the title of the form onChange */}
                     <input type="text" className="form-control" id="title" onChange={(e) => updateTitle(e.target.value)} placeholder="Enter a title" required />
                 </div>
                 <div className="mb-3">
                     <label htmlFor="message" className="form-label">Message</label>
+                    {/*Updates the update of the form onChange */}
                     <textarea className="form-control" id="message" onChange={(e) => updateMessage(e.target.value)} placeholder="Enter your message" required />
                 </div>
                 <button type="submit" className="btn btn-primary">Send</button>

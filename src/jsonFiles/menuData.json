@@ -187,7 +187,7 @@
       },
       {
         "title": "Bacon and Scallion",
-        "price": 3.75,
+        "price": "3.75",
         "id": 12,
         "selectBagel": false,
         "selectButterOrJelly": false,
@@ -200,7 +200,6 @@
         "selectDrinkFlavor": false,
         "selectSmoothieFlavor": false,
         "selectHotorIced": false
-        
       },
       {
         "title": "Onion and Chive",
@@ -781,7 +780,6 @@
         "selectDrinkFlavor": true,
         "selectSmoothieFlavor": false,
         "selectHotorIced": true
-        
       },
       {
         "title": "Frozen Chai Tea",
@@ -798,7 +796,6 @@
         "selectDrinkFlavor": true,
         "selectSmoothieFlavor": false,
         "selectHotorIced": false
-        
       },
       {
         "title": "Smoothie",

@@ -6,7 +6,6 @@ import CreateAccount from './pages/CreateAccount'
 import Login from './pages/Login'
 import Menu from './pages/Menu'
 import Orders from './pages/Orders'
-import Stats from './pages/Stats'
 import ProtectedRoute from './components/ProtectedRoutes'
 import { jwtDecode } from 'jwt-decode';
 
@@ -36,14 +35,6 @@ function App() {
             element={
               <ProtectedRoute role={"admin"}> 
                 <Orders/>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/stats"
-            element={
-              <ProtectedRoute role={"admin"}> 
-                <Stats/>
               </ProtectedRoute>
             }
           />

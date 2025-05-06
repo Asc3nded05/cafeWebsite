@@ -10,7 +10,7 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user')); // Get the logged-in user
         const userId = user?.id;
-
+        //changed the liked state
         if (likedBy.includes(userId)) {
             setUserAction('liked');
         } else if (dislikedBy.includes(userId)) {
@@ -33,7 +33,9 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
             })
                 .then((response) => {
                     if (response.ok) {
+                        //changed total likes -1
                         setLikes(likes - 1);
+                        //set user action to null;
                         setUserAction(null);
                     } else {
                         throw new Error('Error unliking the post');
@@ -54,7 +56,9 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
             })
                 .then((response) => {
                     if (response.ok) {
+                        //changed total like +1
                         setLikes(likes + 1);
+                        //sets user action to disliked
                         if (userAction === 'disliked') {
                             setDislikes(dislikes - 1); // Remove dislike if previously disliked
                         }
@@ -85,7 +89,7 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
             })
                 .then((response) => {
                     if (response.ok) {
-                        setDislikes(dislikes - 1);
+                        setDislikes(dislikes - 1); //subtracts a dislike to total dislikes
                         setUserAction(null);
                     } else {
                         throw new Error('Error undisliking the post');

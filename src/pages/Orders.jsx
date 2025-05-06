@@ -21,7 +21,7 @@ export default function Orders() {
         })
             .then((response) => {
                 if (response.ok) {
-                    return response.json();
+                    return response.json(); //return json reponse
                 } else {
                     throw new Error('Error retrieving orders');
                 }
@@ -73,12 +73,13 @@ export default function Orders() {
                     <h2>Current Orders</h2>
 
                     <hr></hr>
-
+                    {/*Maps current Orders */}
                     <Row xs={1} md={2} className="g-4">
                         {currentOrders.length > 0 ? (
                             currentOrders.map((order) => (
                                 <Col key={order.orderId}>
                                     <Card>
+                                        {/*Order Details */}
                                         <Card.Body>
                                             <Card.Title>Order ID: {order.orderId}</Card.Title>
                                             <Card.Subtitle className="mb-2 text-muted">
@@ -93,16 +94,40 @@ export default function Orders() {
                                             <Card.Text>
                                                 <strong>Items:</strong>
                                             </Card.Text>
-                                            <ul>
-                                                {order.items.map((item, index) => (
-                                                    <li key={index}>
-                                                        {item.itemName} - ${item.price.toFixed(2)}
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                                <ul>
+                                                    {/*Maps items in the order*/}
+                                                    {order.items.map((item, index) => (
+                                                        <li key={index}>
+                                                            <strong>{item.itemName}</strong> - ${item.price.toFixed(2)}
+                                                            {item.options && Object.keys(item.options).length > 0 && (
+                                                                <ul>   
+                                                                    {/*Simplifes reading of order items */}
+                                                                    {Object.entries(item.options).map(([optionName, optionValue]) => (
+                                                                        <li key={optionName}>
+                                                                            {optionName.replace(/([A-Z])/g, ' $1')}:{" "}
+                                                                            {typeof optionValue === "boolean"
+                                                                                ? optionValue
+                                                                                    ? "Yes"
+                                                                                    : "No"
+                                                                                : Array.isArray(optionValue)
+                                                                                ? optionValue.join(", ")
+                                                                                : typeof optionValue === "object"
+                                                                                ? Object.entries(optionValue)
+                                                                                    .map(([key, value]) => `${key} (${value})`)
+                                                                                    .join(", ")
+                                                                                : optionValue.toString()}
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            )}
+                                                        </li>
+                                                    ))}
+                                                </ul>
                                             <Card.Text>
+                                                {/*total amount */}
                                                 <strong>Total Amount:</strong> ${order.totalAmount.toFixed(2)}
                                             </Card.Text>
+                                            {/*mark complete button */}
                                             <Button
                                                 variant="success"
                                                 onClick={() => markOrderAsComplete(order.orderId)}
@@ -122,13 +147,14 @@ export default function Orders() {
 
                 <div className="container mt-5">
                     <h2 className="mt-5">Completed Orders</h2>
-
+                    {/**Map Completed Orders */}
                     <hr></hr>
                     <Row xs={1} md={2} className="g-4">
                         {completedOrders.length > 0 ? (
                             completedOrders.map((order) => (
                                 <Col key={order.orderId}>
                                     <Card>
+                                        {/*Completed order details and made more readable*/}
                                         <Card.Body>
                                             <Card.Title>Order ID: {order.orderId}</Card.Title>
                                             <Card.Subtitle className="mb-2 text-muted">
@@ -140,16 +166,37 @@ export default function Orders() {
                                             <Card.Text>
                                                 <strong>Items:</strong>
                                             </Card.Text>
-                                            <ul>
-                                                {order.items.map((item, index) => (
-                                                    <li key={index}>
-                                                        {item.itemName} - ${item.price.toFixed(2)}
-                                                    </li>
-                                                ))}
-                                            </ul>
+                                                <ul>
+                                                    {order.items.map((item, index) => (
+                                                        <li key={index}>
+                                                            <strong>{item.itemName}</strong> - ${item.price.toFixed(2)}
+                                                            {item.options && Object.keys(item.options).length > 0 && (
+                                                                <ul>
+                                                                    {Object.entries(item.options).map(([optionName, optionValue]) => (
+                                                                        <li key={optionName}>
+                                                                            {optionName.replace(/([A-Z])/g, ' $1')}:{" "}
+                                                                            {typeof optionValue === "boolean"
+                                                                                ? optionValue
+                                                                                    ? "Yes"
+                                                                                    : "No"
+                                                                                : Array.isArray(optionValue)
+                                                                                ? optionValue.join(", ")
+                                                                                : typeof optionValue === "object"
+                                                                                ? Object.entries(optionValue)
+                                                                                    .map(([key, value]) => `${key} (${value})`)
+                                                                                    .join(", ")
+                                                                                : optionValue.toString()}
+                                                                        </li>
+                                                                    ))}
+                                                                </ul>
+                                                            )}
+                                                        </li>
+                                                    ))}
+                                                </ul>
                                             <Card.Text>
                                                 <strong>Total Amount:</strong> ${order.totalAmount.toFixed(2)}
                                             </Card.Text>
+                                            {/*Sets status to complete */}
                                             <Card.Text>
                                                 <strong>Status:</strong> Completed
                                             </Card.Text>
@@ -158,6 +205,7 @@ export default function Orders() {
                                 </Col>
                             ))
                         ) : (
+                            //if no orders
                             <p>No completed orders found.</p>
                         )}
                     </Row>

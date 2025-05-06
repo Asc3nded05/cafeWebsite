@@ -14,19 +14,19 @@ export default function CreateAccount() {
     if (role == "user"){
         return <> 
             <NavigationUser />
-            
+            {/*Sends loggedin user to No page */}
             <NoPage />
         </>
     } else if (role == "admin"){
         return <> 
             <NavigationAdmin />
-            
+            {/*Sends loggedin user to No page */}
             <NoPage />
         </>
     } else{
         return <>
             <Navigation />
-            
+            {/*Sends non signed in guest to createAccoutnform component */}
             <CreateAccountForm />
         </>
     }
