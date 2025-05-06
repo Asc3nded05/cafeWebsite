@@ -4,6 +4,7 @@ import MessageCard from "./MessageCard";
 export default function Messages() {
     const [messages, setMessages] = useState([]); // State to store messages
 
+    //get messages from backend
     function getMessages() {
         fetch('http://localhost:5000/api/contact/messages', {
             method: 'GET',
@@ -40,6 +41,7 @@ export default function Messages() {
             <hr></hr>
             
             <div className="mt-4">
+                {/* dynamically displays the messages from the contact page */}
                 {messages.map((message) => (
                     <MessageCard
                         key={message.id}

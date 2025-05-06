@@ -14,6 +14,8 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
         setShowModal(false); // Hide the modal
     }
 
+
+    //updates post
     function handleUpdatePost() {
         const updatedPost = {
             id: id,
@@ -22,6 +24,8 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
             updatedAt: new Date().toLocaleString() + "",
         };
 
+
+        //updates blog post
         fetch(`http://localhost:5000/api/blog/update/${id}`, {
             method: 'PUT',
             headers: {
@@ -43,6 +47,7 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
             });
     }
 
+    //deletes the post
     function deletePost() {
         fetch(`http://localhost:5000/api/blog/delete/${id}`, {
             method: 'DELETE',
@@ -65,6 +70,7 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
 
     return (
         <>
+        {/* card for a blog post */}
             <Card>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>

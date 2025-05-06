@@ -15,11 +15,13 @@ export default function SelectWrapOrPanini({onChange}) {
     return (
         <div>
             <h5>Select Wrap or Panini</h5>
+            {/*sandwhich options*/}
             <div className="specialty-sandwich-options">
                 {[
                     "Wrap",
                     "Panini"
                 ].map((option, index) => (
+                    //maps options
                     <div key={index} className="form-check">
                         <label className="form-check-label" htmlFor={`specaltySandwich${index}`}>
                             {option}

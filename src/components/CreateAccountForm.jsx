@@ -40,16 +40,17 @@ export default function CreateAccountForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-    
+        //chesks if the fields are filled
         if (firstName === '' || lastName === '' || email === '' || password === '') {
             alert('Please fill in all fields!');
             return;
         }
-    
+        //created time created and updayed
         const createdAt = new Date().toLocaleString() + "";
         const updatedAt = new Date().toLocaleString() + "";
         const role = "user";
-    
+        
+        //creates user info
         const newUser = { id, firstName, lastName, email, password, role, createdAt, updatedAt };
     
         // Send the newUser to the backend
@@ -80,7 +81,7 @@ export default function CreateAccountForm() {
                 alert('An error occurred. Please try again.');
             });
     }
-
+    //Sends to home page if logged in
     if (loggedIn) {
         return <Navigate to="/" replace />;
     }

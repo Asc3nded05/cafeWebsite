@@ -3,12 +3,11 @@ import { useState } from 'react';
 import SelectToasted from './SelectToasted';
 import SelectCreamCheese from './selectCreamCheese';
 import SelectBagel from './selectBagel';
-import SelectSandwichToppings from './selectSandwichToppings';
+import SelectSandwichToppings from './SelectSandwichToppings';
 import SelectMultipleBagels from './selectMultipleBagels';
 import SelectDrinkFlavor from './SelectDrinkFlavor';
 import SelectSmoothieFlavor from './SelectSmoothieFlavor';
 import SelectWrapOrPanini from './SelectWrapOrPanini';
-import CommentOption from './CommentOption';
 
 export default function MenuItemUser({
     title,
@@ -46,17 +45,13 @@ export default function MenuItemUser({
         if (hasOptions) {
             setShowModal(true); // Show the modal if options are available
         } else {
-            handleAddItem(); // Add the item directly if no options are available
+            setShowModal(true);
         }
     }
     
     function handleCloseModal() {
         setShowModal(false); // Hide the modal
     }
-
-    const handleCommentChange = (commentValue) => {
-        setComment(commentValue);
-      };
     
 
     function handleOptionChange(optionName, value) {
@@ -111,7 +106,6 @@ export default function MenuItemUser({
                     {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => handleOptionChange('selectDrinkFlavor', value)} />}
                     {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => handleOptionChange('selectSmoothieFlavor', value)} />}
                     {selectWrapOrPanini && <SelectWrapOrPanini onChange={(value) => handleOptionChange('selectWrapOrPanini', value)} />}
-                
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseModal}>

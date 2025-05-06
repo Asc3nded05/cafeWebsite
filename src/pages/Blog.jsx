@@ -110,6 +110,7 @@ export default function Blog() {
 
                     <div className="mt-5">
                         {blogPosts.map((post) => (
+                            //shows blog posts
                             <BlogPostUser
                                 key={post.id}
                                 id={post.id}
@@ -155,6 +156,8 @@ export default function Blog() {
                         <hr></hr>
 
                         <div className="mt-4">
+
+                            {/* shows blog posts with admin options */}
                             {blogPosts.map((post) => (
                                 <BlogPostAdmin
                                     key={post.id}

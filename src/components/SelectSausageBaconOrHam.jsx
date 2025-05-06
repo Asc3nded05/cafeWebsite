@@ -6,12 +6,14 @@ export default function SelectSausageBaconOrHam({ onChange }) {
     return (
         <div>
             <h5>Select Choice of Meat</h5>
+            {/*meat options*/}
             <div className="meat-options">
                 {[
                     "Sausage",
                     "Bacon",
                     "Ham"
                 ].map((option, index) => (
+                    //maps meat options
                     <div key={index} className="form-check">
                         <label className="form-check-label" htmlFor={`meat${index}`}>
                             {option}

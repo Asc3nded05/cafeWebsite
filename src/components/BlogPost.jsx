@@ -114,6 +114,7 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
 
     return (
         <>
+        
             <Card>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>

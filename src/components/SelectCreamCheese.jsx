@@ -13,6 +13,7 @@ export default function SelectCreamCheese({onChange}) {
         <div>
             <h5>Select Cream Cheese</h5>
             <div className="cream-cheese-options">
+                {/*cream cheese options */}
                 {[
                     "Plain",
                     "Light",
@@ -24,6 +25,7 @@ export default function SelectCreamCheese({onChange}) {
                     "Jalapeno",
                     "Vegetable"
                 ].map((option, index) => (
+                    //maps cream cheese
                     <div key={index} className="form-check">
                         <label className="form-check-label" htmlFor={`creamCheese${index}`}>
                             {option}

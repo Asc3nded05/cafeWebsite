@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 
 export default function MessageCard({ id, title, senderName, email, text, date }) {
+    //card for a message from contacts
     return <>
         <Card>
             <Card.Body>

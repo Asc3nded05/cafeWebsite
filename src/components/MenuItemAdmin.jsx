@@ -3,7 +3,7 @@ import { useState } from 'react';
 import SelectToasted from './SelectToasted';
 import SelectCreamCheese from './selectCreamCheese';
 import SelectBagel from './selectBagel';
-import SelectSandwichToppings from './selectSandwichToppings';
+import SelectSandwichToppings from './SelectSandwichToppings';
 import SelectMultipleBagels from './selectMultipleBagels';
 import SelectDrinkFlavor from './SelectDrinkFlavor';
 import SelectSmoothieFlavor from './SelectSmoothieFlavor';
@@ -47,7 +47,7 @@ export default function MenuItemAdmin({
     function handleCloseModal() {
         setShowModal(false); // Hide the modal
     }
-
+    //sends to backedn to delete
     function deleteItem() {
         fetch(`http://localhost:5000/api/menu/delete/${id}`, {
             method: 'DELETE',
@@ -84,6 +84,7 @@ export default function MenuItemAdmin({
         selectSmoothieFlavor,
     });
 
+    //updated item
     function handleUpdateItem() {
         const updatedItem = {
             id,
@@ -91,7 +92,7 @@ export default function MenuItemAdmin({
             price: updatedPrice,
             ...updatedOptions,
         };
-
+        //updates item to the backend
         fetch(`http://localhost:5000/api/menu/update/${id}`, {
             method: 'PUT',
             headers: {

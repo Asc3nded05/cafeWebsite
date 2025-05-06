@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
     return (
         <div>
             <h5>Select Smoothie Flavor</h5>
+            {/*Smoothie flvaor options*/}
             <div className="smoothie-flavor-options">
                 {[
                     "Strawberry-Bannana",
@@ -22,6 +23,7 @@ import { useEffect, useState } from "react";
                     "Mango",
                     "Peach",
                 ].map((option, index) => (
+                    //maps smoothie flavors
                     <div key={index} className="form-check">
                         <label className="form-check-label" htmlFor={`smoothieFlavor${index}`}>
                             {option}

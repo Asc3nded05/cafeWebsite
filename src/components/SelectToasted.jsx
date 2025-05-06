@@ -17,6 +17,7 @@ export default function SelectToasted({ onChange }) {
 	<>
 	  <h5>Select how you would like your bagel prepared</h5>
 	  <div>	
+		{/* makes toasted checkbox */}
 		<label>
 		  <input
 			type="checkbox"

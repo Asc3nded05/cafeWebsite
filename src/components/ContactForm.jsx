@@ -25,7 +25,7 @@ export default function ContactForm() {
 
     function handleSubmit(e) {
         e.preventDefault();
-    
+        //sets new message
         const newMessage = { title, sender, email, message, sentAt };
     
         // Send the new post to the backend
@@ -62,7 +62,7 @@ export default function ContactForm() {
             <h1>Contact Us</h1>
 
             <hr></hr>
-            
+            {/* //displays contact form for guests */}
             <form onSubmit={handleSubmit} className="mt-4">
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
