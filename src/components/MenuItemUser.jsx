@@ -9,6 +9,7 @@ import SelectDrinkFlavor from './SelectDrinkFlavor';
 import SelectSmoothieFlavor from './SelectSmoothieFlavor';
 import SelectWrapOrPanini from './SelectWrapOrPanini';
 import SelectHotorIced from './selectHotorIced';
+import SelectSausageBaconOrHam from './SelectSausageBaconOrHam'
 
 export default function MenuItemUser({
     title,
@@ -80,12 +81,15 @@ export default function MenuItemUser({
         setComment("")
     }
 
+    // Format the price to two decimal places with a dollar sign
+    const formattedPrice = `$${parseFloat(price).toFixed(2)}`;
+
     return (
         <>
             <Card style={{ width: '18rem', height: '14rem' }}>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">${price}</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">{formattedPrice}</Card.Subtitle>
                     <Button variant="primary" onClick={handleShowModal}>
                         Add to Order
                     </Button>
@@ -105,7 +109,7 @@ export default function MenuItemUser({
                     {selectCreamCheese && <SelectCreamCheese onChange={(value) => handleOptionChange('selectCreamCheese', value)} />}
                     {selectSandwichToppings && <SelectSandwichToppings onChange={(value) => handleOptionChange('selectSandwichToppings', value)} />}
                     {selectMultipleBagels && <SelectMultipleBagels title={title} onChange={(value) => handleOptionChange('selectMultipleBagels', value)} />}
-                    {selectSausageBaconOrHam && <selectSausageBaconOrHam onChange={(value) => handleOptionChange('selectSausageBaconOrHam', value)} />}
+                    {selectSausageBaconOrHam && <SelectSausageBaconOrHam onChange={(value) => handleOptionChange('selectSausageBaconOrHam', value)} />}
                     {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => handleOptionChange('selectDrinkFlavor', value)} />}
                     {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => handleOptionChange('selectSmoothieFlavor', value)} />}
                     {selectWrapOrPanini && <SelectWrapOrPanini onChange={(value) => handleOptionChange('selectWrapOrPanini', value)} />}

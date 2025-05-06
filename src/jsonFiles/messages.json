@@ -14,5 +14,21 @@
     "message": "message contact message contact message contact message contact message contact message contact message contact",
     "sentAt": "5/4/2025, 2:01:39 PM",
     "id": 2
+  },
+  {
+    "title": "Hello there!",
+    "sender": "Marcus White",
+    "email": "email6@gmail.com",
+    "message": "Message content here",
+    "sentAt": "5/5/2025, 10:28:24 PM",
+    "id": 3
+  },
+  {
+    "title": "Holiday Hours",
+    "sender": "Bob Jones",
+    "email": "bj@gmail.com",
+    "message": "What hours will you be open the week of July 4th?",
+    "sentAt": "5/5/2025, 10:32:39 PM",
+    "id": 4
   }
 ]

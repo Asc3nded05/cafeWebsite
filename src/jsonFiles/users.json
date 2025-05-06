@@ -1,25 +1,5 @@
 [
   {
-    "id": 0,
-    "firstName": "Riley",
-    "lastName": "Van Heukelum",
-    "email": "rileyvanheukelum@gmail.com",
-    "password": "password!",
-    "role": "user",
-    "createdAt": "4/30/2025, 2:07:58 PM",
-    "updatedAt": "4/30/2025, 2:07:58 PM"
-  },
-  {
-    "id": 1,
-    "firstName": "joe",
-    "lastName": "smith",
-    "email": "jeosmith@gmail.com",
-    "password": "password!",
-    "role": "user",
-    "createdAt": "4/30/2025, 8:02:54 PM",
-    "updatedAt": "4/30/2025, 8:02:54 PM"
-  },
-  {
     "id": 3,
     "firstName": "Aidan",
     "lastName": "Schooley",
@@ -51,32 +31,12 @@
   },
   {
     "id": 6,
-    "firstName": "Jack",
+    "firstName": "Jack ",
     "lastName": "Johnson",
     "email": "email@gmail.com",
-    "password": "$2b$10$KGFKudYcnqzL1rJf8wAiGOqSisRQ9AwJicigo7LgiNKQSHpLtZUTq",
+    "password": "$2b$10$n57sk/Hgy.R3j9IYVhjqw.S5tCJuGJ4RTbVxHdh5jd.svXnF5yv2m",
     "role": "user",
-    "createdAt": "5/5/2025, 8:10:23 AM",
-    "updatedAt": "5/5/2025, 8:10:23 AM"
-  },
-  {
-    "id": 7,
-    "firstName": "Test",
-    "lastName": "test",
-    "email": "email4@gmail.com",
-    "password": "$2b$10$dVi5UsbSc5s5BjXp3OMZdusZs8Ud9/3Qvf7hQWe4u6acnFdAQQnQe",
-    "role": "user",
-    "createdAt": "5/5/2025, 8:12:48 AM",
-    "updatedAt": "5/5/2025, 8:12:48 AM"
-  },
-  {
-    "id": 8,
-    "firstName": "Test",
-    "lastName": "Test",
-    "email": "email5@gmail.com",
-    "password": "$2b$10$VAU35H.1QP2im.9fxHRYPupfaPoA7ti7i/EF6CeeMZgPmDUs0hLyS",
-    "role": "user",
-    "createdAt": "5/5/2025, 8:18:46 AM",
-    "updatedAt": "5/5/2025, 8:18:46 AM"
+    "createdAt": "5/5/2025, 10:30:42 PM",
+    "updatedAt": "5/5/2025, 10:30:42 PM"
   }
 ]

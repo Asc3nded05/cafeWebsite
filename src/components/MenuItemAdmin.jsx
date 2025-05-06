@@ -10,6 +10,7 @@ import SelectSmoothieFlavor from './SelectSmoothieFlavor';
 import SelectWrapOrPanini from './SelectWrapOrPanini';
 import SelectSausageBaconOrHam from './SelectSausageBaconOrHam';
 import SelectButterOrJelly from './selectButterOrJelly';
+import SelectHotorIced from './selectHotorIced';
 
 export default function MenuItemAdmin({
     id,
@@ -25,6 +26,7 @@ export default function MenuItemAdmin({
     selectDrinkFlavor,
     selectSmoothieFlavor,
     selectWrapOrPanini,
+    selectHotorIced
 }) {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
@@ -38,7 +40,8 @@ export default function MenuItemAdmin({
         selectSausageBaconOrHam ||
         selectDrinkFlavor ||
         selectSmoothieFlavor ||
-        selectWrapOrPanini;
+        selectWrapOrPanini || 
+        selectHotorIced;
 
     function handleShowModal() {
         setShowModal(true); // Show the modal
@@ -82,6 +85,7 @@ export default function MenuItemAdmin({
         selectWrapOrPanini,
         selectDrinkFlavor,
         selectSmoothieFlavor,
+        selectHotorIced
     });
 
     //updated item
@@ -113,12 +117,15 @@ export default function MenuItemAdmin({
             });
     }
 
+    // Format the price to two decimal places with a dollar sign
+    const formattedPrice = `$${parseFloat(price).toFixed(2)}`;
+
     return (
         <>
             <Card style={{ width: '18rem', height: '14rem' }}>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">{price}</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">{formattedPrice}</Card.Subtitle>
                     {hasOptions && (
                         <Button variant="primary" onClick={handleShowModal}>
                             Show Order Options
@@ -151,6 +158,7 @@ export default function MenuItemAdmin({
                         {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => console.log('Drink Flavor:', value)} />}
                         {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => console.log('Smoothie Flavor:', value)} />}
                         {selectWrapOrPanini && <SelectWrapOrPanini onChange={(value) => console.log('Wrap or Panini:', value)} />}
+                        {selectHotorIced && <SelectHotorIced onChange={(value) => console.log("Hot or Iced", value)} />}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={handleCloseModal}>
@@ -284,6 +292,16 @@ export default function MenuItemAdmin({
                             onChange={(e) => setUpdatedOptions({ ...updatedOptions, selectWrapOrPanini: e.target.checked })}
                         />
                         <label className="form-check-label" htmlFor="selectWrapOrPanini">Select Wrap or Panini</label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            type="checkbox"
+                            className="form-check-input"
+                            id="selectHotOrIced"
+                            checked={updatedOptions.selectHotorIced}
+                            onChange={(e) => setUpdatedOptions({ ...updatedOptions, selectHotorIced: e.target.checked })}
+                        />
+                        <label className="form-check-label" htmlFor="selectHotOrIced">Select Hot or Iced</label>
                     </div>
                 </Modal.Body>
                 <Modal.Footer>

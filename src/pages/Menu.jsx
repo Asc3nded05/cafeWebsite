@@ -97,6 +97,7 @@ export default function Menu() {
                     selectDrinkFlavor={item.selectDrinkFlavor}
                     selectSmoothieFlavor={item.selectSmoothieFlavor}
                     selectWrapOrPanini={item.selectWrapOrPanini}
+                    selectHotorIced={item.selectHotorIced}
                     addItemToOrder={addItemToOrder}
                     item={item}
                 />
@@ -117,6 +118,7 @@ export default function Menu() {
                     selectDrinkFlavor={item.selectDrinkFlavor}
                     selectSmoothieFlavor={item.selectSmoothieFlavor}
                     selectWrapOrPanini={item.selectWrapOrPanini}
+                    selectHotorIced={item.selectHotorIced}
                     item={item}
                 />
             );
@@ -219,6 +221,7 @@ export default function Menu() {
         selectWrapOrPanini: false,
         selectDrinkFlavor: false,
         selectSmoothieFlavor: false,
+        selectHotorIced: false
     });
     
     // Function to handle the creation of a new menu item
@@ -262,8 +265,8 @@ export default function Menu() {
                                 <Accordion.Header>{category.category}</Accordion.Header>
                                 <Accordion.Body>
                                     <p>{category.description}</p>
-                                    <div className="d-flex justify-content-center">
-                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={3} className="g-4">
+                                    <div>
+                                        <Row xs={1} sm={1} md={2} lg={3} xl={3} xxl={4} className="g-4">
                                             {category.items.map((item, itemIdx) => (
                                                 <Col key={itemIdx}>
                                                     {renderMenuItem(item, role)}
@@ -521,6 +524,16 @@ export default function Menu() {
                                 />
                                 <label className="form-check-label" htmlFor="selectWrapOrPanini">Select Wrap or Panini</label>
                             </div>
+                            <div className="form-check">
+                                <input
+                                    type="checkbox"
+                                    className="form-check-input"
+                                    id="selectHotOrIced"
+                                    checked={newItem.selectWrapOrPanini}
+                                    onChange={(e) => setNewItem({ ...newItem, selectHotorIced: e.target.checked })}
+                                />
+                                <label className="form-check-label" htmlFor="selectHotOrIced">Select Hot or Iced</label>
+                            </div>
                         </div>
                         <button type="submit" className="btn btn-primary">Create Item</button>
                     </form>
@@ -537,8 +550,8 @@ export default function Menu() {
                                 <Accordion.Header>{category.category}</Accordion.Header>
                                 <Accordion.Body>
                                     <p>{category.description}</p>
-                                    <div className="d-flex justify-content-center">
-                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={3} className="g-4">
+                                    <div>
+                                        <Row xs={1} sm={1} md={2} lg={3} xl={3} xxl={4} className="g-4">
                                             {category.items.map((item, itemIdx) => (
                                                 <Col key={itemIdx}>
                                                     {renderMenuItem(item, role)}
@@ -569,8 +582,8 @@ export default function Menu() {
                                 <Accordion.Header>{category.category}</Accordion.Header>
                                 <Accordion.Body>
                                     <p>{category.description}</p>
-                                    <div className="d-flex justify-content-center">
-                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={3} className="g-4">
+                                    <div>
+                                        <Row xs={1} sm={1} md={2} lg={3} xl={3} xxl={4} className="g-4">
                                             {category.items.map((item, itemIdx) => (
                                                 <Col key={itemIdx}>
                                                     {renderMenuItem(item, role)}

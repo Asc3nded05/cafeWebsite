@@ -32,11 +32,13 @@
     "title": "Blog Post 3",
     "content": "post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content post content ",
     "likes": 1,
-    "dislikes": 0,
+    "dislikes": 1,
     "likedBy": [
       7
     ],
-    "dislikedBy": [],
+    "dislikedBy": [
+      4
+    ],
     "createdAt": "5/5/2025, 8:30:04 AM",
     "updatedAt": "5/5/2025, 8:30:04 AM",
     "id": 3
