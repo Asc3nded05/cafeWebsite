@@ -79,11 +79,14 @@ export default function Menu() {
     // If the user is logged in as a normal user, display the menu with the ability to place an order
     // If the user is logged in as an admin, display the menu with the ability to create, update, and delete menu items
     const renderMenuItem = (item, role) => {
+        //converts to float and two decimal places
+        const price = parseFloat(item.price);
+         const priceRounded = price.toFixed(2);
         if (role === "user") {
             return (
                 <MenuItemUser
                     title={item.title}
-                    price={item.price}
+                    price={priceRounded}
                     selectBagel={item.selectBagel}
                     selectButterOrJelly={item.selectButterOrJelly}
                     selectCreamCheese={item.selectCreamCheese}
@@ -260,7 +263,7 @@ export default function Menu() {
                                 <Accordion.Body>
                                     <p>{category.description}</p>
                                     <div className="d-flex justify-content-center">
-                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={4} className="g-4">
+                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={3} className="g-4">
                                             {category.items.map((item, itemIdx) => (
                                                 <Col key={itemIdx}>
                                                     {renderMenuItem(item, role)}
@@ -375,7 +378,7 @@ export default function Menu() {
                     <h1>Create New Menu Item</h1>
 
                     <hr></hr>
-
+                    
                     <form onSubmit={(e) => { e.preventDefault(); handleCreateItem(); }} className="mt-4">
                         <div className="mb-3">
                             <label htmlFor="category" className="form-label">Category</label>
@@ -535,7 +538,7 @@ export default function Menu() {
                                 <Accordion.Body>
                                     <p>{category.description}</p>
                                     <div className="d-flex justify-content-center">
-                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={4} className="g-4">
+                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={3} className="g-4">
                                             {category.items.map((item, itemIdx) => (
                                                 <Col key={itemIdx}>
                                                     {renderMenuItem(item, role)}
@@ -567,7 +570,7 @@ export default function Menu() {
                                 <Accordion.Body>
                                     <p>{category.description}</p>
                                     <div className="d-flex justify-content-center">
-                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={4} className="g-4">
+                                        <Row xs={1} sm={2} md={2} lg={3} xl={3} xxl={3} className="g-4">
                                             {category.items.map((item, itemIdx) => (
                                                 <Col key={itemIdx}>
                                                     {renderMenuItem(item, role)}

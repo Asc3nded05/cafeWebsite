@@ -8,6 +8,7 @@ import SelectMultipleBagels from './selectMultipleBagels';
 import SelectDrinkFlavor from './SelectDrinkFlavor';
 import SelectSmoothieFlavor from './SelectSmoothieFlavor';
 import SelectWrapOrPanini from './SelectWrapOrPanini';
+import SelectHotorIced from './selectHotorIced';
 
 export default function MenuItemUser({
     title,
@@ -22,6 +23,7 @@ export default function MenuItemUser({
     selectDrinkFlavor,
     selectSmoothieFlavor,
     selectWrapOrPanini,
+    selectHotorIced,
     addItemToOrder, // Function to add an item to the current order
 }) {
     const [showModal, setShowModal] = useState(false); // State to control modal visibility
@@ -40,12 +42,13 @@ export default function MenuItemUser({
             selectSausageBaconOrHam ||
             selectDrinkFlavor ||
             selectSmoothieFlavor ||
-            selectWrapOrPanini;
+            selectWrapOrPanini ||
+            selectHotorIced;
     
         if (hasOptions) {
             setShowModal(true); // Show the modal if options are available
         } else {
-            setShowModal(true);
+            handleAddItem(); // Add the item directly if no options are available
         }
     }
     
@@ -82,7 +85,7 @@ export default function MenuItemUser({
             <Card style={{ width: '18rem', height: '14rem' }}>
                 <Card.Body>
                     <Card.Title>{title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">{price}</Card.Subtitle>
+                    <Card.Subtitle className="mb-2 text-muted">${price}</Card.Subtitle>
                     <Button variant="primary" onClick={handleShowModal}>
                         Add to Order
                     </Button>
@@ -106,6 +109,7 @@ export default function MenuItemUser({
                     {selectDrinkFlavor && <SelectDrinkFlavor onChange={(value) => handleOptionChange('selectDrinkFlavor', value)} />}
                     {selectSmoothieFlavor && <SelectSmoothieFlavor onChange={(value) => handleOptionChange('selectSmoothieFlavor', value)} />}
                     {selectWrapOrPanini && <SelectWrapOrPanini onChange={(value) => handleOptionChange('selectWrapOrPanini', value)} />}
+                    {selectHotorIced && <SelectHotorIced onChange={(value) => handleOptionChange('selectHotorIced', value)} />}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseModal}>

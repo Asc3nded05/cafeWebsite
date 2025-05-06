@@ -1,3 +1,4 @@
+// Importing necessary components and libraries for the backend server
 import express from 'express';
 import fs from 'fs';
 import path from 'path';
@@ -23,13 +24,13 @@ app.use(express.json());
 
 // Path to the users.json file
 const usersFilePath = path.join(__dirname, '..', 'jsonFiles', 'users.json');
-
+// Path to the blog.json file
 const blogFilePath = path.join(__dirname, '..', 'jsonFiles', 'blog.json');
-
+// Path to the menuData.json file
 const menuFilePath = path.join(__dirname, '..', 'jsonFiles', 'menuData.json')
-
+// Path to the orders.json file
 const ordersFilePath = path.join(__dirname, '..', 'jsonFiles', 'orders.json');
-
+// Path to the messages.json file
 const messagesFilePath = path.join(__dirname, '..', 'jsonFiles', 'messages.json');
 
 // Function to read users from the file
@@ -113,7 +114,7 @@ app.post('/api/login', async (req, res) => {
     // Read the existing users from the file
     fs.readFile(usersFilePath, 'utf8', async (err, data) => {
         const users = readUsers();
-
+        
         const user = users.find(u => u.email && u.email.toLowerCase() === email.toLowerCase());
 
         if (!user) {
@@ -148,8 +149,9 @@ app.post('/api/login', async (req, res) => {
     });
 });
 
+// Endpoint to retrieve blog posts
 app.get('/api/blog', (req, res) => {
-    // Read the blog posts from the JSON file
+    // Read the existing blog posts from the file
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading blog file:', err);
@@ -161,10 +163,11 @@ app.get('/api/blog', (req, res) => {
     });
 });
 
+// Endpoint to create a new blog post
 app.post('/api/blog/create', (req, res) => {
     const newPost = req.body;
     console.log(newPost);
-    // Read the blog posts from the JSON file
+    // Read the existing blog posts from the file
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading blog file:', err);
@@ -237,6 +240,7 @@ app.put('/api/blog/like/:id', (req, res) => {
     const postId = parseInt(req.params.id);
     const userId = req.body.userId;
 
+    // Read the existing blog posts from the file
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading blog file:', err);
@@ -278,6 +282,7 @@ app.put('/api/blog/dislike/:id', (req, res) => {
     const postId = parseInt(req.params.id);
     const userId = req.body.userId;
 
+    // Read the existing blog posts from the file
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading blog file:', err);
@@ -314,11 +319,12 @@ app.put('/api/blog/dislike/:id', (req, res) => {
     });
 });
 
-// Endpoint to remove a like
+// Endpoint to remove a like from a blog post
 app.put('/api/blog/unlike/:id', (req, res) => {
     const postId = parseInt(req.params.id);
     const userId = req.body.userId;
 
+    // Read the existing blog posts from the file
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading blog file:', err);
@@ -351,11 +357,12 @@ app.put('/api/blog/unlike/:id', (req, res) => {
     });
 });
 
-// Endpoint to remove a dislike
+// Endpoint to remove a dislike from a blog post
 app.put('/api/blog/undislike/:id', (req, res) => {
     const postId = parseInt(req.params.id);
     const userId = req.body.userId;
 
+    // Read the existing blog posts from the file
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading blog file:', err);
@@ -388,10 +395,11 @@ app.put('/api/blog/undislike/:id', (req, res) => {
     });
 });
 
+// Endpoint to delete a blog post
 app.delete('/api/blog/delete/:id', (req, res) => {
     const postId = req.params.id;
 
-    // Read the blog posts from the JSON file
+    // Read the existing blog posts from the file
     fs.readFile(blogFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading blog file:', err);
@@ -422,6 +430,7 @@ app.delete('/api/blog/delete/:id', (req, res) => {
     });
 });
 
+// Endpoint to retrieve the menu items
 app.get('/api/menu', (req, res) => {
     // Read the menu items from the JSON file
     fs.readFile(menuFilePath, 'utf8', (err, data) => {
@@ -440,7 +449,7 @@ app.put('/api/menu/update/:id', (req, res) => {
     const itemId = parseInt(req.params.id); // Parse the item ID from the URL
     const updatedItem = req.body; // Get the updated item data from the request body
 
-    // Read the menu items from the JSON file
+    // Read the existing menu items from the file
     fs.readFile(menuFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading menu file:', err);
@@ -480,6 +489,7 @@ app.put('/api/menu/update/:id', (req, res) => {
 app.post('/api/menu/create', (req, res) => {
     const newItem = req.body;
 
+    // Read the existing menu items from the file
     fs.readFile(menuFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading menu file:', err);
@@ -532,10 +542,11 @@ app.post('/api/menu/create', (req, res) => {
     });
 });
 
+//Endpoint to delete a menu item
 app.delete('/api/menu/delete/:id', (req, res) => {
     const itemId = parseInt(req.params.id); // Parse the item ID from the URL
 
-    // Read the menu items from the JSON file
+    // Read the existing menu items from the file
     fs.readFile(menuFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading menu file:', err);
@@ -602,8 +613,9 @@ app.post('/api/orders', (req, res) => {
     });
 });
 
+// Endpoint to retrieve all the orders
 app.get('/api/orders', (req, res) => {
-    // Read the menu items from the JSON file
+    // Read the existing orders from the file
     fs.readFile(ordersFilePath, 'utf8', (err, data) => {
         if (err) {
             console.error('Error reading menu file:', err);
@@ -615,6 +627,7 @@ app.get('/api/orders', (req, res) => {
     });
 });
 
+// Endpoint to mark an order as complete
 app.put('/api/orders/complete/:id', (req, res) => {
     const orderId = parseInt(req.params.id); // Parse the order ID from the URL
 
@@ -647,6 +660,7 @@ app.put('/api/orders/complete/:id', (req, res) => {
     });
 });
 
+// Endpoint to retrieve all of the contact messages
 app.get('/api/contact/messages', (req, res) => {   
     // Read the messages from the JSON file
     fs.readFile(messagesFilePath, 'utf8', (err, data) => {
@@ -660,6 +674,7 @@ app.get('/api/contact/messages', (req, res) => {
     });
 });
 
+// Endpoint to send a new contact message
 app.post('/api/contact/sendMessage', (req, res) => {
     const newMessage = req.body;
     console.log(newMessage);
@@ -671,13 +686,6 @@ app.post('/api/contact/sendMessage', (req, res) => {
         }
 
         let messages = JSON.parse(data);
-
-        // // Check for duplicate messages
-        // const duplicateMessage = messages.find(message => message.title === newMessage.title && message.sender === newMessage.sender && message.email === newMessage.email && message.messsage === newMessage.messsage && message.sentAt === newMessage.sentAt);
-
-        // if (duplicateMessage) {
-        //     return res.status(409).json({ message: 'Duplicate message' });
-        // }
 
         // Determine the next available ID
         const nextId = messages.reduce((maxId, message) => Math.max(maxId, message.id || 0), 0) + 1;

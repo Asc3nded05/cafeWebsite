@@ -14,7 +14,9 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
         }
     }, [id]);
 
+    // Function to handle liking and unliking a post
     function handleLike() {
+        // If the user has already liked the post then unlike it, if not then like it
         if (userAction === 'liked') {
             // Remove the like
             fetch(`http://localhost:5000/api/blog/unlike/${id}`, {
@@ -63,6 +65,7 @@ export default function BlogPost({ id, title, date, text, initialLikes, initialD
         }
     }
 
+    // Function to handle disliking and undisliking a post
     function handleDislike() {
         if (userAction === 'disliked') {
             // Remove the dislike
