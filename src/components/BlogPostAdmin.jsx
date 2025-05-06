@@ -75,7 +75,7 @@ export default function BlogPostAdmin({ id, title, date, text, likes, dislikes }
                     <Button variant="primary" className="ms-2" onClick={handleShowModal}>
                         Update
                     </Button>
-                    <Button variant="primary" className="ms-2" onClick={deletePost}>
+                    <Button variant="danger" className="ms-2" onClick={deletePost}>
                         Delete
                     </Button>
                 </Card.Body>
